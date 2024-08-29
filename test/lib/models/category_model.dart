@@ -22,7 +22,7 @@ class CategoryModel {
         boxColor: Color(0xffC58BF2)));
 
     cats.add(CategoryModel(
-        name: 'Pie"',
+        name: 'Pie',
         iconPath: 'assets/icons/pie-dessert-food-svgrepo-com.svg',
         boxColor: Color(0xff9DCEFF)));
 
