@@ -7,29 +7,28 @@ class LogoutDiaglog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Colors.orange[200],
-      content: Container(
-        height: 120,
-        width: 300,
-        child: Column( 
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text("Do you wish to logout?",
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w800
-            )),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                MyButton(text: "No", onPressed: Navigator.of(context).pop),
-                MyButton(text: "Yes", onPressed: Navigator.of(context).pop)
-              ]
-            )
-          ]
-        )
-      )
-    );
+        backgroundColor: Colors.orange[200],
+        content: Container(
+            height: 120,
+            width: 300,
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text("Do you wish to logout?",
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w800)),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        MyButton(
+                            text: "No", onPressed: Navigator.of(context).pop),
+                        MyButton(
+                            text: "Yes",
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/loginpage');
+                            })
+                      ])
+                ])));
   }
 }
