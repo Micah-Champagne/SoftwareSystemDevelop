@@ -2,9 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:quest/pages/home.dart';
+import 'package:quest/pages/homePageSliver.dart';
 import 'package:quest/pages/profile.dart';
 import 'package:quest/pages/search.dart';
 import 'package:quest/utils/logoutDialog.dart';
+import 'package:quest/utils/my_button.dart';
 
 class FirstPage extends StatefulWidget {
   FirstPage({super.key});
@@ -24,7 +26,7 @@ class _FirstPageState extends State<FirstPage> {
 
   final List _pages = [
     //home page
-    HomePage(),
+    NewHomePage(),
     //search page
     SearchPage(),
     //profile page
@@ -62,13 +64,18 @@ class _FirstPageState extends State<FirstPage> {
                     ))),
             ListTile(
               leading: Icon(Icons.settings),
-              title: Text("S E T T I N G S"),
+              title: Text("S E T T I N G S")
             ),
             ListTile(
               leading: Icon(Icons.door_back_door),
               title: Text("L O G O U T"),
               onTap: logout,
-            )
+            ),
+            MyButton(
+                  text: "testPage",
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/testing');
+                  })
           ])),
       bottomNavigationBar: BottomNavigationBar(
           elevation: 10,

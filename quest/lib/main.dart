@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quest/pages/first.dart';
 import 'package:quest/pages/home.dart';
 import 'package:quest/pages/loginScreen.dart';
+import 'package:quest/pages/homePageSliver.dart';
 import 'package:quest/pages/profile.dart';
 import 'package:quest/pages/search.dart';
 
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
           '/homepage': (context) => HomePage(),
           '/loginpage': (context) => LoginPage(),
           '/profilepage': (context) => ProfilePage(),
-          '/searchpage': (context) => SearchPage()
+          '/searchpage': (context) => SearchPage(),
+          '/testing': (context) => NewHomePage()
         });
   }
 }
