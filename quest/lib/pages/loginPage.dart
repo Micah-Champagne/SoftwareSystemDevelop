@@ -13,7 +13,7 @@ void CreateAccount(BuildContext context) {
   showDialog(
       context: context,
       builder: (context) {
-        return CreateAccountDiaglog();
+        return const CreateAccountDiaglog();
       });
 }
 
@@ -30,7 +30,7 @@ class LoginPageState extends State<LoginPage> {
               decoration: BoxDecoration(
                   color: Colors.blue[200],
                   borderRadius: BorderRadius.circular(25),
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
                         color: Colors.black,
                         blurRadius: 2.0,
@@ -44,11 +44,11 @@ class LoginPageState extends State<LoginPage> {
                         fontWeight: FontWeight.w600,
                         fontStyle: FontStyle.italic)),
               )),
-          Padding(
-            padding: const EdgeInsets.only(left: 40, top: 20),
+          const Padding(
+            padding: EdgeInsets.only(left: 40, top: 20),
             child: Align(
               alignment: Alignment.bottomLeft,
-              child: const Text(
+              child: Text(
                 "Please enter your credentials.",
               ),
             ),

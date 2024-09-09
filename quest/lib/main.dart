@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:quest/pages/first.dart';
-import 'package:quest/pages/home.dart';
-import 'package:quest/pages/loginScreen.dart';
-import 'package:quest/pages/homePageSliver.dart';
-import 'package:quest/pages/profile.dart';
-import 'package:quest/pages/search.dart';
+import 'package:quest/pages/AppNav.dart';
+import 'package:quest/pages/loginPage.dart';
+import 'package:quest/pages/homePage.dart';
+import 'package:quest/pages/profilePage.dart';
+import 'package:quest/pages/searchPage.dart';
+import 'package:quest/pages/testPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,14 +18,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: LoginPage(),
+        home: const LoginPage(),
         routes: {
-          '/firstpage': (context) => FirstPage(),
-          '/homepage': (context) => HomePage(),
-          '/loginpage': (context) => LoginPage(),
-          '/profilepage': (context) => ProfilePage(),
-          '/searchpage': (context) => SearchPage(),
-          '/testing': (context) => NewHomePage()
+          '/firstpage': (context) => const AppNav(),
+          '/homepage': (context) => const HomePage(),
+          '/loginpage': (context) => const LoginPage(),
+          '/profilepage': (context) => const ProfilePage(),
+          '/searchpage': (context) => const SearchPage(),
+          '/testing': (context) => const TestPage()
         });
   }
 }

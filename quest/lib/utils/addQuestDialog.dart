@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quest/utils/my_button.dart';
 
-class LogoutDiaglog extends StatelessWidget {
-  const LogoutDiaglog({super.key});
+class Addquestdialog extends StatelessWidget {
+  const Addquestdialog({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class LogoutDiaglog extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  const Text("Do you wish to logout?",
+                  const Text("Add a new Quest",
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.w800)),
                   Row(
@@ -24,10 +24,7 @@ class LogoutDiaglog extends StatelessWidget {
                         MyButton(
                             text: "No", onPressed: Navigator.of(context).pop),
                         MyButton(
-                            text: "Yes",
-                            onPressed: () {
-                              Navigator.pushNamed(context, '/loginpage');
-                            })
+                            text: "Yes", onPressed: Navigator.of(context).pop)
                       ])
                 ])));
   }

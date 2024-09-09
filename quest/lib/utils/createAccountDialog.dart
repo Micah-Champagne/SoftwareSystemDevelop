@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quest/pages/first.dart';
 import 'package:quest/utils/my_button.dart';
 
 class CreateAccountDiaglog extends StatelessWidget {
@@ -9,7 +8,7 @@ class CreateAccountDiaglog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
         backgroundColor: Colors.green[200],
-        content: Container(
+        content: SizedBox(
             height: 500,
             width: 300,
             child: Column(
