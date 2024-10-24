@@ -73,7 +73,7 @@ class _AppNavState extends State<AppNav> {
           centerTitle: true,
           actions: [
             PopupMenuButton<int>(
-              icon: Icon(Icons.add),
+              icon: const Icon(Icons.add),
               onSelected: (int result) {
                 if (result == 0) {
                   print("addQuestBranch");
@@ -84,10 +84,10 @@ class _AppNavState extends State<AppNav> {
                 }
               },
               itemBuilder: (BuildContext context) => <PopupMenuEntry<int>>[
-                PopupMenuItem<int>(
+                const PopupMenuItem<int>(
                   value: 0,
                   child: Text("Add a new Quest")),
-                PopupMenuItem<int>(
+                const PopupMenuItem<int>(
                   value: 1,
                   child: Text("Complete a Quest"))
               ]

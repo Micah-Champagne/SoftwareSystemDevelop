@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quest/utils/my_button.dart';
 
@@ -9,13 +8,15 @@ class Completequestdialog extends StatefulWidget {
   State<Completequestdialog> createState() => _CompletequestdialogState();
 }
 
+final List<String> questLog = ["Quest 1", "Quest 2", "Quest 3"];
+
 class _CompletequestdialogState extends State<Completequestdialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-        backgroundColor: Colors.orange[200],
+        backgroundColor: Colors.white,
         content: SizedBox(
-            height: 120,
+            height: 500,
             width: 300,
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -24,6 +25,7 @@ class _CompletequestdialogState extends State<Completequestdialog> {
                   const Text("Select a Quest to complete",
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.w800)),
+                  
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
