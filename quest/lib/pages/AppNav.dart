@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:quest/pages/homePage.dart';
 import 'package:quest/pages/profilePage.dart';
 import 'package:quest/pages/searchPage.dart';
@@ -26,7 +27,7 @@ class _AppNavState extends State<AppNav> {
 
   final List _pages = [
     //home page
-    const HomePage(),
+    const HomePage2(),
     //search page
     const SearchPage(),
     //profile page
@@ -42,62 +43,62 @@ class _AppNavState extends State<AppNav> {
   }
 
   void addQuest() {
-    showDialog( 
-      context: context,
-      builder: (context) {
-        return const Addquestdialog();
-      }
-    );
+    showDialog(
+        context: context,
+        builder: (context) {
+          return const Addquestdialog();
+        });
   }
 
   void completeQuest() {
-    showDialog( 
-      context: context,
-      builder: (context) {
-        return const Completequestdialog();
-      }
-    );
+    showDialog(
+        context: context,
+        builder: (context) {
+          return const Completequestdialog();
+        });
   }
+
+  final Color _OurLightPurple = const Color(0x99838ef4);
+  final Color _OurDarkGrey = const Color(0xff262626);
+  final Color _OurPurpleBackground = const Color(0xff838ef4);
+  final Color _OurCremeColor = const Color(0xfffefdf5);
 
   final PageController _pageController = PageController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('QuestBuddy',
+          title: const Text('QB',
               style: TextStyle(
                   color: Colors.black,
-                  fontSize: 24.0,
+                  fontSize: 30.0,
                   fontWeight: FontWeight.w600)),
-          backgroundColor: Colors.blue[200],
+          backgroundColor: _OurCremeColor,
           centerTitle: true,
           actions: [
             PopupMenuButton<int>(
-              icon: const Icon(Icons.add),
-              onSelected: (int result) {
-                if (result == 0) {
-                  print("addQuestBranch");
-                  addQuest();
-                } else {
-                  completeQuest();
-                  print("CompleteQuestBranch");
-                }
-              },
-              itemBuilder: (BuildContext context) => <PopupMenuEntry<int>>[
-                const PopupMenuItem<int>(
-                  value: 0,
-                  child: Text("Add a new Quest")),
-                const PopupMenuItem<int>(
-                  value: 1,
-                  child: Text("Complete a Quest"))
-              ]
-            )
-            
+                icon: const Icon(Icons.add),
+                onSelected: (int result) {
+                  if (result == 0) {
+                    print("addQuestBranch");
+                    addQuest();
+                  } else {
+                    completeQuest();
+                    print("CompleteQuestBranch");
+                  }
+                },
+                itemBuilder: (BuildContext context) => <PopupMenuEntry<int>>[
+                      const PopupMenuItem<int>(
+                          value: 0, child: Text("Add a new Quest")),
+                      const PopupMenuItem<int>(
+                          value: 1, child: Text("Complete a Quest"))
+                    ])
           ],
         ),
         drawer: Drawer(
-            backgroundColor: Colors.purple[100],
-            child: Column(children: [
+          backgroundColor: Colors.purple[100],
+          child: Column(
+            children: [
               const DrawerHeader(
                   child: Text("QB",
                       style: TextStyle(
@@ -117,29 +118,28 @@ class _AppNavState extends State<AppNav> {
                   onPressed: () {
                     Navigator.pushNamed(context, '/testing');
                   })
-            ], 
-            ),
-            
-            ),
-        
+            ],
+          ),
+        ),
         bottomNavigationBar: BottomNavigationBar(
             elevation: 10,
             currentIndex: _selectedIndex,
             onTap: _navigateBottomBar,
-            items: const [
+            items: [
               //home
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-              //search
               BottomNavigationBarItem(
+                icon: _selectedIndex == 0 ? SvgPicture.asset("assets/icons/feedblank.svg") : SvgPicture.asset("assets/icons/feedfilled.svg"), label: "He"),
+              //search
+              const BottomNavigationBarItem(
                   icon: Icon(Icons.search), label: "Search"),
               //profile
-              BottomNavigationBarItem(
+              const BottomNavigationBarItem(
                   icon: Icon(Icons.person), label: "Profile")
             ]),
         body: PageView(
             controller: _pageController,
             children: const <Widget>[
-              HomePage(),
+              HomePage2(),
               SearchPage(),
               ProfilePage(),
             ],
@@ -149,8 +149,6 @@ class _AppNavState extends State<AppNav> {
               });
             }));
   }
-  
-  void QuestDropDown() {
 
-  }
+  void QuestDropDown() {}
 }

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:quest/pages/AppNav.dart';
-import 'package:quest/pages/SignInPage.dart';
+import 'package:quest/pages/OurAppNav.dart';
+import 'package:quest/pages/OurHomePage.dart';
+import 'package:quest/pages/OurHomePage2.dart';
+import 'package:quest/pages/OurSignInPage.dart';
 import 'package:quest/pages/loginPage.dart';
 import 'package:quest/pages/homePage.dart';
 import 'package:quest/pages/profilePage.dart';
@@ -18,15 +21,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: SignInPage(),
+        home: const SignInPage(),
         routes: {
           '/firstpage': (context) => const AppNav(),
-          '/homepage': (context) => const HomePage(),
+          '/homepage': (context) => const HomePage2(),
           '/loginpage': (context) => const LoginPage(),
           '/profilepage': (context) => const ProfilePage(),
           '/searchpage': (context) => const SearchPage(),
-          '/testing': (context) => SignInPage(),
-          '/signinpage': (context) => SignInPage()
+          '/testing': (context) => const SignInPage(),
+          '/signinpage': (context) => const SignInPage(),
+          '/ourappnav' : (context) => const OurAppNav(),
+          '/ourhomepage' : (context) => const OurHomePage(),
+          '/ourhomepage2' : (context) => const OurHomePage2(),
         });
   }
 }
