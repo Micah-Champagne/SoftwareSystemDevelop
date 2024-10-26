@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:quest/pages/OurHomePage.dart';
 import 'package:quest/pages/OurHomePage2.dart';
-import 'package:quest/pages/homePage.dart';
 import 'package:quest/pages/profilePage.dart';
 import 'package:quest/pages/searchPage.dart';
 import 'package:quest/utils/my_button.dart';
@@ -82,9 +80,15 @@ class _OurAppNavState extends State<OurAppNav> {
           ),
         ),
 
-        bottomNavigationBar: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: BottomNavigationBar(
+        bottomNavigationBar: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisSize: MainAxisSize.min,
+          children:[
+            Container(
+              height: 0.4,
+              color: Color(0xFF262626)
+            ),
+          BottomNavigationBar(
               elevation: 10,
               currentIndex: _selectedIndex,
               onTap: _navigateBottomBar,
@@ -107,7 +111,7 @@ class _OurAppNavState extends State<OurAppNav> {
                         ? SvgPicture.asset("assets/icons/profilefilled.svg")
                         : SvgPicture.asset("assets/icons/profileblank.svg"),
                     label: "Profile")
-              ]),
+              ]),]
         ),
 
         body: PageView(

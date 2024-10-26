@@ -79,7 +79,7 @@ class _OurHomePageState extends State<OurHomePage> {
                               ClipOval(
                                 child: Image.asset('assets/icons/Micah.jpeg', height: 50, width: 50,),
                               ),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               Container(
                                 height: 75, width: 50, decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: Colors.green,)
                               )
@@ -89,7 +89,7 @@ class _OurHomePageState extends State<OurHomePage> {
                               ClipOval(
                                 child: Image.asset('assets/icons/Micah.jpeg', height: 50, width: 50,),
                               ),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               Container(
                                 height: 125, width: 50, decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: Colors.pink),
                               )
@@ -98,7 +98,7 @@ class _OurHomePageState extends State<OurHomePage> {
                             children: [
                               ClipOval(
                                 child: Image.asset('assets/icons/Micah.jpeg', height: 50, width: 50,),
-                              ),SizedBox(height: 10),
+                              ),const SizedBox(height: 10),
                               Container(
                                 height: 200, width: 50, decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: Colors.red),
                               )
@@ -107,7 +107,7 @@ class _OurHomePageState extends State<OurHomePage> {
                             children: [
                               ClipOval(
                                 child: Image.asset('assets/icons/Micah.jpeg', height: 50, width: 50,),
-                              ),SizedBox(height: 10),
+                              ),const SizedBox(height: 10),
                               Container(
                                 height: 100, width: 50, decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: Colors.orange),
                               )
@@ -117,7 +117,7 @@ class _OurHomePageState extends State<OurHomePage> {
                               ClipOval(
                                 child: Image.asset('assets/icons/Micah.jpeg', height: 50, width: 50,),
                               ),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               Container(
                                 height: 50, width: 50, decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: Colors.blue),
                               )

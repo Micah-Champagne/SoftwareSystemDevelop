@@ -42,15 +42,16 @@ class _SignInState extends State<SignInPage> {
                       backgroundColor: _OurDarkGrey,
                       foregroundColor: Colors.white),
                   onPressed: () {
+                    if (registerEnabled) {
+                      _RegisterController.toggle();
+                      registerEnabled = false;
+                    }
                     if (!signInEnabled) {
                       _SignInController.toggle();
                       signInEnabled = true;
-                      registerEnabled=false;
-                    }
-                    if (registerEnabled) {
-                      _RegisterController.toggle;
                       registerEnabled = false;
                     }
+                    
                   },
                   child: OverlayPortal(
                     controller: _SignInController,
@@ -63,7 +64,6 @@ class _SignInState extends State<SignInPage> {
                               height: 400,
                               width: 350,
                               decoration: BoxDecoration(
-                                
                                 borderRadius: BorderRadius.circular(15),
                                 color: _OurCremeColor,
                               ),
@@ -79,7 +79,7 @@ class _SignInState extends State<SignInPage> {
                                                 _SignInController.toggle();
                                                 signInEnabled = false;
                                               }
-                                              if (registerEnabled){
+                                              if (registerEnabled) {
                                                 _RegisterController.toggle();
                                                 registerEnabled = false;
                                               }
@@ -101,20 +101,23 @@ class _SignInState extends State<SignInPage> {
                                     Padding(
                                       padding: const EdgeInsets.only(
                                           left: 20, right: 20, top: 30),
-                                      child: Container(
+                                      child: SizedBox(
                                           height: 50,
                                           width: 350,
-                                          color: Colors.black,
-                                          child: Center(
-                                              child: GestureDetector(
-                                                onTap: (){
-                                                  Navigator.pushNamed(context, '/ourappnav');
-                                                },
-                                                child: Text("Sign In",
-                                                    style: TextStyle(
-                                                        color: _OurCremeColor,
-                                                        fontSize: 18)),
-                                              ))),
+                                          child: ElevatedButton(
+                                              style: ElevatedButton.styleFrom(
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              5)),
+                                                  backgroundColor: _OurDarkGrey,
+                                                  foregroundColor:
+                                                      Colors.white),
+                                              onPressed: () {
+                                                Navigator.pushNamed(
+                                                    context, '/ourappnav');
+                                              },
+                                              child: Text("SIGN IN"))),
                                     ),
                                     const SizedBox(height: 30),
                                     Padding(
@@ -181,9 +184,9 @@ class _SignInState extends State<SignInPage> {
                                                 _RegisterController.toggle();
                                                 registerEnabled = false;
                                               }
-                                              if(signInEnabled){
+                                              if (signInEnabled) {
                                                 _SignInController.toggle();
-                                                signInEnabled=false;
+                                                signInEnabled = false;
                                               }
                                             },
                                             icon: const Icon(Icons.arrow_back,
@@ -222,16 +225,23 @@ class _SignInState extends State<SignInPage> {
                                           Navigator.pushNamed(
                                               context, '/ourappnav');
                                         },
-                                          child: Container(
-                                              height: 50,
-                                              width: 350,
-                                              color: Colors.black,
-                                              child: Center(
-                                                  child: Text("Register",
-                                                      style: TextStyle(
-                                                          color: _OurCremeColor,
-                                                          fontSize: 18)))),
-                                        
+                                        child: Container(
+                                            height: 50,
+                                            width: 350,
+                                            child: ElevatedButton(
+                                              style: ElevatedButton.styleFrom(
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              5)),
+                                                  backgroundColor: _OurDarkGrey,
+                                                  foregroundColor:
+                                                      Colors.white),
+                                              onPressed: () {
+                                                Navigator.pushNamed(
+                                                    context, '/ourappnav');
+                                              },
+                                              child: Text("REGISTER"))),
                                       ),
                                     ),
                                     const SizedBox(height: 30),
@@ -293,9 +303,13 @@ class _SignInState extends State<SignInPage> {
   TextField _OurSecretTextField(String hintText) {
     return TextField(
       decoration: InputDecoration(
-        suffixIcon: IconButton(onPressed: (){setState(() {
-          _obsureText = !_obsureText;
-        });}, icon: Icon(_obsureText ? Icons.visibility_off : Icons.visibility)),
+        suffixIcon: IconButton(
+            onPressed: () {
+              setState(() {
+                _obsureText = !_obsureText;
+              });
+            },
+            icon: Icon(_obsureText ? Icons.visibility_off : Icons.visibility)),
         filled: true,
         fillColor: _OurCremeColor,
         hintText: hintText,
