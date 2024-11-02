@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 
 class PostModel {
-  String image;
-  String name;
-  String time;
-  String quest;
-  Color boxColor;
+String image;
+String name;
+String time;
+String quest;
+Color boxColor;
 
-  PostModel(
-      {required this.image,
-      required this.name,
-      required this.time,
-      required this.quest,
-      required this.boxColor});
-
-  static List<PostModel> getCategories() {
+PostModel(
+    {required this.image,
+    required this.name,
+    required this.time,
+    required this.quest,
+    required this.boxColor});
+static List<PostModel> getCategories() {
     List<PostModel> post = [];
 
     Color education = const Color(0xffA8D8EA);
@@ -54,27 +53,34 @@ class PostModel {
         time: "37 minutes ago",
         quest: "Submit hours in workday",
         boxColor: professional));
-    
+
     post.add(PostModel(
         image: ReinhardPhoto,
         name: ReinhardUser,
         time: "49 minutes ago",
         quest: "Run for Physical Fitness test",
         boxColor: physical));
-      
+
     post.add(PostModel(
         image: MicahPhoto,
         name: MicahUser,
         time: "1 hour ago",
         quest: "Wash the dishes",
         boxColor: chores));
-      
+
     post.add(PostModel(
         image: AbbyPhoto,
         name: AbbyUser,
         time: "2 hours ago",
         quest: "Finish Milestone 2",
         boxColor: education));
+
+    post.add(PostModel(
+        image: MicahPhoto,
+        name: MicahUser,
+        time: "3 hours ago",
+        quest: "Cried",
+        boxColor: professional));
     return post;
-  }
+}
 }

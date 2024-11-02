@@ -117,7 +117,7 @@ class _SignInState extends State<SignInPage> {
                                                 Navigator.pushNamed(
                                                     context, '/ourappnav');
                                               },
-                                              child: Text("SIGN IN"))),
+                                              child: const Text("SIGN IN"))),
                                     ),
                                     const SizedBox(height: 30),
                                     Padding(
@@ -225,7 +225,7 @@ class _SignInState extends State<SignInPage> {
                                           Navigator.pushNamed(
                                               context, '/ourappnav');
                                         },
-                                        child: Container(
+                                        child: SizedBox(
                                             height: 50,
                                             width: 350,
                                             child: ElevatedButton(
@@ -241,7 +241,7 @@ class _SignInState extends State<SignInPage> {
                                                 Navigator.pushNamed(
                                                     context, '/ourappnav');
                                               },
-                                              child: Text("REGISTER"))),
+                                              child: const Text("REGISTER"))),
                                       ),
                                     ),
                                     const SizedBox(height: 30),

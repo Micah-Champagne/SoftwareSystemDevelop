@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -43,7 +42,7 @@ class _OurHomePage2State extends State<OurHomePage2> {
                       Text('Top Questers',
                           textAlign: TextAlign.center,
                           style: GoogleFonts.inika(
-                              color: Color(0xff262626),
+                              color: const Color(0xff262626),
                               fontSize: 26,
                               fontWeight: FontWeight.bold)),
                       const SizedBox(height: 5),
@@ -84,13 +83,19 @@ class _OurHomePage2State extends State<OurHomePage2> {
                           Column(
                             children: [
                               Container(
+                                // height: 60, width: 60,
+                                // decoration: BoxDecoration(
+                                  
+                                //   shape: BoxShape.circle,
+                                //   color: Color(0xffe2de01)
+                                //),
                                 child:
                                     SvgPicture.asset("assets/icons/crown.svg",
-                                        //color: Colors.yellow,
+                                        //color: Colors.orangeAccent,
                                         height: 50,
                                         width: 50),
                               ),
-                              SizedBox(height: 5),
+                              const SizedBox(height: 5),
                               Container(
                                 decoration: BoxDecoration(
                                     shape: BoxShape.circle,
@@ -100,9 +105,9 @@ class _OurHomePage2State extends State<OurHomePage2> {
                                     child: Image.asset("assets/icons/abby.jpeg",
                                         height: 150, width: 150)),
                               ),
-                              SizedBox(height: 10),
-                              Text("@AbEE33", style: TextStyle(fontSize: 16)),
-                              Text("123",
+                              const SizedBox(height: 10),
+                              const Text("@AbEE33", style: TextStyle(fontSize: 16)),
+                              const Text("123",
                                   style: TextStyle(
                                       fontSize: 24,
                                       fontWeight: FontWeight.bold))
@@ -110,7 +115,7 @@ class _OurHomePage2State extends State<OurHomePage2> {
                           ),
                           Column(
                             children: [
-                              SizedBox(height: 50),
+                              const SizedBox(height: 50),
                               Container(
                                 child: SvgPicture.asset(
                                     "assets/icons/3rdpalce.svg",
@@ -118,7 +123,7 @@ class _OurHomePage2State extends State<OurHomePage2> {
                                     height: 40,
                                     width: 40),
                               ),
-                              SizedBox(height: 5),
+                              const SizedBox(height: 5),
                               Container(
                                 decoration: BoxDecoration(
                                     shape: BoxShape.circle,
@@ -132,9 +137,9 @@ class _OurHomePage2State extends State<OurHomePage2> {
                                         height: 110,
                                         width: 110)),
                               ),
-                              Text("@StayZan234",
+                              const Text("@StayZan234",
                                   style: TextStyle(fontSize: 16)),
-                              Text("82",
+                              const Text("82",
                                   style: TextStyle(
                                       fontSize: 24,
                                       fontWeight: FontWeight.bold))
@@ -189,14 +194,14 @@ class _OurHomePage2State extends State<OurHomePage2> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                posts[index - 1].name + ' Completed',
+                                '${posts[index - 1].name} Completed',
                                 style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                posts[index - 1].time + "",
+                                posts[index - 1].time,
                                 style: const TextStyle(
                                     color: Colors.white, fontSize: 14),
                               )
@@ -218,8 +223,8 @@ class _OurHomePage2State extends State<OurHomePage2> {
                           const SizedBox(width: 10),
                           Text(posts[index - 1].quest,
                               style:
-                                  TextStyle(color: Colors.white, fontSize: 20)),
-                          Spacer(),
+                                  const TextStyle(color: Colors.white, fontSize: 20)),
+                          const Spacer(),
                           SvgPicture.asset("assets/icons/checkcircle.svg")
                         ],
                       )

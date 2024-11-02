@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:quest/pages/AppNav.dart';
+
+import 'package:quest/pages/OurAddBuddy.dart';
 import 'package:quest/pages/OurAppNav.dart';
 import 'package:quest/pages/OurHomePage.dart';
 import 'package:quest/pages/OurHomePage2.dart';
+import 'package:quest/pages/OurProfilePage.dart';
 import 'package:quest/pages/OurSignInPage.dart';
-import 'package:quest/pages/loginPage.dart';
 import 'package:quest/pages/homePage.dart';
-import 'package:quest/pages/profilePage.dart';
 import 'package:quest/pages/searchPage.dart';
 
 void main() {
@@ -23,16 +23,15 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home: const SignInPage(),
         routes: {
-          '/firstpage': (context) => const AppNav(),
           '/homepage': (context) => const HomePage2(),
-          '/loginpage': (context) => const LoginPage(),
-          '/profilepage': (context) => const ProfilePage(),
+          //'/ourprofilepage': (context) => const OurProfilePage(onAddBuddy: _navigateToAddBuddy,),
           '/searchpage': (context) => const SearchPage(),
           '/testing': (context) => const SignInPage(),
           '/signinpage': (context) => const SignInPage(),
           '/ourappnav' : (context) => const OurAppNav(),
           '/ourhomepage' : (context) => const OurHomePage(),
           '/ourhomepage2' : (context) => const OurHomePage2(),
+          '/addbuddy' : (context) => const OurAddBuddy()
         });
   }
 }
