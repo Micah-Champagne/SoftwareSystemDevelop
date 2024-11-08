@@ -87,6 +87,13 @@ class _OurAppNavState extends State<OurAppNav> {
     });
   }
 
+  void _navigateToBeginQuest(){
+        setState(() {
+      _selectedIndex = 0;
+      _pageController.jumpToPage(0);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -229,7 +236,7 @@ class _OurAppNavState extends State<OurAppNav> {
           const OurAddBuddy(),
           const OurBuddyList(),
           const OurHistory(),
-          const OurCreateQuest()
+          OurCreateQuest(BeginQuest: _navigateToBeginQuest,)
         ],
         onPageChanged: (page) {
           setState(() {

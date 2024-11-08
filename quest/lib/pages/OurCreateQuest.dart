@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 
 class OurCreateQuest extends StatefulWidget {
-  const OurCreateQuest({super.key});
+  const OurCreateQuest({super.key, required this.BeginQuest});
+  final VoidCallback BeginQuest;
 
   @override
   State<OurCreateQuest> createState() => _OurCreateQuestState();
 }
 
-final Color _OurLightPurple = const Color(0x99838ef4);
-final Color _OurDarkGrey = const Color(0xff262626);
-final Color _OurPurpleBackground = const Color(0xff838ef4);
-final Color _OurCremeColor = const Color(0xfffefdf5);
+const Color _OurLightPurple = Color(0x99838ef4);
+const Color _OurDarkGrey = Color(0xff262626);
+const Color _OurPurpleBackground = Color(0xff838ef4);
+const Color _OurCremeColor = Color(0xfffefdf5);
+Color education = const Color(0xffA8D8EA);
+Color physical = const Color(0xffF4C3A5);
+Color professional = const Color(0xffB7E9A0);
+Color chores = const Color(0xffF6E89D);
 List<bool> whichSelected = List.filled(4, false);
 
 class _OurCreateQuestState extends State<OurCreateQuest> {
@@ -20,16 +25,16 @@ class _OurCreateQuestState extends State<OurCreateQuest> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Container(
-          margin: EdgeInsets.only(top: 20, bottom: 20, left: 30, right: 30),
+          margin: const EdgeInsets.only(top: 20, bottom: 20, left: 30, right: 30),
           child: TextField(
             decoration: InputDecoration(
                 filled: true,
-                fillColor: Color.fromARGB(255, 232, 219, 240),
+                fillColor: const Color.fromARGB(255, 232, 219, 240),
                 contentPadding: const EdgeInsets.all(15),
                 hintText: 'Quest Title',
                 hintStyle:
                     const TextStyle(color: Color(0x66262626), fontSize: 18),
-                suffixIcon: SizedBox(
+                suffixIcon: const SizedBox(
                   width: 100,
                 ),
                 border: OutlineInputBorder(
@@ -40,26 +45,94 @@ class _OurCreateQuestState extends State<OurCreateQuest> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Container(height: 75, width: 175, color: Colors.green),
-            Container(height: 75, width: 175, color: Colors.blue)
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  if (!whichSelected[0]) {
+                    whichSelected = List.filled(4, false);
+                    whichSelected[0] = true;
+                  } else {
+                    whichSelected = List.filled(4, false);
+                  }
+                });
+              },
+              child: Container(
+                  height: 75,
+                  width: 150,
+                  decoration: BoxDecoration(
+                      border: whichSelected[0] ? Border.all() : null,
+                      color: professional,
+                      borderRadius: BorderRadius.circular(10)),
+                  child: const Center(
+                    child: Text("Professional"),
+                  )),
+            ),
+            GestureDetector(              onTap: () {
+                setState(() {
+                  if (!whichSelected[1]) {
+                    whichSelected = List.filled(4, false);
+                    whichSelected[1] = true;
+                  } else {
+                    whichSelected = List.filled(4, false);
+                  }
+                });
+              },
+              child: Container(
+                  height: 75,
+                  width: 150,
+                  decoration: BoxDecoration(
+                    border: whichSelected[1] ? Border.all() : null,
+                      color: education, borderRadius: BorderRadius.circular(10)),
+                  child: const Center(child: Text("Educational"))),
+            )
           ],
         ),
-        SizedBox(height: 20),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Container(height: 75, width: 175, color: Colors.yellow),
-            Container(height: 75, width: 175, color: Colors.red)
+            GestureDetector(
+              onTap:(){setState(() {
+                  if (!whichSelected[2]) {
+                    whichSelected = List.filled(4, false);
+                    whichSelected[2] = true;
+                  } else {
+                    whichSelected = List.filled(4, false);
+                  }
+                });},
+              child: Container(
+                  height: 75,
+                  width: 150,
+                  decoration: BoxDecoration(
+                    border: whichSelected[2] ? Border.all() : null,
+                      color: chores, borderRadius: BorderRadius.circular(10)),
+                  child: const Center(child: Text("Household"))),
+            ),
+            GestureDetector(
+              onTap:(){setState(() {
+                  if (!whichSelected[3]) {
+                    whichSelected = List.filled(4, false);
+                    whichSelected[3] = true;
+                  } else {
+                    whichSelected = List.filled(4, false);
+                  }
+                });},
+              child: Container(
+                  height: 75,
+                  width: 150,
+                  decoration: BoxDecoration(
+                    border: whichSelected[3] ? Border.all() : null,
+                      color: physical, borderRadius: BorderRadius.circular(10)),
+                  child: const Center(child: Text("Physical"))),
+            )
           ],
         ),
         Container(
-          margin: EdgeInsets.only(top: 20, bottom: 20, left: 30, right: 30),
+          margin: const EdgeInsets.only(top: 20, bottom: 20, left: 30, right: 30),
           child: TextField(
             maxLines: 10,
             decoration: InputDecoration(
-              
                 filled: true,
-                fillColor: Color.fromARGB(255, 232, 219, 240),
+                fillColor: const Color.fromARGB(255, 232, 219, 240),
                 contentPadding: const EdgeInsets.all(15),
                 hintText: 'Quest Description',
                 hintStyle:
@@ -69,11 +142,17 @@ class _OurCreateQuestState extends State<OurCreateQuest> {
                     borderSide: BorderSide(color: _OurDarkGrey))),
           ),
         ),
-        Container(
-            height: 75,
-            width: 300,
-            color: Colors.purple,
-            child: Text("Begin Quest"))
+        GestureDetector(
+          onTap: (){widget.BeginQuest();},
+          child: Container(
+              height: 75,
+              width: 300,
+              decoration: BoxDecoration(
+              color: _OurLightPurple,
+              borderRadius: BorderRadius.circular(10)),
+              child: Center(child: const Text("Begin Quest", style: TextStyle(fontSize: 28),))),
+        ),
+            SizedBox(height:10)
       ],
     );
   }

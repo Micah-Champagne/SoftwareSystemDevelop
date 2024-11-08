@@ -4,7 +4,6 @@ import 'package:quest/pages/OurAddBuddy.dart';
 import 'package:quest/pages/OurAppNav.dart';
 import 'package:quest/pages/OurHomePage.dart';
 import 'package:quest/pages/OurSignInPage.dart';
-import 'package:quest/pages/OurQuestingPage.dart';
 
 void main() {
   runApp(const MyApp());

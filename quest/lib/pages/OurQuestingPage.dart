@@ -17,7 +17,7 @@ class _OurQuestingPageState extends State<OurQuestingPage> {
   final Color _OurDarkGrey = const Color(0xff262626);
   final Color _OurPurpleBackground = const Color(0xff838ef4);
   final Color _OurCremeColor = const Color(0xfffefdf5);
-  List<bool> Completing = List.filled(8, false);
+  List<bool> Completing = List.filled(10, false);
 
   List<CurrentQuestModel> CurrentQuests = [];
 
