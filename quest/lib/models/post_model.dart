@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 
 class PostModel {
-String image;
-String name;
-String time;
-String quest;
-Color boxColor;
+  String image;
+  String name;
+  String time;
+  String quest;
+  Color boxColor;
 
-PostModel(
-    {required this.image,
-    required this.name,
-    required this.time,
-    required this.quest,
-    required this.boxColor});
-static List<PostModel> getCategories() {
+  PostModel(
+      {required this.image,
+      required this.name,
+      required this.time,
+      required this.quest,
+      required this.boxColor});
+      
+  static List<PostModel> getCategories() {
     List<PostModel> post = [];
 
     Color education = const Color(0xffA8D8EA);
@@ -82,5 +83,5 @@ static List<PostModel> getCategories() {
         quest: "Cried",
         boxColor: professional));
     return post;
-}
+  }
 }

@@ -4,10 +4,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:quest/pages/OurAddBuddy.dart';
 import 'package:quest/pages/OurBuddyList.dart';
 import 'package:quest/pages/OurHistory.dart';
-import 'package:quest/pages/OurHomePage2.dart';
+import 'package:quest/pages/OurHomePage.dart';
 import 'package:quest/pages/OurProfilePage.dart';
-import 'package:quest/pages/searchPage.dart';
+import 'package:quest/pages/OurQuestingPage.dart';
 import 'package:quest/utils/my_button.dart';
+import 'package:quest/pages/OurCreateQuest.dart';
 
 class OurAppNav extends StatefulWidget {
   const OurAppNav({super.key});
@@ -17,6 +18,8 @@ class OurAppNav extends StatefulWidget {
 }
 
 class _OurAppNavState extends State<OurAppNav> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   final Color _OurLightPurple = const Color(0x99838ef4);
   final Color _OurDarkGrey = const Color(0xff262626);
   final Color _OurPurpleBackground = const Color(0xff838ef4);
@@ -26,6 +29,8 @@ class _OurAppNavState extends State<OurAppNav> {
   bool addbuddy = false;
   bool buddylist = false;
   bool history = false;
+  bool creating = false;
+
   final PageController _pageController = PageController();
 
   void _navigateBottomBar(int index) {
@@ -34,6 +39,7 @@ class _OurAppNavState extends State<OurAppNav> {
       addbuddy = false;
       buddylist = false;
       history = false;
+      creating = false;
     });
     _pageController.jumpToPage(index);
   }
@@ -56,31 +62,57 @@ class _OurAppNavState extends State<OurAppNav> {
     _selectedIndex = 2; // Navigate to the Add Buddy page
   }
 
-    void _navigateToHistory() {
+  void _navigateToHistory() {
     setState(() {
-      _selectedIndex = 2; // Highlight the Profile section
+      _selectedIndex = 1; // Highlight the Profile section
       history = true;
     });
     _pageController.jumpToPage(5);
-    _selectedIndex = 2; // Navigate to the Add Buddy page
+    _selectedIndex = 1; // Navigate to the Add Buddy page
+  }
+
+  void _navigateToCreateQuest() {
+    setState(() {
+      _selectedIndex = 1; // Highlight the Profile section
+      creating = true;
+    });
+    _pageController.jumpToPage(6);
+    _selectedIndex = 1;
+  }
+
+  void _navigateToPostQuest() {
+    setState(() {
+      _selectedIndex = 0;
+      _pageController.jumpToPage(0);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         backgroundColor: _OurLightPurple,
         title: Text(
-          _selectedIndex == 2 ? addbuddy ? "Add Buddy"
-                  : buddylist ? "Buddy List"
-                      : history ?  "Questing History" : "Profile"
-              : "QB",
+          _selectedIndex == 2
+              ? addbuddy
+                  ? "Add Buddy"
+                  : buddylist
+                      ? "Buddy List"
+                      : history
+                          ? "Questing History"
+                          : "Profile"
+              : _selectedIndex == 1
+                  ? creating
+                      ? "Create a new Quest"
+                      : "Completing Quests"
+                  : "Top Questers",
           style: GoogleFonts.inika(fontSize: 35),
         ),
         centerTitle: true,
-        leading: addbuddy|buddylist|history // Check if on Add Buddy page
+        leading: addbuddy | buddylist | history // Check if on Add Buddy page
             ? IconButton(
-                icon: Icon(Icons.arrow_back),
+                icon: const Icon(Icons.arrow_back),
                 onPressed: () {
                   setState(() {
                     _selectedIndex = 2;
@@ -91,12 +123,24 @@ class _OurAppNavState extends State<OurAppNav> {
                   _pageController.jumpToPage(2); // Navigate back to Profile
                 },
               )
-            : IconButton(
-                icon: Icon(Icons.menu),
-                onPressed: () {
-                  Scaffold.of(context).openDrawer(); // Open the drawer
-                },
-              ),
+            : creating
+                ? IconButton(
+                    icon: const Icon(Icons.arrow_back),
+                    onPressed: () {
+                      setState(() {
+                        _selectedIndex = 1;
+                        creating = false;
+                      });
+                      _pageController.jumpToPage(1); // Navigate back to Profile
+                    },
+                  )
+                : IconButton(
+                    icon: const Icon(Icons.menu),
+                    onPressed: () {
+                      _scaffoldKey.currentState
+                          ?.openDrawer(); // Open the drawer
+                    },
+                  ),
       ),
       drawer: Drawer(
         backgroundColor: const Color.fromARGB(250, 38, 38, 38),
@@ -173,7 +217,10 @@ class _OurAppNavState extends State<OurAppNav> {
         controller: _pageController,
         children: [
           const OurHomePage2(),
-          const SearchPage(),
+          OurQuestingPage(
+            onCreateQuest: _navigateToCreateQuest,
+            onPostQuest: _navigateToPostQuest,
+          ),
           OurProfilePage(
             onAddBuddy: _navigateToAddBuddy,
             onBuddyList: _navigateToBuddyList,
@@ -182,6 +229,7 @@ class _OurAppNavState extends State<OurAppNav> {
           const OurAddBuddy(),
           const OurBuddyList(),
           const OurHistory(),
+          const OurCreateQuest()
         ],
         onPageChanged: (page) {
           setState(() {
@@ -192,4 +240,3 @@ class _OurAppNavState extends State<OurAppNav> {
     );
   }
 }
-

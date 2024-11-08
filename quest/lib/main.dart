@@ -3,11 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:quest/pages/OurAddBuddy.dart';
 import 'package:quest/pages/OurAppNav.dart';
 import 'package:quest/pages/OurHomePage.dart';
-import 'package:quest/pages/OurHomePage2.dart';
-import 'package:quest/pages/OurProfilePage.dart';
 import 'package:quest/pages/OurSignInPage.dart';
-import 'package:quest/pages/homePage.dart';
-import 'package:quest/pages/searchPage.dart';
+import 'package:quest/pages/OurQuestingPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,13 +20,12 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home: const SignInPage(),
         routes: {
-          '/homepage': (context) => const HomePage2(),
+          //'/homepage': (context) => const HomePage2(),
           //'/ourprofilepage': (context) => const OurProfilePage(onAddBuddy: _navigateToAddBuddy,),
-          '/searchpage': (context) => const SearchPage(),
+          //'/searchpage': (context) => const OurQuestingPage(onPostQuest: () {  },),
           '/testing': (context) => const SignInPage(),
           '/signinpage': (context) => const SignInPage(),
           '/ourappnav' : (context) => const OurAppNav(),
-          '/ourhomepage' : (context) => const OurHomePage(),
           '/ourhomepage2' : (context) => const OurHomePage2(),
           '/addbuddy' : (context) => const OurAddBuddy()
         });

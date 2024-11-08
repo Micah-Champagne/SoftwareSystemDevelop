@@ -2,12 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class OurProfilePage extends StatefulWidget {
+  
   final VoidCallback onAddBuddy;
   final VoidCallback onBuddyList;
   final VoidCallback onHistory;
+
   const OurProfilePage({super.key, required this.onAddBuddy, required this.onBuddyList, required this.onHistory});
   
 
