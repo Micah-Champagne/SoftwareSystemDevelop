@@ -35,7 +35,7 @@ class _OurBuddyListState extends State<OurBuddyList> {
               if (index == 0) {
                 return Container(
                     margin: EdgeInsets.only(
-                        left: 25, top: 25, right: 25, bottom: 40),
+                        left: 25, top: 25, right: 25, bottom: 15),
                     //padding: EdgeInsets.all(5),
 
                     decoration: BoxDecoration(

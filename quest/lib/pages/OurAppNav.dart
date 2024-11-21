@@ -30,6 +30,7 @@ class _OurAppNavState extends State<OurAppNav> {
   bool buddylist = false;
   bool history = false;
   bool creating = false;
+  bool _isSwipeDisabled = false;
 
   final PageController _pageController = PageController();
 
@@ -40,6 +41,7 @@ class _OurAppNavState extends State<OurAppNav> {
       buddylist = false;
       history = false;
       creating = false;
+      _isSwipeDisabled = false;
     });
     _pageController.jumpToPage(index);
   }
@@ -48,6 +50,7 @@ class _OurAppNavState extends State<OurAppNav> {
     setState(() {
       _selectedIndex = 2; // Highlight the Profile section
       addbuddy = true;
+      _isSwipeDisabled = true;
     });
     _pageController.jumpToPage(3);
     _selectedIndex = 2; // Navigate to the Add Buddy page
@@ -57,6 +60,7 @@ class _OurAppNavState extends State<OurAppNav> {
     setState(() {
       _selectedIndex = 2; // Highlight the Profile section
       buddylist = true;
+      _isSwipeDisabled = true;
     });
     _pageController.jumpToPage(4);
     _selectedIndex = 2; // Navigate to the Add Buddy page
@@ -66,6 +70,7 @@ class _OurAppNavState extends State<OurAppNav> {
     setState(() {
       _selectedIndex = 1; // Highlight the Profile section
       history = true;
+      _isSwipeDisabled = true;
     });
     _pageController.jumpToPage(5);
     _selectedIndex = 1; // Navigate to the Add Buddy page
@@ -75,6 +80,7 @@ class _OurAppNavState extends State<OurAppNav> {
     setState(() {
       _selectedIndex = 1; // Highlight the Profile section
       creating = true;
+      _isSwipeDisabled = true;
     });
     _pageController.jumpToPage(6);
     _selectedIndex = 1;
@@ -84,13 +90,15 @@ class _OurAppNavState extends State<OurAppNav> {
     setState(() {
       _selectedIndex = 0;
       _pageController.jumpToPage(0);
+      _isSwipeDisabled = false;
     });
   }
 
-  void _navigateToBeginQuest(){
-        setState(() {
+  void _navigateToBeginQuest() {
+    setState(() {
       _selectedIndex = 0;
       _pageController.jumpToPage(0);
+      _isSwipeDisabled = false;
     });
   }
 
@@ -111,7 +119,7 @@ class _OurAppNavState extends State<OurAppNav> {
                           : "Profile"
               : _selectedIndex == 1
                   ? creating
-                      ? "Create a new Quest"
+                      ? "Creating Quest"
                       : "Completing Quests"
                   : "Top Questers",
           style: GoogleFonts.inika(fontSize: 35),
@@ -222,8 +230,11 @@ class _OurAppNavState extends State<OurAppNav> {
       ),
       body: PageView(
         controller: _pageController,
+        physics: _isSwipeDisabled
+            ? const NeverScrollableScrollPhysics()
+            : const AlwaysScrollableScrollPhysics(),
         children: [
-          const OurHomePage2(),
+          const OurHomePage(),
           OurQuestingPage(
             onCreateQuest: _navigateToCreateQuest,
             onPostQuest: _navigateToPostQuest,
@@ -236,11 +247,21 @@ class _OurAppNavState extends State<OurAppNav> {
           const OurAddBuddy(),
           const OurBuddyList(),
           const OurHistory(),
-          OurCreateQuest(BeginQuest: _navigateToBeginQuest,)
+          OurCreateQuest(
+            BeginQuest: _navigateToBeginQuest,
+          )
         ],
         onPageChanged: (page) {
           setState(() {
-            _selectedIndex = page;
+            if (page == 0) {
+              _selectedIndex = 0;
+            } else if (page == 1 || page == 6) {
+              _selectedIndex = 1;
+            } else if (page >= 2 && page <= 5) {
+              _selectedIndex = 2;
+            }
+            if(page >=3){
+            _isSwipeDisabled = true;}
           });
         },
       ),

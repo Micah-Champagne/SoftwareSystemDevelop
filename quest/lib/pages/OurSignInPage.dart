@@ -26,10 +26,10 @@ class _SignInState extends State<SignInPage> {
     return Scaffold(
         backgroundColor: _OurPurpleBackground,
         body: ListView(children: [
-          const SizedBox(height: 250),
+          const SizedBox(height: 200),
           SvgPicture.asset("assets/icons/qbLandingLogo.svg",
               height: 250, width: 250),
-          const SizedBox(height: 150),
+          const SizedBox(height: 200),
           Padding(
               padding: const EdgeInsets.only(left: 25, right: 25),
               child: SizedBox(

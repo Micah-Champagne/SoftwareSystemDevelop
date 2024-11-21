@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:quest/models/post_model.dart';
 
-class OurHomePage2 extends StatefulWidget {
-  const OurHomePage2({super.key});
+class OurHomePage extends StatefulWidget {
+  const OurHomePage({super.key});
 
   @override
-  State<OurHomePage2> createState() => _OurHomePage2State();
+  State<OurHomePage> createState() => _OurHomePageState();
 }
 
-class _OurHomePage2State extends State<OurHomePage2> {
+class _OurHomePageState extends State<OurHomePage> {
   final Color _OurLightPurple = const Color(0x99838ef4);
   final Color _OurDarkGrey = const Color(0xff262626);
   final Color _OurPurpleBackground = const Color(0xff838ef4);
@@ -19,8 +18,13 @@ class _OurHomePage2State extends State<OurHomePage2> {
   List<PostModel> posts = [];
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
     posts = PostModel.getCategories();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: _OurCremeColor,
         body: ListView.builder(
@@ -29,7 +33,6 @@ class _OurHomePage2State extends State<OurHomePage2> {
               if (index == 0) {
                 // First container with different style
                 return Container(
-                    height: 365,
                     width: 200,
                     padding: const EdgeInsets.only(top: 10),
                     margin: const EdgeInsets.all(8.0),
@@ -39,12 +42,6 @@ class _OurHomePage2State extends State<OurHomePage2> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Column(children: [
-                      Text('Top Questers',
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.inika(
-                              color: const Color(0xff262626),
-                              fontSize: 26,
-                              fontWeight: FontWeight.bold)),
                       const SizedBox(height: 5),
                       Row(
                         //crossAxisAlignment: CrossAxisAlignment.end,
@@ -73,12 +70,13 @@ class _OurHomePage2State extends State<OurHomePage2> {
                                           spreadRadius: 2),
                                     ],
                                     border: Border.all(
-                                        width: 4, color: const Color(0xff8EC0DD))),
+                                        width: 4,
+                                        color: const Color(0xff8EC0DD))),
                                 child: ClipOval(
                                     child: Image.asset(
                                         "assets/icons/arushi.jpeg",
-                                        height: 110,
-                                        width: 110)),
+                                        height: 85,
+                                        width: 85)),
                               ),
                               const Text("@Yoshi",
                                   style: TextStyle(fontSize: 16)),
@@ -116,10 +114,11 @@ class _OurHomePage2State extends State<OurHomePage2> {
                                     ],
                                     shape: BoxShape.circle,
                                     border: Border.all(
-                                        width: 4, color: const Color(0xffBFEAE7))),
+                                        width: 4,
+                                        color: const Color(0xffBFEAE7))),
                                 child: ClipOval(
                                     child: Image.asset("assets/icons/abby.jpeg",
-                                        height: 150, width: 150)),
+                                        height: 125, width: 125)),
                               ),
                               const SizedBox(height: 10),
                               const Text("@AbEE33",
@@ -159,8 +158,8 @@ class _OurHomePage2State extends State<OurHomePage2> {
                                 child: ClipOval(
                                     child: Image.asset(
                                         "assets/icons/tyler.jpeg",
-                                        height: 110,
-                                        width: 110)),
+                                        height: 85,
+                                        width: 85)),
                               ),
                               const Text("@StayZan234",
                                   style: TextStyle(fontSize: 16)),
@@ -184,8 +183,8 @@ class _OurHomePage2State extends State<OurHomePage2> {
               } else {
                 // Subsequent containers with identical style
                 return Container(
-                  height: 175,
-                  margin: const EdgeInsets.all(8.0),
+                  //height: 150,
+                  margin: const EdgeInsets.only(left: 16, right: 16, top: 16),
                   padding: const EdgeInsets.all(16.0),
                   decoration: BoxDecoration(
                       color: posts[index - 1].boxColor,
@@ -208,8 +207,8 @@ class _OurHomePage2State extends State<OurHomePage2> {
                             child: ClipOval(
                               child: Image.asset(
                                 posts[index - 1].image,
-                                height: 75,
-                                width: 75,
+                                height: 50,
+                                width: 50,
                               ),
                             ),
                           ),
@@ -218,17 +217,21 @@ class _OurHomePage2State extends State<OurHomePage2> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                '${posts[index - 1].name} Completed',
-                                style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold),
+                              SizedBox(
+                                width: 250,
+                                child: Text(
+                                  '${posts[index - 1].name} Completed',
+                                  softWrap: true,
+                                  style: TextStyle(
+                                      color: _OurDarkGrey,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                ),
                               ),
                               Text(
                                 posts[index - 1].time,
-                                style: const TextStyle(
-                                    color: Colors.white, fontSize: 14),
+                                style: TextStyle(
+                                    color: _OurDarkGrey, fontSize: 14),
                               )
                             ],
                           ),
@@ -247,11 +250,32 @@ class _OurHomePage2State extends State<OurHomePage2> {
                         children: [
                           const SizedBox(width: 10),
                           Text(posts[index - 1].quest,
-                              style: const TextStyle(
-                                  color: Colors.white, fontSize: 20)),
+                              style:
+                                  TextStyle(color: _OurDarkGrey, fontSize: 20)),
                           const Spacer(),
                           SvgPicture.asset("assets/icons/checkcircle.svg")
                         ],
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            posts[index - 1].isFavorited =
+                                !posts[index - 1].isFavorited;
+                          });
+                        },
+                        child: Row(
+                          children: [
+                            Icon(
+                                posts[index - 1].isFavorited
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                color: posts[index - 1].isFavorited
+                                    ? Colors.red
+                                    : _OurDarkGrey),
+                                    Text(posts[index - 1].isFavorited
+                                    ? "67" : posts[index-1].likedAmount.toString(),)
+                          ],
+                        ),
                       )
                     ],
                   ),

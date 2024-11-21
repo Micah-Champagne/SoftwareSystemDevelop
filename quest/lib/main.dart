@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           '/testing': (context) => const SignInPage(),
           '/signinpage': (context) => const SignInPage(),
           '/ourappnav' : (context) => const OurAppNav(),
-          '/ourhomepage2' : (context) => const OurHomePage2(),
+          '/ourhomepage2' : (context) => const OurHomePage(),
           '/addbuddy' : (context) => const OurAddBuddy()
         });
   }

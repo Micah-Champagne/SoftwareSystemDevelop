@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 
 class PostModel {
@@ -6,14 +7,19 @@ class PostModel {
   String time;
   String quest;
   Color boxColor;
+  bool isFavorited;
+  int likedAmount;
 
-  PostModel(
-      {required this.image,
-      required this.name,
-      required this.time,
-      required this.quest,
-      required this.boxColor});
-      
+  PostModel({
+    required this.image,
+    required this.name,
+    required this.time,
+    required this.quest,
+    required this.boxColor,
+    this.isFavorited = false,
+    required this.likedAmount,
+  });
+
   static List<PostModel> getCategories() {
     List<PostModel> post = [];
 
@@ -34,54 +40,71 @@ class PostModel {
     String ReinhardUser = "@RineH3art";
     String MicahUser = "@ChampagnePapi";
 
-    post.add(PostModel(
-        image: AbbyPhoto,
-        name: AbbyUser,
-        time: "Just now",
-        quest: "Clean my room",
-        boxColor: chores));
+    Random random = Random();
 
     post.add(PostModel(
-        image: TylerPhoto,
-        name: TylerUser,
-        time: "3 minutes ago",
-        quest: "Study for exam",
-        boxColor: education));
+      image: AbbyPhoto,
+      name: AbbyUser,
+      time: "Just now",
+      quest: "Clean my room",
+      boxColor: chores,
+      likedAmount: random.nextInt(100) + 1,
+    ));
 
     post.add(PostModel(
-        image: ArushiPhoto,
-        name: ArushiUser,
-        time: "37 minutes ago",
-        quest: "Submit hours in workday",
-        boxColor: professional));
+      image: TylerPhoto,
+      name: TylerUser,
+      time: "3 minutes ago",
+      quest: "Study for exam",
+      boxColor: education,
+      likedAmount: random.nextInt(100) + 1,
+    ));
 
     post.add(PostModel(
-        image: ReinhardPhoto,
-        name: ReinhardUser,
-        time: "49 minutes ago",
-        quest: "Run for Physical Fitness test",
-        boxColor: physical));
+      image: ArushiPhoto,
+      name: ArushiUser,
+      time: "37 minutes ago",
+      quest: "Submit hours in workday",
+      boxColor: professional,
+      likedAmount: random.nextInt(100) + 1,
+    ));
 
     post.add(PostModel(
-        image: MicahPhoto,
-        name: MicahUser,
-        time: "1 hour ago",
-        quest: "Wash the dishes",
-        boxColor: chores));
+      image: ReinhardPhoto,
+      name: ReinhardUser,
+      time: "49 minutes ago",
+      quest: "Run for Physical Fitness test",
+      boxColor: physical,
+      likedAmount: random.nextInt(100) + 1,
+    ));
 
     post.add(PostModel(
-        image: AbbyPhoto,
-        name: AbbyUser,
-        time: "2 hours ago",
-        quest: "Finish Milestone 2",
-        boxColor: education));
+      image: MicahPhoto,
+      name: MicahUser,
+      time: "1 hour ago",
+      quest: "Wash the dishes",
+      boxColor: chores,
+      likedAmount: random.nextInt(100) + 1,
+    ));
 
     post.add(PostModel(
-        image: MicahPhoto,
-        name: MicahUser,
-        time: "3 hours ago",
-        quest: "Cried",
-        boxColor: professional));
+      image: AbbyPhoto,
+      name: AbbyUser,
+      time: "2 hours ago",
+      quest: "Finish Milestone 2",
+      boxColor: education,
+      likedAmount: random.nextInt(100) + 1,
+    ));
+
+    post.add(PostModel(
+      image: MicahPhoto,
+      name: MicahUser,
+      time: "3 hours ago",
+      quest: "Cried",
+      boxColor: professional,
+      likedAmount: random.nextInt(100) + 1,
+    ));
+
     return post;
   }
 }

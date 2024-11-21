@@ -65,11 +65,6 @@ static List<BuddyListModel> getCategories() {
         name: ArushiUser,
     ));
 
-    buddy.add(BuddyListModel(
-        image: GoldenPhoto,
-        name: GoldenUser,
-    ));
-
     
     return buddy;
 }
