@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:quest/pages/OurAddBuddy.dart';
 import 'package:quest/pages/OurAppNav.dart';
@@ -17,6 +18,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+            textTheme:
+                GoogleFonts.latoTextTheme(Theme.of(context).primaryTextTheme)),
+                
         home: const SignInPage(),
         routes: {
           //'/homepage': (context) => const HomePage2(),
@@ -24,9 +29,9 @@ class MyApp extends StatelessWidget {
           //'/searchpage': (context) => const OurQuestingPage(onPostQuest: () {  },),
           '/testing': (context) => const SignInPage(),
           '/signinpage': (context) => const SignInPage(),
-          '/ourappnav' : (context) => const OurAppNav(),
-          '/ourhomepage2' : (context) => const OurHomePage(),
-          '/addbuddy' : (context) => const OurAddBuddy()
+          '/ourappnav': (context) => const OurAppNav(),
+          '/ourhomepage2': (context) => const OurHomePage(),
+          '/addbuddy': (context) => const OurAddBuddy()
         });
   }
 }

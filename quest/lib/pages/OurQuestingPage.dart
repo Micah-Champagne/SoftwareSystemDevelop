@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:quest/models/currentQuests.dart';
 
 class OurQuestingPage extends StatefulWidget {
-  const OurQuestingPage({super.key, required this.onPostQuest, required this.onCreateQuest});
+  const OurQuestingPage(
+      {super.key, required this.onPostQuest, required this.onCreateQuest});
 
   final VoidCallback onPostQuest;
   final VoidCallback onCreateQuest;
@@ -56,16 +58,16 @@ class _OurQuestingPageState extends State<OurQuestingPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text(
+                            Text(
                               'Quest In-progress',
-                              style: TextStyle(
+                              style: GoogleFonts.roboto(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                             Text(
                               CurrentQuests[index].time,
-                              style: const TextStyle(fontSize: 14),
+                              style: GoogleFonts.roboto(fontSize: 14),
                             ),
                           ],
                         ),
@@ -88,7 +90,7 @@ class _OurQuestingPageState extends State<OurQuestingPage> {
                             child: Text(
                               CurrentQuests[index].quest,
                               softWrap: true,
-                              style: const TextStyle(fontSize: 20),
+                              style: GoogleFonts.roboto(fontSize: 20),
                             ),
                           ),
                           const Spacer(),
@@ -126,7 +128,9 @@ class _OurQuestingPageState extends State<OurQuestingPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     GestureDetector(
-                      onTap: () {widget.onCreateQuest();},
+                      onTap: () {
+                        widget.onCreateQuest();
+                      },
                       child: Container(
                           height: 75,
                           width: 175,
@@ -141,14 +145,16 @@ class _OurQuestingPageState extends State<OurQuestingPage> {
                               borderRadius: BorderRadius.circular(20),
                               border: Border.all(
                                   width: 1, style: BorderStyle.solid)),
-                          child: const Center(
+                          child: Center(
                               child: Text("Create",
-                                  style: TextStyle(
+                                  style: GoogleFonts.roboto(
                                       fontSize: 30,
                                       fontWeight: FontWeight.bold)))),
                     ),
                     GestureDetector(
-                      onTap: () {widget.onPostQuest();},
+                      onTap: () {
+                        widget.onPostQuest();
+                      },
                       child: Container(
                           height: 75,
                           width: 175,
@@ -163,10 +169,10 @@ class _OurQuestingPageState extends State<OurQuestingPage> {
                               borderRadius: BorderRadius.circular(20),
                               border: Border.all(
                                   width: 1, style: BorderStyle.solid)),
-                          child: const Center(
+                          child: Center(
                               child: Text(
                             "Complete",
-                            style: TextStyle(
+                            style: GoogleFonts.roboto(
                                 fontSize: 30, fontWeight: FontWeight.bold),
                           ))),
                     ),

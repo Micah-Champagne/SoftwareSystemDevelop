@@ -4,13 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class OurProfilePage extends StatefulWidget {
-  
   final VoidCallback onAddBuddy;
   final VoidCallback onBuddyList;
   final VoidCallback onHistory;
 
-  const OurProfilePage({super.key, required this.onAddBuddy, required this.onBuddyList, required this.onHistory});
-  
+  const OurProfilePage(
+      {super.key,
+      required this.onAddBuddy,
+      required this.onBuddyList,
+      required this.onHistory});
 
   @override
   State<OurProfilePage> createState() => _OurProfilePageState();
@@ -65,45 +67,22 @@ class _OurProfilePageState extends State<OurProfilePage> {
                               fontSize: 20, fontWeight: FontWeight.bold)),
                       Text("@ChampagnePapi"),
                       SizedBox(height: 10),
-                      Row(
-                        
-                        children: [
-                        
+                      Row(children: [
+                        CurrentBuddyList(),
+                        SizedBox(width: 5),
+                        AddBuddyList(),
+                        SizedBox(width: 5),
                         GestureDetector(
-                          onTap:() {widget.onBuddyList();},
+                          onTap: () {
+                            widget.onHistory();
+                          },
                           child: Container(
                             height: 50,
-                            width: 100,
+                            width: 50,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
+                              shape: BoxShape.circle,
                               color: _OurLightPurple,
                             ),
-                            child: Center(child: Text("62 Buddies")),
-                          ),
-                        ),
-                        SizedBox(width: 5),
-                        GestureDetector(
-                          onTap: (){widget.onAddBuddy();},
-                          child: Container(
-                            height: 50,
-                            width: 50,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: _OurLightPurple,
-                                ),
-                            child: Center(child: Icon(Icons.add)),
-                          ),
-                        ),
-                        SizedBox(width: 5),
-                        GestureDetector(
-                          onTap:(){widget.onHistory();},
-                          child: Container(
-                            height: 50,
-                            width: 50,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: _OurLightPurple,
-                                ),
                             child: Center(child: Icon(Icons.history)),
                           ),
                         )
@@ -170,22 +149,43 @@ class _OurProfilePageState extends State<OurProfilePage> {
                           borderRadius: BorderRadius.circular(10)),
                       child:
                           _leftTabSelected ? StatisticsTab() : MetricsTab())),
-              // Positioned(
-              //     top: 30,
-              //     left: 12.5,
-              //     child: Container(
-              //         height: 15, width: 350, color: Color(0xffb5baf4))),
-              // Positioned(
-              //     top: 30,
-              //     right: 12.5,
-              //     child: Container(
-              //       width: 175,
-              //       height: 5,
-              //       color: Color(0xff9b81ad),
-              //     ))
             ])
           ]),
         ));
+  }
+
+  GestureDetector AddBuddyList() {
+    return GestureDetector(
+      onTap: () {
+        widget.onAddBuddy();
+      },
+      child: Container(
+        height: 50,
+        width: 50,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: _OurLightPurple,
+        ),
+        child: Center(child: Icon(Icons.add)),
+      ),
+    );
+  }
+
+  GestureDetector CurrentBuddyList() {
+    return GestureDetector(
+      onTap: () {
+        widget.onBuddyList();
+      },
+      child: Container(
+        height: 50,
+        width: 100,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: _OurLightPurple,
+        ),
+        child: Center(child: Text("62 Buddies")),
+      ),
+    );
   }
 }
 

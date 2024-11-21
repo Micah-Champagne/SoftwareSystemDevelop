@@ -26,7 +26,8 @@ class _OurCreateQuestState extends State<OurCreateQuest> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
-            margin: const EdgeInsets.only(top: 20, bottom: 20, left: 30, right: 30),
+            margin:
+                const EdgeInsets.only(top: 20, bottom: 20, left: 30, right: 30),
             child: TextField(
               decoration: InputDecoration(
                   filled: true,
@@ -68,7 +69,8 @@ class _OurCreateQuestState extends State<OurCreateQuest> {
                       child: Text("Professional"),
                     )),
               ),
-              GestureDetector(              onTap: () {
+              GestureDetector(
+                onTap: () {
                   setState(() {
                     if (!whichSelected[1]) {
                       whichSelected = List.filled(4, false);
@@ -82,8 +84,9 @@ class _OurCreateQuestState extends State<OurCreateQuest> {
                     height: 75,
                     width: 150,
                     decoration: BoxDecoration(
-                      border: whichSelected[1] ? Border.all() : null,
-                        color: education, borderRadius: BorderRadius.circular(10)),
+                        border: whichSelected[1] ? Border.all() : null,
+                        color: education,
+                        borderRadius: BorderRadius.circular(10)),
                     child: const Center(child: Text("Educational"))),
               )
             ],
@@ -93,43 +96,50 @@ class _OurCreateQuestState extends State<OurCreateQuest> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               GestureDetector(
-                onTap:(){setState(() {
+                onTap: () {
+                  setState(() {
                     if (!whichSelected[2]) {
                       whichSelected = List.filled(4, false);
                       whichSelected[2] = true;
                     } else {
                       whichSelected = List.filled(4, false);
                     }
-                  });},
+                  });
+                },
                 child: Container(
                     height: 75,
                     width: 150,
                     decoration: BoxDecoration(
-                      border: whichSelected[2] ? Border.all() : null,
-                        color: chores, borderRadius: BorderRadius.circular(10)),
+                        border: whichSelected[2] ? Border.all() : null,
+                        color: chores,
+                        borderRadius: BorderRadius.circular(10)),
                     child: const Center(child: Text("Household"))),
               ),
               GestureDetector(
-                onTap:(){setState(() {
+                onTap: () {
+                  setState(() {
                     if (!whichSelected[3]) {
                       whichSelected = List.filled(4, false);
                       whichSelected[3] = true;
                     } else {
                       whichSelected = List.filled(4, false);
                     }
-                  });},
+                  });
+                },
                 child: Container(
                     height: 75,
                     width: 150,
                     decoration: BoxDecoration(
-                      border: whichSelected[3] ? Border.all() : null,
-                        color: physical, borderRadius: BorderRadius.circular(10)),
+                        border: whichSelected[3] ? Border.all() : null,
+                        color: physical,
+                        borderRadius: BorderRadius.circular(10)),
                     child: const Center(child: Text("Physical"))),
               )
             ],
           ),
           Container(
-            margin: const EdgeInsets.only(top: 20, bottom: 20, left: 30, right: 30),
+            margin:
+                const EdgeInsets.only(top: 20, bottom: 20, left: 30, right: 30),
             child: TextField(
               textInputAction: TextInputAction.done,
               maxLines: 5,
@@ -146,16 +156,22 @@ class _OurCreateQuestState extends State<OurCreateQuest> {
             ),
           ),
           GestureDetector(
-            onTap: (){widget.BeginQuest();},
+            onTap: () {
+              widget.BeginQuest();
+            },
             child: Container(
                 height: 75,
                 width: 300,
                 decoration: BoxDecoration(
-                color: _OurLightPurple,
-                borderRadius: BorderRadius.circular(10)),
-                child: const Center(child: Text("Begin Quest", style: TextStyle(fontSize: 28),))),
+                    color: _OurLightPurple,
+                    borderRadius: BorderRadius.circular(10)),
+                child: const Center(
+                    child: Text(
+                  "Begin Quest",
+                  style: TextStyle(fontSize: 28),
+                ))),
           ),
-              const SizedBox(height:10)
+          const SizedBox(height: 10)
         ],
       ),
     );

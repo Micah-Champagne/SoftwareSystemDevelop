@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quest/pages/OurAddBuddy.dart';
-import 'package:quest/pages/OurBuddyList.dart';
+import 'package:quest/pages/OurBuddyListAfter.dart';
+import 'package:quest/pages/OurBuddyListBefore.dart';
 import 'package:quest/pages/OurHistory.dart';
 import 'package:quest/pages/OurHomePage.dart';
 import 'package:quest/pages/OurProfilePage.dart';
@@ -31,6 +32,7 @@ class _OurAppNavState extends State<OurAppNav> {
   bool history = false;
   bool creating = false;
   bool _isSwipeDisabled = false;
+  bool afterAddedBuddy = false;
 
   final PageController _pageController = PageController();
 
@@ -51,6 +53,7 @@ class _OurAppNavState extends State<OurAppNav> {
       _selectedIndex = 2; // Highlight the Profile section
       addbuddy = true;
       _isSwipeDisabled = true;
+      afterAddedBuddy = true;
     });
     _pageController.jumpToPage(3);
     _selectedIndex = 2; // Navigate to the Add Buddy page
@@ -245,7 +248,7 @@ class _OurAppNavState extends State<OurAppNav> {
             onHistory: _navigateToHistory,
           ), // Pass the callback without const
           const OurAddBuddy(),
-          const OurBuddyList(),
+          afterAddedBuddy ? OurBuddyListAfter() : OurBuddyListBefore(),
           const OurHistory(),
           OurCreateQuest(
             BeginQuest: _navigateToBeginQuest,
@@ -260,8 +263,9 @@ class _OurAppNavState extends State<OurAppNav> {
             } else if (page >= 2 && page <= 5) {
               _selectedIndex = 2;
             }
-            if(page >=3){
-            _isSwipeDisabled = true;}
+            if (page >= 3) {
+              _isSwipeDisabled = true;
+            }
           });
         },
       ),

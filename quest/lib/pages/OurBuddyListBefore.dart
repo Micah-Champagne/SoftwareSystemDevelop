@@ -1,16 +1,16 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:quest/models/buddy_list.dart';
+import 'package:quest/models/buddyListModel1.dart';
 
-class OurBuddyList extends StatefulWidget {
-  const OurBuddyList({super.key});
+class OurBuddyListBefore extends StatefulWidget {
+  const OurBuddyListBefore({super.key});
 
   @override
-  State<OurBuddyList> createState() => _OurBuddyListState();
+  State<OurBuddyListBefore> createState() => _OurBuddyListBeforeState();
 }
 
-class _OurBuddyListState extends State<OurBuddyList> {
+class _OurBuddyListBeforeState extends State<OurBuddyListBefore> {
   final Color _OurLightPurple = const Color(0x99838ef4);
 
   final Color _OurDarkGrey = const Color(0xff262626);
@@ -23,10 +23,10 @@ class _OurBuddyListState extends State<OurBuddyList> {
 
   final Color _OurNotSelectedTab = const Color(0xffa78fb8);
 
-  List<BuddyListModel> buddies = [];
+  List<BuddyListModel1> buddies = [];
   @override
   Widget build(BuildContext context) {
-    buddies = BuddyListModel.getCategories();
+    buddies = BuddyListModel1.getCategories();
     return Scaffold(
         body: ListView.builder(
             itemCount: buddies.length + 1,

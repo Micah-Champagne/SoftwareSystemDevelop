@@ -42,6 +42,7 @@ class PostModel {
 
     Random random = Random();
 
+    // Original posts with additional models
     post.add(PostModel(
       image: AbbyPhoto,
       name: AbbyUser,
@@ -102,6 +103,105 @@ class PostModel {
       time: "3 hours ago",
       quest: "Cried",
       boxColor: professional,
+      likedAmount: random.nextInt(100) + 1,
+    ));
+
+    post.add(PostModel(
+      image: ArushiPhoto,
+      name: ArushiUser,
+      time: "5 hours ago",
+      quest: "Complete project report",
+      boxColor: professional,
+      likedAmount: random.nextInt(100) + 1,
+    ));
+
+    post.add(PostModel(
+      image: TylerPhoto,
+      name: TylerUser,
+      time: "7 hours ago",
+      quest: "Go for a morning run",
+      boxColor: physical,
+      likedAmount: random.nextInt(100) + 1,
+    ));
+
+    post.add(PostModel(
+      image: ReinhardPhoto,
+      name: ReinhardUser,
+      time: "10 hours ago",
+      quest: "Write a blog post",
+      boxColor: professional,
+      likedAmount: random.nextInt(100) + 1,
+    ));
+
+    post.add(PostModel(
+      image: MicahPhoto,
+      name: MicahUser,
+      time: "12 hours ago",
+      quest: "Buy groceries",
+      boxColor: chores,
+      likedAmount: random.nextInt(100) + 1,
+    ));
+
+    post.add(PostModel(
+      image: AbbyPhoto,
+      name: AbbyUser,
+      time: "14 hours ago",
+      quest: "Complete online course",
+      boxColor: education,
+      likedAmount: random.nextInt(100) + 1,
+    ));
+
+    post.add(PostModel(
+      image: TylerPhoto,
+      name: TylerUser,
+      time: "16 hours ago",
+      quest: "Prepare for presentation",
+      boxColor: professional,
+      likedAmount: random.nextInt(100) + 1,
+    ));
+
+    post.add(PostModel(
+      image: ReinhardPhoto,
+      name: ReinhardUser,
+      time: "18 hours ago",
+      quest: "Stretching exercises",
+      boxColor: physical,
+      likedAmount: random.nextInt(100) + 1,
+    ));
+
+    post.add(PostModel(
+      image: MicahPhoto,
+      name: MicahUser,
+      time: "20 hours ago",
+      quest: "Clean kitchen",
+      boxColor: chores,
+      likedAmount: random.nextInt(100) + 1,
+    ));
+
+    post.add(PostModel(
+      image: AbbyPhoto,
+      name: AbbyUser,
+      time: "1 day ago",
+      quest: "Read a book for class",
+      boxColor: education,
+      likedAmount: random.nextInt(100) + 1,
+    ));
+
+    post.add(PostModel(
+      image: TylerPhoto,
+      name: TylerUser,
+      time: "2 days ago",
+      quest: "Write an essay",
+      boxColor: education,
+      likedAmount: random.nextInt(100) + 1,
+    ));
+
+    post.add(PostModel(
+      image: ArushiPhoto,
+      name: ArushiUser,
+      time: "2 days ago",
+      quest: "Organize workspace",
+      boxColor: chores,
       likedAmount: random.nextInt(100) + 1,
     ));
 
