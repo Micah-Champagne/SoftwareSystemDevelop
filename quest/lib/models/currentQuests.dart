@@ -18,11 +18,10 @@ class CurrentQuestModel {
   static List<CurrentQuestModel> getCategories() {
     List<CurrentQuestModel> post = [];
 
-    // Color definitions
-    Color education = const Color(0xffA8D8EA); // Light blue
-    Color physical = const Color(0xffF4C3A5);  // Light orange
-    Color professional = const Color(0xffB7E9A0); // Light green
-    Color chores = const Color(0xffF6E89D); // Yellow
+    Color education = const Color(0xffE2F0F5);
+    Color physical = const Color(0xffFBE1D2);
+    Color professional = const Color(0xffE1F4D8);
+    Color chores = const Color(0xffFFF6C9);
 
     // User and photo assets
     String MicahPhoto = "assets/icons/Micah.jpeg";

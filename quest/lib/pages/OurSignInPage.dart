@@ -25,16 +25,17 @@ class _SignInState extends State<SignInPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: _OurPurpleBackground,
-        body: ListView(children: [
-          const SizedBox(height: 200),
+        body: ListView(
+          children: [
+          const SizedBox(height: 150),
           SvgPicture.asset("assets/icons/qbLandingLogo.svg",
-              height: 250, width: 250),
+              height: 200, width: 200),
           Image.asset(
             "assets/icons/name.jpeg",
-            height: 125,
-            width: 200,
+            height: 80,
+            
           ),
-          SizedBox(height: 100),
+          const SizedBox(height: 175),
           LoginButtonAndOverlay(),
           CreateAccountButtonAndOverlay()
         ]));

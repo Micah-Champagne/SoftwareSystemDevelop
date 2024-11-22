@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:quest/models/newBuddy_list.dart';
 
 class OurAddBuddy extends StatefulWidget {
@@ -44,12 +45,13 @@ class _OurAddBuddyState extends State<OurAddBuddy> {
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: TextField(
+                      style: GoogleFonts.lato(color: Colors.black),
                       decoration: InputDecoration(
                           filled: true,
                           fillColor: Color.fromARGB(255, 232, 219, 240),
                           contentPadding: const EdgeInsets.all(15),
                           hintText: 'Search by Username',
-                          hintStyle: const TextStyle(
+                          hintStyle: GoogleFonts.lato(
                               color: Color(0x66262626), fontSize: 14),
                           suffixIcon: SizedBox(
                             width: 100,
@@ -103,6 +105,7 @@ class _OurAddBuddyState extends State<OurAddBuddy> {
                                     Text(
                                       AddBuddies[index - 1].name,
                                       textAlign: TextAlign.left,
+                                      style: GoogleFonts.lato(color: Colors.black)
                                     ),
                                   ],
                                 ),

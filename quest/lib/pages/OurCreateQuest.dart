@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class OurCreateQuest extends StatefulWidget {
   const OurCreateQuest({super.key, required this.BeginQuest});
@@ -16,6 +17,7 @@ Color education = const Color(0xffA8D8EA);
 Color physical = const Color(0xffF4C3A5);
 Color professional = const Color(0xffB7E9A0);
 Color chores = const Color(0xffF6E89D);
+
 List<bool> whichSelected = List.filled(4, false);
 
 class _OurCreateQuestState extends State<OurCreateQuest> {
@@ -29,13 +31,14 @@ class _OurCreateQuestState extends State<OurCreateQuest> {
             margin:
                 const EdgeInsets.only(top: 20, bottom: 20, left: 30, right: 30),
             child: TextField(
+              style: GoogleFonts.lato(color: Colors.black),
               decoration: InputDecoration(
                   filled: true,
                   fillColor: const Color.fromARGB(255, 232, 219, 240),
                   contentPadding: const EdgeInsets.all(15),
                   hintText: 'Quest Title',
                   hintStyle:
-                      const TextStyle(color: Color(0x66262626), fontSize: 18),
+                      GoogleFonts.lato(color: const Color(0x66262626), fontSize: 18),
                   suffixIcon: const SizedBox(
                     width: 100,
                   ),
@@ -65,8 +68,8 @@ class _OurCreateQuestState extends State<OurCreateQuest> {
                         border: whichSelected[0] ? Border.all() : null,
                         color: professional,
                         borderRadius: BorderRadius.circular(10)),
-                    child: const Center(
-                      child: Text("Professional"),
+                    child:  Center(
+                      child: Text("Professional", style: GoogleFonts.lato(color: Colors.black)),
                     )),
               ),
               GestureDetector(
@@ -87,11 +90,11 @@ class _OurCreateQuestState extends State<OurCreateQuest> {
                         border: whichSelected[1] ? Border.all() : null,
                         color: education,
                         borderRadius: BorderRadius.circular(10)),
-                    child: const Center(child: Text("Educational"))),
+                    child:  Center(child: Text("Educational",style: GoogleFonts.lato(color: Colors.black)))),
               )
             ],
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -113,7 +116,7 @@ class _OurCreateQuestState extends State<OurCreateQuest> {
                         border: whichSelected[2] ? Border.all() : null,
                         color: chores,
                         borderRadius: BorderRadius.circular(10)),
-                    child: const Center(child: Text("Household"))),
+                    child: Center(child: Text("Household",style: GoogleFonts.lato(color: Colors.black)))),
               ),
               GestureDetector(
                 onTap: () {
@@ -133,7 +136,7 @@ class _OurCreateQuestState extends State<OurCreateQuest> {
                         border: whichSelected[3] ? Border.all() : null,
                         color: physical,
                         borderRadius: BorderRadius.circular(10)),
-                    child: const Center(child: Text("Physical"))),
+                    child: Center(child: Text("Physical",style: GoogleFonts.lato(color: Colors.black)))),
               )
             ],
           ),
@@ -142,14 +145,15 @@ class _OurCreateQuestState extends State<OurCreateQuest> {
                 const EdgeInsets.only(top: 20, bottom: 20, left: 30, right: 30),
             child: TextField(
               textInputAction: TextInputAction.done,
-              maxLines: 5,
+              maxLines: 7,
+              style: GoogleFonts.lato(color: Colors.black),
               decoration: InputDecoration(
                   filled: true,
                   fillColor: const Color.fromARGB(255, 232, 219, 240),
                   contentPadding: const EdgeInsets.all(15),
                   hintText: 'Quest Description',
                   hintStyle:
-                      const TextStyle(color: Color(0x66262626), fontSize: 18),
+                      GoogleFonts.lato(color: const Color(0x66262626), fontSize: 18),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                       borderSide: const BorderSide(color: _OurDarkGrey))),
@@ -165,10 +169,10 @@ class _OurCreateQuestState extends State<OurCreateQuest> {
                 decoration: BoxDecoration(
                     color: _OurLightPurple,
                     borderRadius: BorderRadius.circular(10)),
-                child: const Center(
+                child: Center(
                     child: Text(
                   "Begin Quest",
-                  style: TextStyle(fontSize: 28),
+                  style: GoogleFonts.lato(fontSize: 28, color: Colors.black),
                 ))),
           ),
           const SizedBox(height: 10)

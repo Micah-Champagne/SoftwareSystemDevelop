@@ -4,6 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:quest/pages/OurAddBuddy.dart';
 import 'package:quest/pages/OurBuddyListAfter.dart';
 import 'package:quest/pages/OurBuddyListBefore.dart';
+import 'package:quest/pages/OurFriendsPage.dart';
+import 'package:quest/pages/OurFriendsPage2.dart';
 import 'package:quest/pages/OurHistory.dart';
 import 'package:quest/pages/OurHomePage.dart';
 import 'package:quest/pages/OurProfilePage.dart';
@@ -33,6 +35,8 @@ class _OurAppNavState extends State<OurAppNav> {
   bool creating = false;
   bool _isSwipeDisabled = false;
   bool afterAddedBuddy = false;
+  bool friendProfile = false;
+  int FriendIndex = 0;
 
   final PageController _pageController = PageController();
 
@@ -43,6 +47,7 @@ class _OurAppNavState extends State<OurAppNav> {
       buddylist = false;
       history = false;
       creating = false;
+      friendProfile = false;
       _isSwipeDisabled = false;
     });
     _pageController.jumpToPage(index);
@@ -71,12 +76,12 @@ class _OurAppNavState extends State<OurAppNav> {
 
   void _navigateToHistory() {
     setState(() {
-      _selectedIndex = 1; // Highlight the Profile section
+      _selectedIndex = 2; // Highlight the Profile section
       history = true;
       _isSwipeDisabled = true;
     });
     _pageController.jumpToPage(5);
-    _selectedIndex = 1; // Navigate to the Add Buddy page
+    _selectedIndex = 2; // Navigate to the Add Buddy page
   }
 
   void _navigateToCreateQuest() {
@@ -105,31 +110,72 @@ class _OurAppNavState extends State<OurAppNav> {
     });
   }
 
+  void _navigateToFriendsPage(int index) {
+    // Add your navigation logic here
+    if (_selectedIndex == 2) {
+      setState(() {
+        _selectedIndex = 2;
+        FriendIndex = index;
+        friendProfile = true;
+      });
+      _pageController.jumpToPage(8);
+      _selectedIndex = 2;
+    }
+    else{
+    setState(() {
+      _selectedIndex = 0;
+      FriendIndex = index;
+      friendProfile = true;
+    });
+    _pageController.jumpToPage(7);
+    _selectedIndex = 0;}
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        backgroundColor: _OurLightPurple,
+        backgroundColor: friendProfile ?  const Color(0xffCCB3DE) : _OurLightPurple,
         title: Text(
           _selectedIndex == 2
               ? addbuddy
                   ? "Add Buddy"
                   : buddylist
-                      ? "Buddy List"
+                      ? friendProfile ? "Profile":"Buddy List"
                       : history
-                          ? "Questing History"
+                          ? "Quest History"
                           : "Profile"
               : _selectedIndex == 1
                   ? creating
                       ? "Creating Quest"
-                      : "Completing Quests"
-                  : "Top Questers",
-          style: GoogleFonts.inika(fontSize: 35),
+                      : "Quest Log"
+                  : friendProfile ? "Profile" :"Top Questers",
+          style: GoogleFonts.lato(fontSize: 35),
         ),
         centerTitle: true,
-        leading: addbuddy | buddylist | history // Check if on Add Buddy page
-            ? IconButton(
+        leading: addbuddy | buddylist | history | friendProfile// Check if on Add Buddy page
+            ? friendProfile ? IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () {
+                  if (_selectedIndex==2)
+                  {
+                    setState(() {
+                      _selectedIndex = 2;
+                      friendProfile = false;
+                    });
+                    _pageController.jumpToPage(4);
+                    _selectedIndex = 2; // Navigate back to Profile
+                  }
+                  else{
+                    setState(() {
+                      _selectedIndex = 0;
+                      friendProfile = false;
+                    });
+                    _pageController.jumpToPage(0); // Navigate back to Home Page
+                  }
+                },
+              ): IconButton(
                 icon: const Icon(Icons.arrow_back),
                 onPressed: () {
                   setState(() {
@@ -164,32 +210,18 @@ class _OurAppNavState extends State<OurAppNav> {
         backgroundColor: const Color.fromARGB(250, 38, 38, 38),
         child: Column(
           children: [
-            const DrawerHeader(
-              child: Text(
-                "QUEST BUDDY",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 50,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white,
+            DrawerHeader(
+                child: Center(
+                  child: SvgPicture.asset('assets/icons/qbLandingLogo.svg', height: 100, width: 100, color: _OurCremeColor),
                 ),
               ),
-            ),
-            const ListTile(
-              leading: Icon(Icons.settings),
-              title: Text("S E T T I N G S",
-                  style: TextStyle(color: Color(0xfffefdf5))),
-            ),
+            
             ListTile(
               leading: const Icon(Icons.door_back_door),
-              title: const Text("L O G O U T",
-                  style: TextStyle(color: Color(0xfffefdf5))),
-              onTap: () {},
-            ),
-            MyButton(
-              text: "testPage",
-              onPressed: () {
-                Navigator.pushNamed(context, '/testing');
+              title: Text("L O G O U T",
+                  style: GoogleFonts.lato(color: const Color(0xfffefdf5))),
+              onTap: () {
+                Navigator.pushNamed(context, '/logout');
               },
             ),
           ],
@@ -237,7 +269,7 @@ class _OurAppNavState extends State<OurAppNav> {
             ? const NeverScrollableScrollPhysics()
             : const AlwaysScrollableScrollPhysics(),
         children: [
-          const OurHomePage(),
+          OurHomePage(onGoToBuddy: _navigateToFriendsPage),
           OurQuestingPage(
             onCreateQuest: _navigateToCreateQuest,
             onPostQuest: _navigateToPostQuest,
@@ -248,11 +280,15 @@ class _OurAppNavState extends State<OurAppNav> {
             onHistory: _navigateToHistory,
           ), // Pass the callback without const
           const OurAddBuddy(),
-          afterAddedBuddy ? OurBuddyListAfter() : OurBuddyListBefore(),
+          afterAddedBuddy
+              ?  OurBuddyListAfter(onGoToBuddy: _navigateToFriendsPage)
+              :  OurBuddyListBefore(onGoToBuddy: _navigateToFriendsPage),
           const OurHistory(),
           OurCreateQuest(
             BeginQuest: _navigateToBeginQuest,
-          )
+          ),
+          OurFriendsPage(index: FriendIndex),
+          OurFriendsPage2(index: FriendIndex)
         ],
         onPageChanged: (page) {
           setState(() {

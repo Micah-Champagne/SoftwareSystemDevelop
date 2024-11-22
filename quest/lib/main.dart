@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:quest/pages/OurAddBuddy.dart';
 import 'package:quest/pages/OurAppNav.dart';
-import 'package:quest/pages/OurHomePage.dart';
 import 'package:quest/pages/OurSignInPage.dart';
 
 void main() {
@@ -21,16 +20,17 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
             textTheme:
                 GoogleFonts.latoTextTheme(Theme.of(context).primaryTextTheme)),
+                color: Colors.black,
                 
         home: const SignInPage(),
         routes: {
           //'/homepage': (context) => const HomePage2(),
           //'/ourprofilepage': (context) => const OurProfilePage(onAddBuddy: _navigateToAddBuddy,),
           //'/searchpage': (context) => const OurQuestingPage(onPostQuest: () {  },),
-          '/testing': (context) => const SignInPage(),
-          '/signinpage': (context) => const SignInPage(),
+          '/logout': (context) => const SignInPage(),
+          //'/testing': (context) => const OurFriendsPage(),
           '/ourappnav': (context) => const OurAppNav(),
-          '/ourhomepage2': (context) => const OurHomePage(),
+          //'/ourhomepage2': (context) => const OurHomePage(onGoToBuddy: _navigateToFriendsPage,),
           '/addbuddy': (context) => const OurAddBuddy()
         });
   }

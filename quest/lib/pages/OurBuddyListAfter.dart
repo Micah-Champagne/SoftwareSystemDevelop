@@ -1,10 +1,12 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:quest/models/buddyListModel2.dart';
 
 class OurBuddyListAfter extends StatefulWidget {
-  const OurBuddyListAfter({super.key});
+  final Function(int) onGoToBuddy;
+  const OurBuddyListAfter({super.key, required this.onGoToBuddy});
 
   @override
   State<OurBuddyListAfter> createState() => _OurBuddyListAfterState();
@@ -43,12 +45,13 @@ class _OurBuddyListAfterState extends State<OurBuddyListAfter> {
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: TextField(
+                      style: GoogleFonts.lato(color: Colors.black),
                       decoration: InputDecoration(
                           filled: true,
                           fillColor: Color.fromARGB(255, 232, 219, 240),
                           contentPadding: const EdgeInsets.all(15),
                           hintText: 'Search by Username',
-                          hintStyle: const TextStyle(
+                          hintStyle:  GoogleFonts.lato(
                               color: Color(0x66262626), fontSize: 14),
                           suffixIcon: SizedBox(
                             width: 100,
@@ -102,21 +105,27 @@ class _OurBuddyListAfterState extends State<OurBuddyListAfter> {
                                   Text(
                                     buddies[index - 1].name,
                                     textAlign: TextAlign.left,
+                                    style: GoogleFonts.lato(color: Colors.black)
                                   ),
                                 ],
                               ),
                             )),
-                        Container(
-                            height: 50,
-                            width: 50,
-                            decoration: BoxDecoration(
-                                color: _OurLightPurple,
-                                borderRadius: BorderRadius.circular(20)),
-                            child: SizedBox(
-                              height: 35,
-                              width: 35,
-                              child: Icon(Icons.arrow_right_alt),
-                            ))
+                        GestureDetector(
+                          onTap: () {
+                  widget.onGoToBuddy(index - 1);
+                },
+                          child: Container(
+                              height: 50,
+                              width: 50,
+                              decoration: BoxDecoration(
+                                  color: _OurLightPurple,
+                                  borderRadius: BorderRadius.circular(20)),
+                              child: SizedBox(
+                                height: 35,
+                                width: 35,
+                                child: Icon(Icons.arrow_right_alt),
+                              )),
+                        )
                       ]),
                 );
               }
