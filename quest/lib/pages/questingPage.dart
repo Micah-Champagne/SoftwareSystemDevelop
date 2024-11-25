@@ -2,23 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quest/models/currentQuests.dart';
+import 'package:quest/utils/colors.dart';
 
-class OurQuestingPage extends StatefulWidget {
-  const OurQuestingPage(
+class questingPage extends StatefulWidget {
+  const questingPage(
       {super.key, required this.onPostQuest, required this.onCreateQuest});
 
   final VoidCallback onPostQuest;
   final VoidCallback onCreateQuest;
 
   @override
-  State<OurQuestingPage> createState() => _OurQuestingPageState();
+  State<questingPage> createState() => _questingPageState();
 }
 
-class _OurQuestingPageState extends State<OurQuestingPage> {
-  final Color _OurLightPurple = const Color(0x99838ef4);
-  final Color _OurDarkGrey = const Color(0xff262626);
-  final Color _OurPurpleBackground = const Color(0xff838ef4);
-  final Color _OurCremeColor = const Color(0xfffefdf5);
+class _questingPageState extends State<questingPage> {
+
 
   List<bool> Completing = List.filled(10, false);
   int CompletingCount = 0;
@@ -53,7 +51,7 @@ class _OurQuestingPageState extends State<OurQuestingPage> {
                   decoration: BoxDecoration(
                     color: CurrentQuests[index].boxColor,
                     borderRadius: BorderRadius.circular(10),
-                    border: Border.all(width: .5, color: _OurDarkGrey),
+                    border: Border.all(width: .5, color: OurColors().darkGrey),
                     boxShadow: [
                       BoxShadow(
                         color: const Color(0xff1D1617).withOpacity(0.2),
@@ -89,7 +87,7 @@ class _OurQuestingPageState extends State<OurQuestingPage> {
                         height: 0.3,
                         width: 375,
                         decoration: BoxDecoration(
-                          color: _OurDarkGrey,
+                          color: OurColors().darkGrey,
                           borderRadius: BorderRadius.circular(5),
                         ),
                       ),
@@ -133,10 +131,10 @@ class _OurQuestingPageState extends State<OurQuestingPage> {
               },
             ),
           ),
-          Container(height: 1, color: _OurDarkGrey),
+          Container(height: 1, color: OurColors().darkGrey),
           CompletingCount > 0
               ? Container(
-                  color: _OurLightPurple,
+                  color: OurColors().lightPurple,
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -231,7 +229,7 @@ class _OurQuestingPageState extends State<OurQuestingPage> {
                 )
               : Container(
                   height: 50,
-                  color: _OurCremeColor,
+                  color: OurColors().cremeColor,
                   child: GestureDetector(
                     onTap: () {
                       widget.onCreateQuest();
@@ -254,64 +252,6 @@ class _OurQuestingPageState extends State<OurQuestingPage> {
                       ],
                     ),
                   )),
-          // Container(
-          //     decoration: BoxDecoration(
-          //       color: _OurCremeColor,
-          //     ),
-          //     height: 100,
-          //     child: Row(
-          //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //         children: [
-          //           GestureDetector(
-          //             onTap: () {
-          //               widget.onCreateQuest();
-          //             },
-          //             child: Container(
-          //                 height: 75,
-          //                 width: 175,
-          //                 decoration: BoxDecoration(
-          //                     color: _OurLightPurple,
-          //                     // boxShadow: const [
-          //                     //   BoxShadow(
-          //                     //       blurRadius: 2,
-          //                     //       spreadRadius: 1,
-          //                     //       offset: Offset(0, 2)),
-          //                     // ],
-          //                     borderRadius: BorderRadius.circular(20),
-          //                     border: Border.all(
-          //                         width: 1, style: BorderStyle.solid)),
-          //                 child: Center(
-          //                     child: Text("Add New",
-          //                         style: GoogleFonts.lato(
-          //                             fontSize: 30,
-          //                             fontWeight: FontWeight.bold)))),
-          //           ),
-          //           GestureDetector(
-          //             onTap: () {
-          //               widget.onPostQuest();
-          //             },
-          //             child: Container(
-          //                 height: 75,
-          //                 width: 175,
-          //                 decoration: BoxDecoration(
-          //                     color: _OurLightPurple,
-          //                     boxShadow: const [
-          //                       BoxShadow(
-          //                           blurRadius: 2,
-          //                           spreadRadius: 1,
-          //                           offset: Offset(0, 2)),
-          //                     ],
-          //                     borderRadius: BorderRadius.circular(20),
-          //                     border: Border.all(
-          //                         width: 1, style: BorderStyle.solid)),
-          //                 child: Center(
-          //                     child: Text(
-          //                   "Complete",
-          //                   style: GoogleFonts.lato(
-          //                       fontSize: 30, fontWeight: FontWeight.bold),
-          //                 ))),
-          //           ),
-          //         ]))
         ],
       ),
     );

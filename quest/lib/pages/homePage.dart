@@ -2,20 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quest/models/post_model.dart';
+import 'package:quest/utils/colors.dart';
 
-class OurHomePage extends StatefulWidget {
+class homePage extends StatefulWidget {
   final Function(int) onGoToBuddy;
-  const OurHomePage({super.key, required this.onGoToBuddy});
+  const homePage({super.key, required this.onGoToBuddy});
 
   @override
-  State<OurHomePage> createState() => _OurHomePageState();
+  State<homePage> createState() => _homePageState();
 }
 
-class _OurHomePageState extends State<OurHomePage> {
-  final Color _OurLightPurple = const Color(0x99838ef4);
-  final Color _OurDarkGrey = const Color(0xff262626);
-  final Color _OurPurpleBackground = const Color(0xff838ef4);
-  final Color _OurCremeColor = const Color(0xfffefdf5);
+class _homePageState extends State<homePage> {
+  
 
   List<PostModel> posts = [];
 
@@ -27,14 +25,20 @@ class _OurHomePageState extends State<OurHomePage> {
 
   void toggleFavorite(int index) {
     setState(() {
-      posts[index].isFavorited = !posts[index].isFavorited;
+      if(posts[index].isFavorited) {
+        posts[index].likedAmount -= 1;
+        posts[index].isFavorited = false;
+      } else {
+        posts[index].likedAmount += 1;
+        posts[index].isFavorited = true;
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: _OurCremeColor,
+        backgroundColor: OurColors().cremeColor,
         body: ListView.builder(
             itemCount: posts.length + 1, // Total number of containers
             itemBuilder: (context, index) {
@@ -56,7 +60,7 @@ class _OurHomePageState extends State<OurHomePage> {
       decoration: BoxDecoration(
           color: posts[index - 1].boxColor,
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(width: .5, color: _OurDarkGrey),
+          border: Border.all(width: .5, color: OurColors().darkGrey),
           boxShadow: [
             BoxShadow(
                 color: const Color(0xff1D1617).withOpacity(0.2),
@@ -76,7 +80,7 @@ class _OurHomePageState extends State<OurHomePage> {
                 child: Container(
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      border: Border.all(color: _OurDarkGrey)),
+                      border: Border.all(color: OurColors().darkGrey)),
                   child: ClipOval(
                     child: Image.asset(
                       posts[index - 1].image,
@@ -94,17 +98,17 @@ class _OurHomePageState extends State<OurHomePage> {
                   SizedBox(
                     width: 250,
                     child: Text(
-                      '${posts[index - 1].name} Completed',
+                      '${posts[index - 1].username} Completed',
                       softWrap: true,
                       style: TextStyle(
-                          color: _OurDarkGrey,
+                          color: OurColors().darkGrey,
                           fontSize: 18,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
                   Text(
                     posts[index - 1].time,
-                    style: TextStyle(color: _OurDarkGrey, fontSize: 14),
+                    style: TextStyle(color: OurColors().darkGrey, fontSize: 14),
                   )
                 ],
               ),
@@ -115,7 +119,7 @@ class _OurHomePageState extends State<OurHomePage> {
             children: [
               const SizedBox(width: 10),
               Text(posts[index - 1].quest,
-                  style: TextStyle(color: _OurDarkGrey, fontSize: 20)),
+                  style: TextStyle(color: OurColors().darkGrey, fontSize: 20)),
               const Spacer(),
               SvgPicture.asset("assets/icons/checkcircle.svg")
             ],
@@ -125,17 +129,17 @@ class _OurHomePageState extends State<OurHomePage> {
             height: 0.1,
             width: 325,
             decoration: BoxDecoration(
-                color: _OurDarkGrey, borderRadius: BorderRadius.circular(5)),
+                color: OurColors().darkGrey, borderRadius: BorderRadius.circular(5)),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Row(
             children: [
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               GestureDetector(
                 onTap: () => toggleFavorite(index - 1),
                 child: AnimatedScale(
                   scale: posts[index - 1].isFavorited
-                      ? 1.2
+                      ? 1.0
                       : 1.0, // Scale up when favorited
                   duration: const Duration(milliseconds: 300), // Smooth transition
                   curve:
@@ -153,7 +157,7 @@ class _OurHomePageState extends State<OurHomePage> {
                       key: ValueKey<bool>(posts[index - 1].isFavorited),
                       color: posts[index - 1].isFavorited
                           ? Colors.red
-                          : _OurDarkGrey, // Color change
+                          : OurColors().darkGrey, // Color change
                       size: 25, // Icon size
                     ),
                   ),
@@ -176,7 +180,7 @@ class _OurHomePageState extends State<OurHomePage> {
         margin: const EdgeInsets.all(8.0),
         //padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
-          color: _OurCremeColor,
+          color: OurColors().cremeColor,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Column(children: [
@@ -188,12 +192,10 @@ class _OurHomePageState extends State<OurHomePage> {
               Column(
                 children: [
                   const SizedBox(height: 50),
-                  Container(
-                    child: SvgPicture.asset("assets/icons/2ndplace.svg",
-                        //color: Colors.grey,
-                        height: 40,
-                        width: 40),
-                  ),
+                  SvgPicture.asset("assets/icons/2ndplace.svg",
+                      //color: Colors.grey,
+                      height: 40,
+                      width: 40),
                   const SizedBox(height: 7),
                   Container(
                     decoration: BoxDecoration(
@@ -227,12 +229,10 @@ class _OurHomePageState extends State<OurHomePage> {
               ),
               Column(
                 children: [
-                  Container(
-                    child: SvgPicture.asset("assets/icons/crown.svg",
-                        //color: Colors.orangeAccent,
-                        height: 50,
-                        width: 50),
-                  ),
+                  SvgPicture.asset("assets/icons/crown.svg",
+                      //color: Colors.orangeAccent,
+                      height: 50,
+                      width: 50),
                   const SizedBox(height: 5),
                   Container(
                     decoration: BoxDecoration(
@@ -268,12 +268,10 @@ class _OurHomePageState extends State<OurHomePage> {
               Column(
                 children: [
                   const SizedBox(height: 50),
-                  Container(
-                    child: SvgPicture.asset("assets/icons/3rdpalce.svg",
-                        //color: Colors.brown,
-                        height: 40,
-                        width: 40),
-                  ),
+                  SvgPicture.asset("assets/icons/3rdpalce.svg",
+                      //color: Colors.brown,
+                      height: 40,
+                      width: 40),
                   const SizedBox(height: 5),
                   Container(
                     decoration: BoxDecoration(
@@ -314,7 +312,7 @@ class _OurHomePageState extends State<OurHomePage> {
             height: 0.3,
             width: 375,
             decoration: BoxDecoration(
-                color: _OurDarkGrey, borderRadius: BorderRadius.circular(5)),
+                color: OurColors().darkGrey, borderRadius: BorderRadius.circular(5)),
           )
         ]));
   }

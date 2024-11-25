@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 
 class PostModel {
   String image;
-  String name;
+  String username;
   String time;
-  String FullName;
+  String fullName;
   String quest;
   Color boxColor;
   bool isFavorited;
   int likedAmount;
 
   PostModel({
-    required this.FullName,
+    required this.fullName,
     required this.image,
-    required this.name,
+    required this.username,
     required this.time,
     required this.quest,
     required this.boxColor,
@@ -59,9 +59,9 @@ class PostModel {
     // Adding more posts for everyone with specific times, and ordered by most recent
     post.add(PostModel(
       image: NashPhoto,
-      name: NashUser,
+      username: NashUser,
       time: "Just now",
-      FullName: NashFullName,
+      fullName: NashFullName,
       quest: "Plan weekend getaway",
       boxColor: physical,
       likedAmount: 73,
@@ -69,9 +69,9 @@ class PostModel {
 
     post.add(PostModel(
       image: MicahPhoto,
-      name: MicahUser,
+      username: MicahUser,
       time: "5 minutes ago",
-      FullName: MicahFullName,
+      fullName: MicahFullName,
       quest: "Wash the dishes",
       boxColor: chores,
       likedAmount: 40,
@@ -79,9 +79,9 @@ class PostModel {
 
     post.add(PostModel(
       image: AbbyPhoto,
-      name: AbbyUser,
+      username: AbbyUser,
       time: "10 minutes ago",
-      FullName: AbbyFullName,
+      fullName: AbbyFullName,
       quest: "Clean my room",
       boxColor: chores,
       likedAmount: 34,
@@ -89,9 +89,9 @@ class PostModel {
 
     post.add(PostModel(
       image: TylerPhoto,
-      name: TylerUser,
+      username: TylerUser,
       time: "15 minutes ago",
-      FullName: TylerFullName,
+      fullName: TylerFullName,
       quest: "Study for exam",
       boxColor: education,
       likedAmount: 78,
@@ -99,9 +99,9 @@ class PostModel {
 
     post.add(PostModel(
       image: ArushiPhoto,
-      name: ArushiUser,
+      username: ArushiUser,
       time: "20 minutes ago",
-      FullName: ArushiFullName,
+      fullName: ArushiFullName,
       quest: "Submit hours in workday",
       boxColor: professional,
       likedAmount: 55,
@@ -109,9 +109,9 @@ class PostModel {
 
     post.add(PostModel(
       image: ReinhardPhoto,
-      name: ReinhardUser,
+      username: ReinhardUser,
       time: "25 minutes ago",
-      FullName: ReinhardFullName,
+      fullName: ReinhardFullName,
       quest: "Run for Physical Fitness test",
       boxColor: physical,
       likedAmount: 92,
@@ -119,9 +119,9 @@ class PostModel {
 
     post.add(PostModel(
       image: NashPhoto,
-      name: NashUser,
+      username: NashUser,
       time: "30 minutes ago",
-      FullName: NashFullName,
+      fullName: NashFullName,
       quest: "Review meeting agenda",
       boxColor: professional,
       likedAmount: 51,
@@ -129,9 +129,9 @@ class PostModel {
 
     post.add(PostModel(
       image: MicahPhoto,
-      name: MicahUser,
+      username: MicahUser,
       time: "1 hour ago",
-      FullName: MicahFullName,
+      fullName: MicahFullName,
       quest: "Cried",
       boxColor: professional,
       likedAmount: 28,
@@ -139,9 +139,9 @@ class PostModel {
 
     post.add(PostModel(
       image: WillPhoto,
-      name: WillUser,
+      username: WillUser,
       time: "1 hours ago",
-      FullName: WillFullName,
+      fullName: WillFullName,
       quest: "Work on new project",
       boxColor: professional,
       likedAmount: 50,
@@ -150,9 +150,9 @@ class PostModel {
 
     post.add(PostModel(
       image: AbbyPhoto,
-      name: AbbyUser,
+      username: AbbyUser,
       time: "1 hour ago",
-      FullName: AbbyFullName,
+      fullName: AbbyFullName,
       quest: "Finish Milestone 2",
       boxColor: education,
       likedAmount: 68,
@@ -160,9 +160,9 @@ class PostModel {
 
     post.add(PostModel(
       image: ArushiPhoto,
-      name: ArushiUser,
+      username: ArushiUser,
       time: "1 hour ago",
-      FullName: ArushiFullName,
+      fullName: ArushiFullName,
       quest: "Complete project report",
       boxColor: professional,
       likedAmount: 62,
@@ -170,9 +170,9 @@ class PostModel {
 
     post.add(PostModel(
       image: NashPhoto,
-      name: NashUser,
+      username: NashUser,
       time: "2 hours ago",
-      FullName: NashFullName,
+      fullName: NashFullName,
       quest: "Update personal website",
       boxColor: professional,
       likedAmount: 80,
@@ -180,9 +180,9 @@ class PostModel {
 
     post.add(PostModel(
       image: LeePhoto,
-      name: LeeUser,
+      username: LeeUser,
       time: "2 hours ago",
-      FullName: LeeFullName,
+      fullName: LeeFullName,
       quest: "Launch new campaign",
       boxColor: education,
       likedAmount: 90,
@@ -190,9 +190,9 @@ class PostModel {
 
     post.add(PostModel(
       image: TylerPhoto,
-      name: TylerUser,
+      username: TylerUser,
       time: "2 hours ago",
-      FullName: TylerFullName,
+      fullName: TylerFullName,
       quest: "Go for a morning run",
       boxColor: physical,
       likedAmount: 59,
@@ -200,9 +200,9 @@ class PostModel {
 
     post.add(PostModel(
       image: ReinhardPhoto,
-      name: ReinhardUser,
+      username: ReinhardUser,
       time: "2 hours ago",
-      FullName: ReinhardFullName,
+      fullName: ReinhardFullName,
       quest: "Write a blog post",
       boxColor: professional,
       likedAmount: 65,
@@ -210,9 +210,9 @@ class PostModel {
 
     post.add(PostModel(
       image: MicahPhoto,
-      name: MicahUser,
+      username: MicahUser,
       time: "3 hours ago",
-      FullName: MicahFullName,
+      fullName: MicahFullName,
       quest: "Buy groceries",
       boxColor: chores,
       likedAmount: 56,
@@ -220,9 +220,9 @@ class PostModel {
 
     post.add(PostModel(
       image: NashPhoto,
-      name: NashUser,
+      username: NashUser,
       time: "4 hours ago",
-      FullName: NashFullName,
+      fullName: NashFullName,
       quest: "Clean out email inbox",
       boxColor: education,
       likedAmount: 60,
@@ -230,9 +230,9 @@ class PostModel {
 
     post.add(PostModel(
       image: AbbyPhoto,
-      name: AbbyUser,
+      username: AbbyUser,
       time: "4 hours ago",
-      FullName: AbbyFullName,
+      fullName: AbbyFullName,
       quest: "Complete online course",
       boxColor: education,
       likedAmount: 78,
@@ -240,9 +240,9 @@ class PostModel {
 
     post.add(PostModel(
       image: TylerPhoto,
-      name: TylerUser,
+      username: TylerUser,
       time: "5 hours ago",
-      FullName: TylerFullName,
+      fullName: TylerFullName,
       quest: "Prepare for presentation",
       boxColor: professional,
       likedAmount: 92,
@@ -250,9 +250,9 @@ class PostModel {
 
     post.add(PostModel(
       image: ReinhardPhoto,
-      name: ReinhardUser,
+      username: ReinhardUser,
       time: "6 hours ago",
-      FullName: ReinhardFullName,
+      fullName: ReinhardFullName,
       quest: "Stretching exercises",
       boxColor: physical,
       likedAmount: 49,
@@ -260,9 +260,9 @@ class PostModel {
 
     post.add(PostModel(
       image: MicahPhoto,
-      name: MicahUser,
+      username: MicahUser,
       time: "7 hours ago",
-      FullName: MicahFullName,
+      fullName: MicahFullName,
       quest: "Clean kitchen",
       boxColor: chores,
       likedAmount: 88,
@@ -271,9 +271,9 @@ class PostModel {
     // Additional posts for Will
     post.add(PostModel(
       image: WillPhoto,
-      name: WillUser,
+      username: WillUser,
       time: "8 hours ago",
-      FullName: WillFullName,
+      fullName: WillFullName,
       quest: "Plan vacation",
       boxColor: education,
       likedAmount: 64,
@@ -281,9 +281,9 @@ class PostModel {
 
     post.add(PostModel(
       image: LeePhoto,
-      name: LeeUser,
+      username: LeeUser,
       time: "10 hours ago",
-      FullName: LeeFullName,
+      fullName: LeeFullName,
       quest: "Attend business meeting",
       boxColor: professional,
       likedAmount: 75,

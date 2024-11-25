@@ -2,19 +2,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:quest/utils/colors.dart';
 
-Color _OurDarkGrey = const Color(0xff262626);
-Color _OurPurpleBackground = const Color(0xff838ef4);
-Color _OurCremeColor = const Color(0xfffefdf5);
-
-class SignInPage extends StatefulWidget {
-  const SignInPage({super.key});
+class signInPage extends StatefulWidget {
+  const signInPage({super.key});
 
   @override
-  State<SignInPage> createState() => _SignInState();
+  State<signInPage> createState() => _SignInState();
 }
 
-class _SignInState extends State<SignInPage> {
+class _SignInState extends State<signInPage> {
   final _SignInController = OverlayPortalController();
   final _RegisterController = OverlayPortalController();
   bool signInEnabled = false;
@@ -24,7 +21,7 @@ class _SignInState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: _OurPurpleBackground,
+        backgroundColor: OurColors().purpleBackground,
         body: ListView(
           children: [
           const SizedBox(height: 150),
@@ -51,7 +48,7 @@ class _SignInState extends State<SignInPage> {
             style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5)),
-                backgroundColor: _OurDarkGrey,
+                backgroundColor: OurColors().darkGrey,
                 foregroundColor: Colors.white),
             onPressed: () {
               if (registerEnabled) {
@@ -76,7 +73,7 @@ class _SignInState extends State<SignInPage> {
                         width: 350,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
-                          color: _OurCremeColor,
+                          color: OurColors().cremeColor,
                         ),
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -119,7 +116,7 @@ class _SignInState extends State<SignInPage> {
                                             shape: RoundedRectangleBorder(
                                                 borderRadius:
                                                     BorderRadius.circular(5)),
-                                            backgroundColor: _OurDarkGrey,
+                                            backgroundColor: OurColors().darkGrey,
                                             foregroundColor: Colors.white),
                                         onPressed: () {
                                           Navigator.pushNamed(
@@ -134,7 +131,7 @@ class _SignInState extends State<SignInPage> {
                                     style: TextStyle(
                                         fontSize: 18,
                                         decoration: TextDecoration.underline,
-                                        color: _OurDarkGrey)),
+                                        color: OurColors().darkGrey)),
                               )
                             ])));
               },
@@ -154,9 +151,9 @@ class _SignInState extends State<SignInPage> {
             style: OutlinedButton.styleFrom(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5)),
-                backgroundColor: _OurPurpleBackground,
+                backgroundColor: OurColors().purpleBackground,
                 foregroundColor: Colors.white,
-                side: BorderSide(width: 2, color: _OurDarkGrey)),
+                side: BorderSide(width: 2, color: OurColors().darkGrey)),
             onPressed: () {
               if (!registerEnabled) {
                 _RegisterController.toggle();
@@ -179,7 +176,7 @@ class _SignInState extends State<SignInPage> {
                         width: 350,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
-                          color: _OurCremeColor,
+                          color: OurColors().cremeColor,
                         ),
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -239,7 +236,7 @@ class _SignInState extends State<SignInPage> {
                                               shape: RoundedRectangleBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(5)),
-                                              backgroundColor: _OurDarkGrey,
+                                              backgroundColor: OurColors().darkGrey,
                                               foregroundColor: Colors.white),
                                           onPressed: () {
                                             Navigator.pushNamed(
@@ -255,7 +252,7 @@ class _SignInState extends State<SignInPage> {
                                   children: [
                                     Text("Already have an account?",
                                         style: TextStyle(
-                                            fontSize: 18, color: _OurDarkGrey)),
+                                            fontSize: 18, color: OurColors().darkGrey)),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: GestureDetector(
@@ -274,7 +271,7 @@ class _SignInState extends State<SignInPage> {
                                                 fontSize: 18,
                                                 decoration:
                                                     TextDecoration.underline,
-                                                color: _OurDarkGrey)),
+                                                color: OurColors().darkGrey)),
                                       ),
                                     ),
                                   ],
@@ -292,11 +289,11 @@ class _SignInState extends State<SignInPage> {
     return TextField(
       decoration: InputDecoration(
           filled: true,
-          fillColor: _OurCremeColor,
+          fillColor: OurColors().cremeColor,
           hintText: hintText,
           contentPadding: const EdgeInsets.all(15),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: _OurDarkGrey, width: 1.0),
+              borderSide: BorderSide(color: OurColors().darkGrey, width: 1.0),
               borderRadius: BorderRadius.circular(10))),
     );
   }
@@ -312,11 +309,11 @@ class _SignInState extends State<SignInPage> {
             },
             icon: Icon(_obsureText ? Icons.visibility_off : Icons.visibility)),
         filled: true,
-        fillColor: _OurCremeColor,
+        fillColor: OurColors().cremeColor,
         hintText: hintText,
         contentPadding: const EdgeInsets.all(15),
         enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: _OurDarkGrey, width: 1.0),
+            borderSide: BorderSide(color: OurColors().darkGrey, width: 1.0),
             borderRadius: BorderRadius.circular(10)),
       ),
       obscureText: _obsureText,
