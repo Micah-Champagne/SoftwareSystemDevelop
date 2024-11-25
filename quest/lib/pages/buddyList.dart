@@ -3,21 +3,19 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:quest/models/buddyListModel.dart';
 import 'package:quest/utils/colors.dart';
 
-class buddyList extends StatefulWidget {
+class BuddyList extends StatefulWidget {
   final Function(int) onGoToBuddy;
   final bool afterAddedBuddy;
-  const buddyList({super.key, required this.onGoToBuddy, required this.afterAddedBuddy}); 
+  
+  const BuddyList({super.key, required this.onGoToBuddy, required this.afterAddedBuddy}); 
 
   @override
-  State<buddyList> createState() => _buddyListState();
+  State<BuddyList> createState() => _BuddyListState();
 }
 
-class _buddyListState extends State<buddyList> {
-
- 
+class _BuddyListState extends State<BuddyList> {
   final TextEditingController _controller = TextEditingController();
 
-  
   // The full list of buddies
   List<BuddyListModel> buddies = [];
   // The list of buddies that match the search criteria
@@ -26,33 +24,38 @@ class _buddyListState extends State<buddyList> {
   @override
   void initState() {
     super.initState();
-    if(!widget.afterAddedBuddy){
-      // Load the full list of buddies initially
-      buddies = BuddyListModel.getBeforeCategories();
-      // Start by showing all buddies
-      searchBuddies = List.from(buddies);
-    }
-    else{
-      // Load the full list of buddies initially
-      buddies = BuddyListModel.getAfterCategories();
-      // Start by showing all buddies
-      searchBuddies = List.from(buddies);
+
+    // Initialize the list only once when the widget is first created
+    if (buddies.isEmpty) {
+      if (!widget.afterAddedBuddy) {
+        // Load the full list of buddies initially
+        buddies = BuddyListModel.getBeforeCategories();
+        // Start by showing all buddies
+        searchBuddies = List.from(buddies);
+      } else {
+        // Load the full list of buddies after adding a buddy
+        buddies = BuddyListModel.getAfterCategories();
+        // Start by showing all buddies
+        searchBuddies = List.from(buddies);
+      }
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: ListView.builder(
-            itemCount: searchBuddies.length + 1,
-            itemBuilder: (context, index) {
-              // First item is the search bar
-              if (index == 0) {
-                return SearchBar();
-              } else {
-                return ListOfBuddies(index);
-              }
-            }));
+      body: ListView.builder(
+        itemCount: searchBuddies.length + 1,
+        itemBuilder: (context, index) {
+          // First item is the search bar
+          if (index == 0) {
+            return SearchBar();
+          } else {
+            return ListOfBuddies(index);
+          }
+        },
+      ),
+    );
   }
 
   // Display each buddy in the list
@@ -61,50 +64,61 @@ class _buddyListState extends State<buddyList> {
       height: 70,
       margin: const EdgeInsets.only(left: 24, right: 24),
       child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            // Buddy image
-            ClipOval(
-                child: Image.asset(searchBuddies[index - 1].image,
-                    height: 50, width: 50, fit: BoxFit.cover)),
-            // Buddy name container
-            Container(
-                height: 50,
-                width: 225,
-                decoration: BoxDecoration(
-                    color: OurColors().lightPurple,
-                    borderRadius: BorderRadius.circular(20)),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(searchBuddies[index - 1].username,
-                          textAlign: TextAlign.left,
-                          style: GoogleFonts.lato(color: Colors.black)),
-                    ],
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          // Buddy image
+          ClipOval(
+            child: Image.asset(
+              searchBuddies[index - 1].image,
+              height: 50,
+              width: 50,
+              fit: BoxFit.cover,
+            ),
+          ),
+          // Buddy name container
+          Container(
+            height: 50,
+            width: 225,
+            decoration: BoxDecoration(
+              color: OurColors().lightPurple,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    searchBuddies[index - 1].username,
+                    textAlign: TextAlign.left,
+                    style: GoogleFonts.lato(color: Colors.black),
                   ),
-                )),
-            // Arrow button to go to buddy detail
-            GestureDetector(
-              onTap: () {
-                widget.onGoToBuddy(index-1);
-
-              },
-              child: Container(
-                  height: 50,
-                  width: 50,
-                  decoration: BoxDecoration(
-                      color: OurColors().lightPurple,
-                      borderRadius: BorderRadius.circular(20)),
-                  child: const SizedBox(
-                    height: 35,
-                    width: 35,
-                    child: Icon(Icons.arrow_right_alt),
-                  )),
-            )
-          ]),
+                ],
+              ),
+            ),
+          ),
+          // Arrow button to go to buddy detail
+          GestureDetector(
+            onTap: () {
+              widget.onGoToBuddy(index - 1);
+            },
+            child: Container(
+              height: 50,
+              width: 50,
+              decoration: BoxDecoration(
+                color: OurColors().lightPurple,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: const SizedBox(
+                height: 35,
+                width: 35,
+                child: Icon(Icons.arrow_right_alt),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -112,7 +126,7 @@ class _buddyListState extends State<buddyList> {
   Container SearchBar() {
     return Container(
       margin: const EdgeInsets.only(
-          left: 25, top: 25, right: 25, bottom: 15),
+        left: 25, top: 25, right: 25, bottom: 15),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
       ),
@@ -169,8 +183,8 @@ class _buddyListState extends State<buddyList> {
             ),
           ),
           border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15),
-              borderSide: BorderSide.none),
+            borderRadius: BorderRadius.circular(15),
+            borderSide: BorderSide.none),
         ),
       ),
     );
