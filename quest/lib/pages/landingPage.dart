@@ -19,7 +19,7 @@ class _SignInState extends State<landingPage> {
     // Delay the navigation by 2 seconds
     Future.delayed(const Duration(seconds: 2), () {
       // Navigate to the next page after 2 seconds
-      Navigator.pushNamed(context, '/signinPage');
+      Navigator.pushNamed(context, '/onboarding1');
       
     });
   }
