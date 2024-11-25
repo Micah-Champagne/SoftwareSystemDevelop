@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:quest/pages/OurAddBuddy.dart';
-import 'package:quest/pages/OurBuddyListAfter.dart';
-import 'package:quest/pages/OurBuddyListBefore.dart';
-import 'package:quest/pages/OurFriendsPage.dart';
-import 'package:quest/pages/OurFriendsPage2.dart';
-import 'package:quest/pages/OurHistory.dart';
-import 'package:quest/pages/OurHomePage.dart';
-import 'package:quest/pages/OurProfilePage.dart';
-import 'package:quest/pages/OurQuestingPage.dart';
-import 'package:quest/utils/my_button.dart';
-import 'package:quest/pages/OurCreateQuest.dart';
+import 'package:quest/pages/addBuddyList.dart';
+import 'package:quest/pages/buddyList.dart';
+import 'package:quest/pages/buddyProfileFromFeed.dart';
+import 'package:quest/pages/buddyProfileFromList.dart';
+import 'package:quest/utils/colors.dart';
+import 'package:quest/pages/homePage.dart';
+import 'package:quest/pages/profilePage.dart';
+import 'package:quest/pages/questingPage.dart';
+import 'package:quest/pages/createQuest.dart';
 
 class OurAppNav extends StatefulWidget {
   const OurAppNav({super.key});
@@ -22,11 +20,6 @@ class OurAppNav extends StatefulWidget {
 
 class _OurAppNavState extends State<OurAppNav> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
-  final Color _OurLightPurple = const Color(0x99838ef4);
-  final Color _OurDarkGrey = const Color(0xff262626);
-  final Color _OurPurpleBackground = const Color(0xff838ef4);
-  final Color _OurCremeColor = const Color(0xfffefdf5);
 
   int _selectedIndex = 0;
   bool addbuddy = false;
@@ -74,23 +67,13 @@ class _OurAppNavState extends State<OurAppNav> {
     _selectedIndex = 2; // Navigate to the Add Buddy page
   }
 
-  void _navigateToHistory() {
-    setState(() {
-      _selectedIndex = 2; // Highlight the Profile section
-      history = true;
-      _isSwipeDisabled = true;
-    });
-    _pageController.jumpToPage(5);
-    _selectedIndex = 2; // Navigate to the Add Buddy page
-  }
-
   void _navigateToCreateQuest() {
     setState(() {
       _selectedIndex = 1; // Highlight the Profile section
       creating = true;
       _isSwipeDisabled = true;
     });
-    _pageController.jumpToPage(6);
+    _pageController.jumpToPage(5);
     _selectedIndex = 1;
   }
 
@@ -118,17 +101,17 @@ class _OurAppNavState extends State<OurAppNav> {
         FriendIndex = index;
         friendProfile = true;
       });
-      _pageController.jumpToPage(8);
+      _pageController.jumpToPage(7);
       _selectedIndex = 2;
-    }
-    else{
-    setState(() {
+    } else {
+      setState(() {
+        _selectedIndex = 0;
+        FriendIndex = index;
+        friendProfile = true;
+      });
+      _pageController.jumpToPage(6);
       _selectedIndex = 0;
-      FriendIndex = index;
-      friendProfile = true;
-    });
-    _pageController.jumpToPage(7);
-    _selectedIndex = 0;}
+    }
   }
 
   @override
@@ -136,13 +119,16 @@ class _OurAppNavState extends State<OurAppNav> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        backgroundColor: friendProfile ?  const Color(0xffCCB3DE) : _OurLightPurple,
+        backgroundColor:
+            friendProfile ? const Color(0xffCCB3DE) : OurColors().lightPurple,
         title: Text(
           _selectedIndex == 2
               ? addbuddy
                   ? "Add Buddy"
                   : buddylist
-                      ? friendProfile ? "Profile":"Buddy List"
+                      ? friendProfile
+                          ? "Profile"
+                          : "Buddy List"
                       : history
                           ? "Quest History"
                           : "Profile"
@@ -150,43 +136,49 @@ class _OurAppNavState extends State<OurAppNav> {
                   ? creating
                       ? "Creating Quest"
                       : "Quest Log"
-                  : friendProfile ? "Profile" :"Top Questers",
+                  : friendProfile
+                      ? "Profile"
+                      : "Top Questers",
           style: GoogleFonts.lato(fontSize: 35),
         ),
         centerTitle: true,
-        leading: addbuddy | buddylist | history | friendProfile// Check if on Add Buddy page
-            ? friendProfile ? IconButton(
-                icon: const Icon(Icons.arrow_back),
-                onPressed: () {
-                  if (_selectedIndex==2)
-                  {
-                    setState(() {
-                      _selectedIndex = 2;
-                      friendProfile = false;
-                    });
-                    _pageController.jumpToPage(4);
-                    _selectedIndex = 2; // Navigate back to Profile
-                  }
-                  else{
-                    setState(() {
-                      _selectedIndex = 0;
-                      friendProfile = false;
-                    });
-                    _pageController.jumpToPage(0); // Navigate back to Home Page
-                  }
-                },
-              ): IconButton(
-                icon: const Icon(Icons.arrow_back),
-                onPressed: () {
-                  setState(() {
-                    _selectedIndex = 2;
-                    addbuddy = false;
-                    buddylist = false;
-                    history = false;
-                  });
-                  _pageController.jumpToPage(2); // Navigate back to Profile
-                },
-              )
+        leading: addbuddy |
+                buddylist |
+                history |
+                friendProfile // Check if on Add Buddy page
+            ? friendProfile
+                ? IconButton(
+                    icon: const Icon(Icons.arrow_back),
+                    onPressed: () {
+                      if (_selectedIndex == 2) {
+                        setState(() {
+                          _selectedIndex = 2;
+                          friendProfile = false;
+                        });
+                        _pageController.jumpToPage(4);
+                        _selectedIndex = 2; // Navigate back to Profile
+                      } else {
+                        setState(() {
+                          _selectedIndex = 0;
+                          friendProfile = false;
+                        });
+                        _pageController
+                            .jumpToPage(0); // Navigate back to Home Page
+                      }
+                    },
+                  )
+                : IconButton(
+                    icon: const Icon(Icons.arrow_back),
+                    onPressed: () {
+                      setState(() {
+                        _selectedIndex = 2;
+                        addbuddy = false;
+                        buddylist = false;
+                        history = false;
+                      });
+                      _pageController.jumpToPage(2); // Navigate back to Profile
+                    },
+                  )
             : creating
                 ? IconButton(
                     icon: const Icon(Icons.arrow_back),
@@ -211,13 +203,16 @@ class _OurAppNavState extends State<OurAppNav> {
         child: Column(
           children: [
             DrawerHeader(
-                child: Center(
-                  child: SvgPicture.asset('assets/icons/qbLandingLogo.svg', height: 100, width: 100, color: _OurCremeColor),
-                ),
+              child: Center(
+                child: SvgPicture.asset('assets/icons/qbLandingLogo.svg',
+                    height: 100, width: 100, color: OurColors().cremeColor),
               ),
-            
+            ),
             ListTile(
-              leading: const Icon(Icons.door_back_door),
+              leading: const Icon(
+                Icons.door_back_door,
+                color: Color(0xfffefdf5),
+              ),
               title: Text("L O G O U T",
                   style: GoogleFonts.lato(color: const Color(0xfffefdf5))),
               onTap: () {
@@ -236,7 +231,7 @@ class _OurAppNavState extends State<OurAppNav> {
             color: const Color(0xFF262626),
           ),
           BottomNavigationBar(
-            backgroundColor: _OurCremeColor,
+            backgroundColor: OurColors().cremeColor,
             elevation: 10,
             currentIndex: _selectedIndex,
             onTap: _navigateBottomBar,
@@ -277,18 +272,20 @@ class _OurAppNavState extends State<OurAppNav> {
           OurProfilePage(
             onAddBuddy: _navigateToAddBuddy,
             onBuddyList: _navigateToBuddyList,
-            onHistory: _navigateToHistory,
           ), // Pass the callback without const
           const OurAddBuddy(),
-          afterAddedBuddy
-              ?  OurBuddyListAfter(onGoToBuddy: _navigateToFriendsPage)
-              :  OurBuddyListBefore(onGoToBuddy: _navigateToFriendsPage),
-          const OurHistory(),
+          // afterAddedBuddy
+          //     ?  OurBuddyListAfter(onGoToBuddy: _navigateToFriendsPage) :
+          BuddyList(
+              onGoToBuddy: _navigateToFriendsPage,
+              afterAddedBuddy: afterAddedBuddy,
+              ),
+
           OurCreateQuest(
             BeginQuest: _navigateToBeginQuest,
           ),
           OurFriendsPage(index: FriendIndex),
-          OurFriendsPage2(index: FriendIndex)
+          OurFriendsPage2(index: FriendIndex),
         ],
         onPageChanged: (page) {
           setState(() {

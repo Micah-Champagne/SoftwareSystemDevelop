@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'package:quest/pages/OurAddBuddy.dart';
-import 'package:quest/pages/OurAppNav.dart';
-import 'package:quest/pages/OurSignInPage.dart';
+import 'package:quest/pages/appNav.dart';
+import 'package:quest/pages/signInPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,14 +22,9 @@ class MyApp extends StatelessWidget {
                 
         home: const SignInPage(),
         routes: {
-          //'/homepage': (context) => const HomePage2(),
-          //'/ourprofilepage': (context) => const OurProfilePage(onAddBuddy: _navigateToAddBuddy,),
-          //'/searchpage': (context) => const OurQuestingPage(onPostQuest: () {  },),
           '/logout': (context) => const SignInPage(),
-          //'/testing': (context) => const OurFriendsPage(),
           '/ourappnav': (context) => const OurAppNav(),
-          //'/ourhomepage2': (context) => const OurHomePage(onGoToBuddy: _navigateToFriendsPage,),
-          '/addbuddy': (context) => const OurAddBuddy()
+
         });
   }
 }
