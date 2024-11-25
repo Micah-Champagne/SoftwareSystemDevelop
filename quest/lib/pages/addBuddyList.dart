@@ -3,14 +3,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:quest/models/buddyListModel.dart';
 import 'package:quest/utils/colors.dart';
 
-class OurAddBuddy extends StatefulWidget {
-  const OurAddBuddy({super.key});
+class addBuddy extends StatefulWidget {
+  const addBuddy({super.key});
 
   @override
-  State<OurAddBuddy> createState() => _OurAddBuddyState();
+  State<addBuddy> createState() => _addBuddyState();
 }
 
-class _OurAddBuddyState extends State<OurAddBuddy> {
+class _addBuddyState extends State<addBuddy> {
   final TextEditingController _controller = TextEditingController();
 
   List<BuddyListModel> AddBuddies = [];

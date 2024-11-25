@@ -4,16 +4,16 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:quest/models/post_model.dart';
 import 'package:quest/utils/colors.dart';
 
-class OurFriendsPage extends StatefulWidget {
+class buddyProfileFromFeed extends StatefulWidget {
   final int index;
 
-  const OurFriendsPage({super.key, required this.index});
+  const buddyProfileFromFeed({super.key, required this.index});
 
   @override
-  State<OurFriendsPage> createState() => _OurFriendsPageState();
+  State<buddyProfileFromFeed> createState() => _buddyProfileFromFeedState();
 }
 
-class _OurFriendsPageState extends State<OurFriendsPage> with TickerProviderStateMixin {
+class _buddyProfileFromFeedState extends State<buddyProfileFromFeed> with TickerProviderStateMixin {
   List<PostModel> posts = [];
   List<PostModel> selectedPosts = [];
 

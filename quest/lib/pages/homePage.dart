@@ -4,15 +4,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:quest/models/post_model.dart';
 import 'package:quest/utils/colors.dart';
 
-class OurHomePage extends StatefulWidget {
+class homePage extends StatefulWidget {
   final Function(int) onGoToBuddy;
-  const OurHomePage({super.key, required this.onGoToBuddy});
+  const homePage({super.key, required this.onGoToBuddy});
 
   @override
-  State<OurHomePage> createState() => _OurHomePageState();
+  State<homePage> createState() => _homePageState();
 }
 
-class _OurHomePageState extends State<OurHomePage> {
+class _homePageState extends State<homePage> {
   
 
   List<PostModel> posts = [];

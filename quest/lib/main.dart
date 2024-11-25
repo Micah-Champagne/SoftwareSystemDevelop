@@ -20,10 +20,10 @@ class MyApp extends StatelessWidget {
                 GoogleFonts.latoTextTheme(Theme.of(context).primaryTextTheme)),
                 color: Colors.black,
                 
-        home: const SignInPage(),
+        home: const signInPage(),
         routes: {
-          '/logout': (context) => const SignInPage(),
-          '/ourappnav': (context) => const OurAppNav(),
+          '/logout': (context) => const signInPage(),
+          '/ourappnav': (context) => const appNav(),
 
         });
   }

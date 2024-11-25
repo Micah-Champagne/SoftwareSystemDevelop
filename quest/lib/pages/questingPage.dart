@@ -4,18 +4,18 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:quest/models/currentQuests.dart';
 import 'package:quest/utils/colors.dart';
 
-class OurQuestingPage extends StatefulWidget {
-  const OurQuestingPage(
+class questingPage extends StatefulWidget {
+  const questingPage(
       {super.key, required this.onPostQuest, required this.onCreateQuest});
 
   final VoidCallback onPostQuest;
   final VoidCallback onCreateQuest;
 
   @override
-  State<OurQuestingPage> createState() => _OurQuestingPageState();
+  State<questingPage> createState() => _questingPageState();
 }
 
-class _OurQuestingPageState extends State<OurQuestingPage> {
+class _questingPageState extends State<questingPage> {
 
 
   List<bool> Completing = List.filled(10, false);

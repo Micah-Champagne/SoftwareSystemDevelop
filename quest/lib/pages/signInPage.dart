@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:quest/utils/colors.dart';
 
-class SignInPage extends StatefulWidget {
-  const SignInPage({super.key});
+class signInPage extends StatefulWidget {
+  const signInPage({super.key});
 
   @override
-  State<SignInPage> createState() => _SignInState();
+  State<signInPage> createState() => _SignInState();
 }
 
-class _SignInState extends State<SignInPage> {
+class _SignInState extends State<signInPage> {
   final _SignInController = OverlayPortalController();
   final _RegisterController = OverlayPortalController();
   bool signInEnabled = false;

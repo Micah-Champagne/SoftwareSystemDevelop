@@ -6,21 +6,21 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:quest/models/post_model.dart';
 import 'package:quest/utils/colors.dart';
 
-class OurProfilePage extends StatefulWidget {
+class profilePage extends StatefulWidget {
   final VoidCallback onAddBuddy;
   final VoidCallback onBuddyList;
 
-  const OurProfilePage({
+  const profilePage({
     super.key,
     required this.onAddBuddy,
     required this.onBuddyList,
   });
 
   @override
-  State<OurProfilePage> createState() => _OurProfilePageState();
+  State<profilePage> createState() => _profilePageState();
 }
 
-class _OurProfilePageState extends State<OurProfilePage>
+class _profilePageState extends State<profilePage>
     with TickerProviderStateMixin {
   List<PostModel> posts = [];
   List<PostModel> selectedPosts = [];

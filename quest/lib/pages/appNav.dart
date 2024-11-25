@@ -11,14 +11,14 @@ import 'package:quest/pages/profilePage.dart';
 import 'package:quest/pages/questingPage.dart';
 import 'package:quest/pages/createQuest.dart';
 
-class OurAppNav extends StatefulWidget {
-  const OurAppNav({super.key});
+class appNav extends StatefulWidget {
+  const appNav({super.key});
 
   @override
-  State<OurAppNav> createState() => _OurAppNavState();
+  State<appNav> createState() => _appNavState();
 }
 
-class _OurAppNavState extends State<OurAppNav> {
+class _appNavState extends State<appNav> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   int _selectedIndex = 0;
@@ -264,28 +264,28 @@ class _OurAppNavState extends State<OurAppNav> {
             ? const NeverScrollableScrollPhysics()
             : const AlwaysScrollableScrollPhysics(),
         children: [
-          OurHomePage(onGoToBuddy: _navigateToFriendsPage),
-          OurQuestingPage(
+          homePage(onGoToBuddy: _navigateToFriendsPage),
+          questingPage(
             onCreateQuest: _navigateToCreateQuest,
             onPostQuest: _navigateToPostQuest,
           ),
-          OurProfilePage(
+          profilePage(
             onAddBuddy: _navigateToAddBuddy,
             onBuddyList: _navigateToBuddyList,
           ), // Pass the callback without const
-          const OurAddBuddy(),
+          const addBuddy(),
           // afterAddedBuddy
           //     ?  OurBuddyListAfter(onGoToBuddy: _navigateToFriendsPage) :
-          BuddyList(
+          buddyList(
               onGoToBuddy: _navigateToFriendsPage,
               afterAddedBuddy: afterAddedBuddy,
               ),
 
-          OurCreateQuest(
+          createQuest(
             BeginQuest: _navigateToBeginQuest,
           ),
-          OurFriendsPage(index: FriendIndex),
-          OurFriendsPage2(index: FriendIndex),
+          buddyProfileFromFeed(index: FriendIndex),
+          buddyProfileFromList(index: FriendIndex),
         ],
         onPageChanged: (page) {
           setState(() {

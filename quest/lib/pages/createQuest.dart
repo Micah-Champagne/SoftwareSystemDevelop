@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quest/utils/colors.dart';
 
-class OurCreateQuest extends StatefulWidget {
-  const OurCreateQuest({super.key, required this.BeginQuest});
+class createQuest extends StatefulWidget {
+  const createQuest({super.key, required this.BeginQuest});
   final VoidCallback BeginQuest;
 
   @override
-  State<OurCreateQuest> createState() => _OurCreateQuestState();
+  State<createQuest> createState() => _createQuestState();
 }
 
 List<bool> whichSelected = List.filled(4, false);
 
-class _OurCreateQuestState extends State<OurCreateQuest> {
+class _createQuestState extends State<createQuest> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
