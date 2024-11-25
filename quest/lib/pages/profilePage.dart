@@ -108,7 +108,7 @@ class _profilePageState extends State<profilePage>
         ),
         // TabBarView - the content below the TabBar
         SizedBox(
-          height: 436,
+          height:436,
           child: TabBarView(controller: _tabController, children: [
             MyActivityTab(),
             MyQuestHistoryTab(),
