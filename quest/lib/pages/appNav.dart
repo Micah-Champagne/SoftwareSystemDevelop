@@ -28,6 +28,8 @@ class _appNavState extends State<appNav> {
   bool creating = false;
   bool _isSwipeDisabled = false;
   bool afterAddedBuddy = false;
+  bool afterCreated = false;
+  bool afterPosted = false;
   bool friendProfile = false;
   int FriendIndex = 0;
 
@@ -72,6 +74,7 @@ class _appNavState extends State<appNav> {
       _selectedIndex = 1; // Highlight the Profile section
       creating = true;
       _isSwipeDisabled = true;
+      afterCreated = true;
     });
     _pageController.jumpToPage(5);
     _selectedIndex = 1;
@@ -82,6 +85,7 @@ class _appNavState extends State<appNav> {
       _selectedIndex = 0;
       _pageController.jumpToPage(0);
       _isSwipeDisabled = false;
+      afterPosted = true;
     });
   }
 
@@ -216,7 +220,7 @@ class _appNavState extends State<appNav> {
               title: Text("L O G O U T",
                   style: GoogleFonts.lato(color: const Color(0xfffefdf5))),
               onTap: () {
-                Navigator.pushNamed(context, '/logout');
+                Navigator.pushNamed(context, '/signinPage');
               },
             ),
           ],
@@ -264,19 +268,19 @@ class _appNavState extends State<appNav> {
             ? const NeverScrollableScrollPhysics()
             : const AlwaysScrollableScrollPhysics(),
         children: [
-          homePage(onGoToBuddy: _navigateToFriendsPage),
+          homePage(onGoToBuddy: _navigateToFriendsPage, afterPosted: afterPosted,),
           questingPage(
             onCreateQuest: _navigateToCreateQuest,
             onPostQuest: _navigateToPostQuest,
+            afterCreated: afterCreated,
           ),
           profilePage(
             onAddBuddy: _navigateToAddBuddy,
             onBuddyList: _navigateToBuddyList,
-          ), // Pass the callback without const
+            afterPosted: afterPosted,
+          ),
           const addBuddy(),
-          // afterAddedBuddy
-          //     ?  OurBuddyListAfter(onGoToBuddy: _navigateToFriendsPage) :
-          buddyList(
+          BuddyList(
               onGoToBuddy: _navigateToFriendsPage,
               afterAddedBuddy: afterAddedBuddy,
               ),
