@@ -5,13 +5,8 @@ import 'package:quest/models/currentQuests.dart';
 import 'package:quest/utils/colors.dart';
 
 class questingPage extends StatefulWidget {
-  final bool afterCreated;
-
   const questingPage(
-      {super.key,
-      required this.onPostQuest,
-      required this.onCreateQuest,
-      required this.afterCreated});
+      {super.key, required this.onPostQuest, required this.onCreateQuest});
 
   final VoidCallback onPostQuest;
   final VoidCallback onCreateQuest;
@@ -21,6 +16,11 @@ class questingPage extends StatefulWidget {
 }
 
 class _questingPageState extends State<questingPage> {
+
+
+  List<bool> Completing = List.filled(10, false);
+  int CompletingCount = 0;
+
   List<CurrentQuestModel> CurrentQuests = [];
 
   String _privacyOption = 'Public';
@@ -33,20 +33,9 @@ class _questingPageState extends State<questingPage> {
   }
 
   @override
-  void initState() {
-    super.initState();
-    if (!widget.afterCreated) {
-      CurrentQuests = CurrentQuestModel.getBeforeCategories();
-    } else {
-      CurrentQuests = CurrentQuestModel.getAfterCategories();
-    }
-  }
-
-  List<bool> Completing = List.filled(11, false);
-  int CompletingCount = 0;
-  @override
   Widget build(BuildContext context) {
     // Ensure CurrentQuests is populated properly
+    CurrentQuests = CurrentQuestModel.getCategories();
     return Scaffold(
       body: Column(
         children: [
@@ -232,6 +221,7 @@ class _questingPageState extends State<questingPage> {
                             ),
                             const SizedBox(width: 5),
                             SvgPicture.asset('assets/icons/checkcircle.svg'),
+                            
                             const SizedBox(width: 20),
                           ],
                         ),

@@ -53,7 +53,7 @@ class _buddyProfileFromListState extends State<buddyProfileFromList>
       }
     });
 
-    posts = PostModel.getBeforeCategories(); // Load all posts once
+    posts = PostModel.getCategories(); // Load all posts once
     buddies = BuddyListModel.getBeforeCategories(); // Load all buddies once
 
     selectedUser = buddies[widget.index].username;

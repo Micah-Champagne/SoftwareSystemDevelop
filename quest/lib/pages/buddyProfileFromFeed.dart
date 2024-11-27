@@ -49,7 +49,7 @@ void initState() {
     }
   });
 
-  posts = PostModel.getBeforeCategories(); // Load all posts once
+  posts = PostModel.getCategories(); // Load all posts once
   String selectedUser = posts[widget.index].username;
 
   // Select posts for the selected user

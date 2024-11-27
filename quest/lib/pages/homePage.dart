@@ -6,8 +6,7 @@ import 'package:quest/utils/colors.dart';
 
 class homePage extends StatefulWidget {
   final Function(int) onGoToBuddy;
-  final bool afterPosted;
-  const homePage({super.key, required this.onGoToBuddy, required this.afterPosted});
+  const homePage({super.key, required this.onGoToBuddy});
 
   @override
   State<homePage> createState() => _homePageState();
@@ -21,11 +20,7 @@ class _homePageState extends State<homePage> {
   @override
   void initState() {
     super.initState();
-    if(widget.afterPosted) {
-      posts = PostModel.getAfterCategories();
-    } else {
-      posts = PostModel.getBeforeCategories();
-    }
+    posts = PostModel.getCategories();
   }
 
   void toggleFavorite(int index) {
