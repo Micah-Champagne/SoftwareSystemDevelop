@@ -9,13 +9,11 @@ import 'package:quest/utils/colors.dart';
 class profilePage extends StatefulWidget {
   final VoidCallback onAddBuddy;
   final VoidCallback onBuddyList;
-  final bool afterPosted;
 
   const profilePage({
     super.key,
     required this.onAddBuddy,
     required this.onBuddyList,
-    required this.afterPosted,
   });
 
   @override
@@ -33,10 +31,7 @@ class _profilePageState extends State<profilePage>
   void initState() {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
-    if (widget.afterPosted) {
-      posts = PostModel.getAfterCategories();
-    } else {
-      posts = PostModel.getBeforeCategories();}
+    posts = PostModel.getCategories();
 
     String selectedUser = "@ChampagnePapi";
     selectedPosts = posts.where((post) => post.username == selectedUser).toList();
