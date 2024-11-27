@@ -29,15 +29,15 @@ class _MyAppState extends State<MyApp> {
                 GoogleFonts.latoTextTheme(Theme.of(context).primaryTextTheme)),
                 color: Colors.black,
                 
-        home: const landingPage(),
+        home: const LandingPage(),
         routes: {
-          '/landingpage': (context) => const landingPage(),
-          '/onboarding1': (context) => OnboardingPg1(),
-          '/onboarding2': (context) => OnboardingPg2(),
-          '/onboarding3': (context) => OnboardingPg3(),
-          '/signinPage': (context) => const signInPage(),
-          '/logout': (context) => const signInPage(),
-          '/ourappnav': (context) => const appNav(),
+          '/landingpage': (context) => const LandingPage(),
+          '/onboarding1': (context) => const OnboardingPg1(),
+          '/onboarding2': (context) => const OnboardingPg2(),
+          '/onboarding3': (context) => const OnboardingPg3(),
+          '/signinPage': (context) => const SignInPage(),
+          '/logout': (context) => const SignInPage(),
+          '/ourappnav': (context) => const AppNav(),
           
 
         });

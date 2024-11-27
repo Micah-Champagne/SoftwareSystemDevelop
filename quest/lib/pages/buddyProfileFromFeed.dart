@@ -4,16 +4,17 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:quest/models/post_model.dart';
 import 'package:quest/utils/colors.dart';
 
-class buddyProfileFromFeed extends StatefulWidget {
+class BuddyProfileFromFeed extends StatefulWidget {
   final int index;
 
-  const buddyProfileFromFeed({super.key, required this.index});
+  const BuddyProfileFromFeed({super.key, required this.index});
 
   @override
-  State<buddyProfileFromFeed> createState() => _buddyProfileFromFeedState();
+  State<BuddyProfileFromFeed> createState() => _BuddyProfileFromFeedState();
 }
 
-class _buddyProfileFromFeedState extends State<buddyProfileFromFeed> with TickerProviderStateMixin {
+class _BuddyProfileFromFeedState extends State<BuddyProfileFromFeed>
+    with TickerProviderStateMixin {
   List<PostModel> posts = [];
   List<PostModel> selectedPosts = [];
 
@@ -22,40 +23,40 @@ class _buddyProfileFromFeedState extends State<buddyProfileFromFeed> with Ticker
   late Animation<double> _shakeAnimation;
 
   @override
-void initState() {
-  super.initState();
+  void initState() {
+    super.initState();
 
-  // Initialize the animation controller for scaling and shaking effects
-  _animationController = AnimationController(
-    vsync: this,
-    duration: const Duration(milliseconds: 500),
-  );
+    // Initialize the animation controller for scaling and shaking effects
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
 
-  // Scale animation (for enlarging)
-  _scaleAnimation = Tween<double>(begin: 1.0, end: 1.5).animate(
-    CurvedAnimation(parent: _animationController, curve: Curves.easeOut),
-  );
+    // Scale animation (for enlarging)
+    _scaleAnimation = Tween<double>(begin: 1.0, end: 1.5).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeOut),
+    );
 
-  // Shake animation (to make it shake left and right)
-  _shakeAnimation = Tween<double>(begin: 0.0, end: 15.0).animate(
-    CurvedAnimation(parent: _animationController, curve: Curves.elasticIn),
-  );
+    // Shake animation (to make it shake left and right)
+    _shakeAnimation = Tween<double>(begin: 0.0, end: 15.0).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.elasticIn),
+    );
 
-  // Listen for the status of the animation to reverse when done
-  _animationController.addStatusListener((status) {
-    if (status == AnimationStatus.completed) {
-      // Reverse the animation after it completes
-      _animationController.reverse();
-    }
-  });
+    // Listen for the status of the animation to reverse when done
+    _animationController.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        // Reverse the animation after it completes
+        _animationController.reverse();
+      }
+    });
 
-  posts = PostModel.getBeforeCategories(); // Load all posts once
-  String selectedUser = posts[widget.index].username;
+    posts = PostModel.getBeforeCategories(); // Load all posts once
+    String selectedUser = posts[widget.index].username;
 
-  // Select posts for the selected user
-  selectedPosts = posts.where((post) => post.username == selectedUser).toList();
-}
-
+    // Select posts for the selected user
+    selectedPosts =
+        posts.where((post) => post.username == selectedUser).toList();
+  }
 
   @override
   void dispose() {
@@ -63,7 +64,7 @@ void initState() {
     super.dispose();
   }
 
-    void toggleFavorite(int index) {
+  void toggleFavorite(int index) {
     setState(() {
       if (selectedPosts[index].isFavorited) {
         selectedPosts[index].likedAmount -= 1;
@@ -205,77 +206,76 @@ void initState() {
       ),
     );
   }
+
   Container QuestHistoryTab() {
     return Container(
-          margin: const EdgeInsets.only(bottom: 15),
-          height: 35,
-          width: 350,
-          decoration: BoxDecoration(
-            color: const Color(0xffCCB3DE),
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: Center(
-            child: Text(
-              "Quest History",
-              style: GoogleFonts.lato(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black),
-            ),
-          ),
-        );
+      margin: const EdgeInsets.only(bottom: 15),
+      height: 35,
+      width: 350,
+      decoration: BoxDecoration(
+        color: const Color(0xffCCB3DE),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Center(
+        child: Text(
+          "Quest History",
+          style: GoogleFonts.lato(
+              fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
+        ),
+      ),
+    );
   }
 
   Row ProfileHeader() {
     return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            ClipOval(
-              child: Image.asset(
-                posts[widget.index].image,
-                width: 100,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        ClipOval(
+          child: Image.asset(
+            posts[widget.index].image,
+            width: 100,
+          ),
+        ),
+        Container(
+          height: 115,
+          width: 2,
+          decoration: const BoxDecoration(
+            color: Colors.grey,
+          ),
+        ),
+        Container(
+          height: 150,
+          width: 225,
+          padding: const EdgeInsets.only(left: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                posts[widget.index].fullName,
+                style: GoogleFonts.lato(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
               ),
-            ),
-            Container(
-              height: 115,
-              width: 2,
-              decoration: const BoxDecoration(
-                color: Colors.grey,
+              Text(
+                posts[widget.index].username,
+                style: GoogleFonts.lato(color: Colors.black),
               ),
-            ),
-            Container(
-              height: 150,
-              width: 225,
-              padding: const EdgeInsets.only(left: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
+              const SizedBox(height: 10),
+              Row(
                 children: [
-                  Text(
-                    posts[widget.index].fullName,
-                    style: GoogleFonts.lato(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
-                  ),
-                  Text(
-                    posts[widget.index].username,
-                    style: GoogleFonts.lato(color: Colors.black),
-                  ),
-                  const SizedBox(height: 10),
-                  Row(
-                    children: [
-                      TauntButton(),
-                      const SizedBox(width: 5),
-                      RemoveBuddyButton(),
-                      const SizedBox(width: 5),
-                    ],
-                  ),
+                  TauntButton(),
+                  const SizedBox(width: 5),
+                  RemoveBuddyButton(),
+                  const SizedBox(width: 5),
                 ],
               ),
-            )
-          ],
-        );
+            ],
+          ),
+        )
+      ],
+    );
   }
 
   GestureDetector RemoveBuddyButton() {
@@ -288,10 +288,10 @@ void initState() {
           border: Border.all(color: Colors.black, width: 1),
           boxShadow: [
             BoxShadow(
-              color: const Color(0xff1D1617).withOpacity(0.4),
-              blurRadius: 1,
-              spreadRadius: 1.0,
-              offset: const Offset(0,2))
+                color: const Color(0xff1D1617).withOpacity(0.4),
+                blurRadius: 1,
+                spreadRadius: 1.0,
+                offset: const Offset(0, 2))
           ],
           borderRadius: BorderRadius.circular(20),
           color: const Color(0xffCCB3DE),
@@ -306,7 +306,6 @@ void initState() {
                 Center(
                     child: Text("Remove",
                         style: GoogleFonts.lato(color: Colors.black))),
-                
               ],
             ),
           ],
@@ -331,21 +330,24 @@ void initState() {
             child: Transform.scale(
               scale: _scaleAnimation.value, // Apply scaling (enlarging)
               child: Container(
-                height: 50, width: 100, 
-                decoration: BoxDecoration(
-                            boxShadow: [
-            BoxShadow(
-              color: const Color(0xff1D1617).withOpacity(0.4),
-              blurRadius: 1,
-              spreadRadius: 1.0,
-              offset: const Offset(0,2))
-          ],
-                  border:  Border.all(color: Colors.black, width: 1),
-                  borderRadius: BorderRadius.circular(20),
-                  color: const Color(0xffCCB3DE),
-                ),
-                child: Center(child: Text("Taunt",style: GoogleFonts.lato(color: Colors.black, fontSize: 18)))
-              ),
+                  height: 50,
+                  width: 100,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                          color: const Color(0xff1D1617).withOpacity(0.4),
+                          blurRadius: 1,
+                          spreadRadius: 1.0,
+                          offset: const Offset(0, 2))
+                    ],
+                    border: Border.all(color: Colors.black, width: 1),
+                    borderRadius: BorderRadius.circular(20),
+                    color: const Color(0xffCCB3DE),
+                  ),
+                  child: Center(
+                      child: Text("Taunt",
+                          style: GoogleFonts.lato(
+                              color: Colors.black, fontSize: 18)))),
             ),
           );
         },

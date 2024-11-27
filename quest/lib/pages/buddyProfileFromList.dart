@@ -5,16 +5,16 @@ import 'package:quest/models/buddyListModel.dart';
 import 'package:quest/models/post_model.dart';
 import 'package:quest/utils/colors.dart';
 
-class buddyProfileFromList extends StatefulWidget {
+class BuddyProfileFromList extends StatefulWidget {
   final int index;
 
-  const buddyProfileFromList({super.key, required this.index});
+  const BuddyProfileFromList({super.key, required this.index});
 
   @override
-  State<buddyProfileFromList> createState() => _buddyProfileFromListState();
+  State<BuddyProfileFromList> createState() => _BuddyProfileFromListState();
 }
 
-class _buddyProfileFromListState extends State<buddyProfileFromList>
+class _BuddyProfileFromListState extends State<BuddyProfileFromList>
     with TickerProviderStateMixin {
   List<BuddyListModel> buddies = [];
   List<PostModel> posts = [];

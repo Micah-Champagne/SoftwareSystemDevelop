@@ -6,8 +6,9 @@ import 'package:quest/utils/colors.dart';
 class BuddyList extends StatefulWidget {
   final Function(int) onGoToBuddy;
   final bool afterAddedBuddy;
-  
-  const BuddyList({super.key, required this.onGoToBuddy, required this.afterAddedBuddy}); 
+
+  const BuddyList(
+      {super.key, required this.onGoToBuddy, required this.afterAddedBuddy});
 
   @override
   State<BuddyList> createState() => _BuddyListState();
@@ -125,8 +126,7 @@ class _BuddyListState extends State<BuddyList> {
   // Search bar to filter buddies
   Container SearchBar() {
     return Container(
-      margin: const EdgeInsets.only(
-        left: 25, top: 25, right: 25, bottom: 15),
+      margin: const EdgeInsets.only(left: 25, top: 25, right: 25, bottom: 15),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
       ),
@@ -138,8 +138,8 @@ class _BuddyListState extends State<BuddyList> {
           fillColor: const Color.fromARGB(255, 232, 219, 240),
           contentPadding: const EdgeInsets.all(15),
           hintText: 'Search by Username',
-          hintStyle: GoogleFonts.lato(
-              color: const Color(0x66262626), fontSize: 14),
+          hintStyle:
+              GoogleFonts.lato(color: const Color(0x66262626), fontSize: 14),
           suffixIcon: SizedBox(
             width: 100,
             child: IntrinsicHeight(
@@ -174,8 +174,7 @@ class _BuddyListState extends State<BuddyList> {
                     },
                     child: const Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: Icon(Icons.search,
-                          color: Color(0x66262626)),
+                      child: Icon(Icons.search, color: Color(0x66262626)),
                     ),
                   ),
                 ],
@@ -183,8 +182,8 @@ class _BuddyListState extends State<BuddyList> {
             ),
           ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15),
-            borderSide: BorderSide.none),
+              borderRadius: BorderRadius.circular(15),
+              borderSide: BorderSide.none),
         ),
       ),
     );

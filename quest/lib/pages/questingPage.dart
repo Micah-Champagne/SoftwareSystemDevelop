@@ -4,10 +4,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:quest/models/currentQuests.dart';
 import 'package:quest/utils/colors.dart';
 
-class questingPage extends StatefulWidget {
+class QuestingPage extends StatefulWidget {
   final bool afterCreated;
 
-  const questingPage(
+  const QuestingPage(
       {super.key,
       required this.onPostQuest,
       required this.onCreateQuest,
@@ -17,10 +17,10 @@ class questingPage extends StatefulWidget {
   final VoidCallback onCreateQuest;
 
   @override
-  State<questingPage> createState() => _questingPageState();
+  State<QuestingPage> createState() => _QuestingPageState();
 }
 
-class _questingPageState extends State<questingPage> {
+class _QuestingPageState extends State<QuestingPage> {
   List<CurrentQuestModel> CurrentQuests = [];
 
   String _privacyOption = 'Public';

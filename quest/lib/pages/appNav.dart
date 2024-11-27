@@ -11,17 +11,17 @@ import 'package:quest/pages/profilePage.dart';
 import 'package:quest/pages/questingPage.dart';
 import 'package:quest/pages/createQuest.dart';
 
-class appNav extends StatefulWidget {
-  const appNav({super.key});
+class AppNav extends StatefulWidget {
+  const AppNav({super.key});
 
   @override
-  State<appNav> createState() => _appNavState();
+  State<AppNav> createState() => _AppNavState();
 }
 
-class _appNavState extends State<appNav> {
+class _AppNavState extends State<AppNav> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  int _selectedIndex = 0;
+  int _navBarIndex = 0;
   bool addbuddy = false;
   bool buddylist = false;
   bool history = false;
@@ -36,8 +36,9 @@ class _appNavState extends State<appNav> {
   final PageController _pageController = PageController();
 
   void _navigateBottomBar(int index) {
+    // sets all the temporary states to false to avoid AppBar Conflicts
     setState(() {
-      _selectedIndex = index;
+      _navBarIndex = index;
       addbuddy = false;
       buddylist = false;
       history = false;
@@ -50,39 +51,39 @@ class _appNavState extends State<appNav> {
 
   void _navigateToAddBuddy() {
     setState(() {
-      _selectedIndex = 2; // Highlight the Profile section
+      _navBarIndex = 2; // Highlight the Profile section
       addbuddy = true;
       _isSwipeDisabled = true;
       afterAddedBuddy = true;
     });
     _pageController.jumpToPage(3);
-    _selectedIndex = 2; // Navigate to the Add Buddy page
+    _navBarIndex = 2; // Navigate to the Add Buddy page
   }
 
   void _navigateToBuddyList() {
     setState(() {
-      _selectedIndex = 2; // Highlight the Profile section
+      _navBarIndex = 2; // Highlight the Profile section
       buddylist = true;
       _isSwipeDisabled = true;
     });
-    _pageController.jumpToPage(4);
-    _selectedIndex = 2; // Navigate to the Add Buddy page
+    _pageController.jumpToPage(4); // Navigate to the Add Buddy page
+    _navBarIndex = 2; 
   }
 
   void _navigateToCreateQuest() {
     setState(() {
-      _selectedIndex = 1; // Highlight the Profile section
+      _navBarIndex = 1; // Highlight the Profile section
       creating = true;
       _isSwipeDisabled = true;
       afterCreated = true;
     });
     _pageController.jumpToPage(5);
-    _selectedIndex = 1;
+    _navBarIndex = 1;
   }
 
   void _navigateToPostQuest() {
     setState(() {
-      _selectedIndex = 0;
+      _navBarIndex = 0;
       _pageController.jumpToPage(0);
       _isSwipeDisabled = false;
       afterPosted = true;
@@ -91,30 +92,32 @@ class _appNavState extends State<appNav> {
 
   void _navigateToBeginQuest() {
     setState(() {
-      _selectedIndex = 0;
+      _navBarIndex = 0;
       _pageController.jumpToPage(0);
       _isSwipeDisabled = false;
     });
   }
 
   void _navigateToFriendsPage(int index) {
-    // Add your navigation logic here
-    if (_selectedIndex == 2) {
+    // Check if the user is on the Profile page
+    if (_navBarIndex == 2) {
       setState(() {
-        _selectedIndex = 2;
+        _navBarIndex = 2;
         FriendIndex = index;
         friendProfile = true;
       });
       _pageController.jumpToPage(7);
-      _selectedIndex = 2;
-    } else {
+      _navBarIndex = 2;
+    } 
+    // Check if the user is on the Home page
+    else {
       setState(() {
-        _selectedIndex = 0;
+        _navBarIndex = 0;
         FriendIndex = index;
         friendProfile = true;
       });
       _pageController.jumpToPage(6);
-      _selectedIndex = 0;
+      _navBarIndex = 0;
     }
   }
 
@@ -126,7 +129,7 @@ class _appNavState extends State<appNav> {
         backgroundColor:
             friendProfile ? const Color(0xffCCB3DE) : OurColors().lightPurple,
         title: Text(
-          _selectedIndex == 2
+          _navBarIndex == 2
               ? addbuddy
                   ? "Add Buddy"
                   : buddylist
@@ -136,7 +139,7 @@ class _appNavState extends State<appNav> {
                       : history
                           ? "Quest History"
                           : "Profile"
-              : _selectedIndex == 1
+              : _navBarIndex == 1
                   ? creating
                       ? "Creating Quest"
                       : "Quest Log"
@@ -154,16 +157,16 @@ class _appNavState extends State<appNav> {
                 ? IconButton(
                     icon: const Icon(Icons.arrow_back),
                     onPressed: () {
-                      if (_selectedIndex == 2) {
+                      if (_navBarIndex == 2) {
                         setState(() {
-                          _selectedIndex = 2;
+                          _navBarIndex = 2;
                           friendProfile = false;
                         });
                         _pageController.jumpToPage(4);
-                        _selectedIndex = 2; // Navigate back to Profile
+                        _navBarIndex = 2; // Navigate back to Profile
                       } else {
                         setState(() {
-                          _selectedIndex = 0;
+                          _navBarIndex = 0;
                           friendProfile = false;
                         });
                         _pageController
@@ -175,7 +178,7 @@ class _appNavState extends State<appNav> {
                     icon: const Icon(Icons.arrow_back),
                     onPressed: () {
                       setState(() {
-                        _selectedIndex = 2;
+                        _navBarIndex = 2;
                         addbuddy = false;
                         buddylist = false;
                         history = false;
@@ -188,7 +191,7 @@ class _appNavState extends State<appNav> {
                     icon: const Icon(Icons.arrow_back),
                     onPressed: () {
                       setState(() {
-                        _selectedIndex = 1;
+                        _navBarIndex = 1;
                         creating = false;
                       });
                       _pageController.jumpToPage(1); // Navigate back to Profile
@@ -237,23 +240,23 @@ class _appNavState extends State<appNav> {
           BottomNavigationBar(
             backgroundColor: OurColors().cremeColor,
             elevation: 10,
-            currentIndex: _selectedIndex,
+            currentIndex: _navBarIndex,
             onTap: _navigateBottomBar,
             items: [
               BottomNavigationBarItem(
-                icon: _selectedIndex == 0
+                icon: _navBarIndex == 0
                     ? SvgPicture.asset("assets/icons/feedfilled.svg")
                     : SvgPicture.asset("assets/icons/feedblank.svg"),
                 label: "Home",
               ),
               BottomNavigationBarItem(
-                icon: _selectedIndex == 1
+                icon: _navBarIndex == 1
                     ? SvgPicture.asset("assets/icons/addfilled.svg")
                     : SvgPicture.asset("assets/icons/addblank.svg"),
                 label: "Quests",
               ),
               BottomNavigationBarItem(
-                icon: _selectedIndex == 2
+                icon: _navBarIndex == 2
                     ? SvgPicture.asset("assets/icons/profilefilled.svg")
                     : SvgPicture.asset("assets/icons/profileblank.svg"),
                 label: "Profile",
@@ -268,37 +271,39 @@ class _appNavState extends State<appNav> {
             ? const NeverScrollableScrollPhysics()
             : const AlwaysScrollableScrollPhysics(),
         children: [
-          homePage(onGoToBuddy: _navigateToFriendsPage, afterPosted: afterPosted,),
-          questingPage(
+          HomePage(
+            onGoToBuddy: _navigateToFriendsPage,
+            afterPosted: afterPosted,
+          ),
+          QuestingPage(
             onCreateQuest: _navigateToCreateQuest,
             onPostQuest: _navigateToPostQuest,
             afterCreated: afterCreated,
           ),
-          profilePage(
+          ProfilePage(
             onAddBuddy: _navigateToAddBuddy,
             onBuddyList: _navigateToBuddyList,
             afterPosted: afterPosted,
           ),
-          const addBuddy(),
+          const AddBuddy(),
           BuddyList(
-              onGoToBuddy: _navigateToFriendsPage,
-              afterAddedBuddy: afterAddedBuddy,
-              ),
-
-          createQuest(
+            onGoToBuddy: _navigateToFriendsPage,
+            afterAddedBuddy: afterAddedBuddy,
+          ),
+          CreateQuest(
             BeginQuest: _navigateToBeginQuest,
           ),
-          buddyProfileFromFeed(index: FriendIndex),
-          buddyProfileFromList(index: FriendIndex),
+          BuddyProfileFromFeed(index: FriendIndex),
+          BuddyProfileFromList(index: FriendIndex),
         ],
         onPageChanged: (page) {
           setState(() {
             if (page == 0) {
-              _selectedIndex = 0;
+              _navBarIndex = 0;
             } else if (page == 1 || page == 6) {
-              _selectedIndex = 1;
+              _navBarIndex = 1;
             } else if (page >= 2 && page <= 5) {
-              _selectedIndex = 2;
+              _navBarIndex = 2;
             }
             if (page >= 3) {
               _isSwipeDisabled = true;

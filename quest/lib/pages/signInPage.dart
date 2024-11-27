@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:quest/utils/colors.dart';
 
-class signInPage extends StatefulWidget {
-  const signInPage({super.key});
+class SignInPage extends StatefulWidget {
+  const SignInPage({super.key});
 
   @override
-  State<signInPage> createState() => _SignInState();
+  State<SignInPage> createState() => _SignInState();
 }
 
-class _SignInState extends State<signInPage> {
+class _SignInState extends State<SignInPage> {
   final _SignInController = OverlayPortalController();
   final _RegisterController = OverlayPortalController();
   bool signInEnabled = false;
@@ -22,15 +22,13 @@ class _SignInState extends State<signInPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: OurColors().purpleBackground,
-        body: ListView(
-          children: [
+        body: ListView(children: [
           const SizedBox(height: 150),
           SvgPicture.asset("assets/icons/qbLandingLogo.svg",
               height: 200, width: 200),
           Image.asset(
             "assets/icons/name.jpeg",
             height: 80,
-            
           ),
           const SizedBox(height: 175),
           LoginButtonAndOverlay(),
@@ -116,7 +114,8 @@ class _SignInState extends State<signInPage> {
                                             shape: RoundedRectangleBorder(
                                                 borderRadius:
                                                     BorderRadius.circular(5)),
-                                            backgroundColor: OurColors().darkGrey,
+                                            backgroundColor:
+                                                OurColors().darkGrey,
                                             foregroundColor: Colors.white),
                                         onPressed: () {
                                           Navigator.pushNamed(
@@ -236,7 +235,8 @@ class _SignInState extends State<signInPage> {
                                               shape: RoundedRectangleBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(5)),
-                                              backgroundColor: OurColors().darkGrey,
+                                              backgroundColor:
+                                                  OurColors().darkGrey,
                                               foregroundColor: Colors.white),
                                           onPressed: () {
                                             Navigator.pushNamed(
@@ -252,7 +252,8 @@ class _SignInState extends State<signInPage> {
                                   children: [
                                     Text("Already have an account?",
                                         style: TextStyle(
-                                            fontSize: 18, color: OurColors().darkGrey)),
+                                            fontSize: 18,
+                                            color: OurColors().darkGrey)),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: GestureDetector(

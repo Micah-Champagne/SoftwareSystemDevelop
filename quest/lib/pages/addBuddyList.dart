@@ -3,14 +3,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:quest/models/buddyListModel.dart';
 import 'package:quest/utils/colors.dart';
 
-class addBuddy extends StatefulWidget {
-  const addBuddy({super.key});
+class AddBuddy extends StatefulWidget {
+  const AddBuddy({super.key});
 
   @override
-  State<addBuddy> createState() => _addBuddyState();
+  State<AddBuddy> createState() => _AddBuddyState();
 }
 
-class _addBuddyState extends State<addBuddy> {
+class _AddBuddyState extends State<AddBuddy> {
   final TextEditingController _controller = TextEditingController();
 
   List<BuddyListModel> AddBuddies = [];
@@ -29,7 +29,8 @@ class _addBuddyState extends State<addBuddy> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
-        itemCount: searchBuddies.length + 1,  // Use searchBuddies for the item count
+        itemCount:
+            searchBuddies.length + 1, // Use searchBuddies for the item count
         itemBuilder: (context, index) {
           if (index == 0) {
             return SearchBar();
@@ -80,10 +81,10 @@ class _addBuddyState extends State<addBuddy> {
           ),
           GestureDetector(
             onTap: () {
-                setState(() {
-                  added[index - 1] = !added[index - 1];
-                });
-              },
+              setState(() {
+                added[index - 1] = !added[index - 1];
+              });
+            },
             child: Container(
               height: 50,
               width: 50,
@@ -107,8 +108,7 @@ class _addBuddyState extends State<addBuddy> {
 
   Container SearchBar() {
     return Container(
-      margin: const EdgeInsets.only(
-        left: 25, top: 25, right: 25, bottom: 15),
+      margin: const EdgeInsets.only(left: 25, top: 25, right: 25, bottom: 15),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
       ),
@@ -120,7 +120,8 @@ class _addBuddyState extends State<addBuddy> {
           fillColor: const Color.fromARGB(255, 232, 219, 240),
           contentPadding: const EdgeInsets.all(15),
           hintText: 'Search by Username',
-          hintStyle: GoogleFonts.lato(color: const Color(0x66262626), fontSize: 14),
+          hintStyle:
+              GoogleFonts.lato(color: const Color(0x66262626), fontSize: 14),
           suffixIcon: SizedBox(
             width: 100,
             child: IntrinsicHeight(
@@ -138,13 +139,13 @@ class _addBuddyState extends State<addBuddy> {
                       String user = _controller.text;
                       setState(() {
                         if (user.isEmpty) {
-                          searchBuddies = List.from(AddBuddies); // Show all if empty
+                          searchBuddies =
+                              List.from(AddBuddies); // Show all if empty
                         } else {
-                          searchBuddies = AddBuddies
-                              .where((buddy) => buddy.username
-                                  .toLowerCase()
-                                  .contains(user.toLowerCase()))
-                              .toList();
+                          searchBuddies = AddBuddies.where((buddy) => buddy
+                              .username
+                              .toLowerCase()
+                              .contains(user.toLowerCase())).toList();
                         }
                       });
                     },

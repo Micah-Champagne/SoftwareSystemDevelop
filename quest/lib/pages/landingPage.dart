@@ -4,23 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:quest/utils/colors.dart';
 
-class landingPage extends StatefulWidget {
-  const landingPage({super.key});
+class LandingPage extends StatefulWidget {
+  const LandingPage({super.key});
 
   @override
-  State<landingPage> createState() => _SignInState();
+  State<LandingPage> createState() => _SignInState();
 }
 
-class _SignInState extends State<landingPage> {
-
-      @override
+class _SignInState extends State<LandingPage> {
+  @override
   void initState() {
     super.initState();
     // Delay the navigation by 2 seconds
     Future.delayed(const Duration(seconds: 2), () {
       // Navigate to the next page after 2 seconds
       Navigator.pushNamed(context, '/onboarding1');
-      
     });
   }
 
@@ -28,15 +26,13 @@ class _SignInState extends State<landingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: OurColors().purpleBackground,
-        body: ListView(
-          children: [
+        body: ListView(children: [
           const SizedBox(height: 150),
           SvgPicture.asset("assets/icons/qbLandingLogo.svg",
               height: 200, width: 200),
           Image.asset(
             "assets/icons/name.jpeg",
             height: 80,
-            
           ),
         ]));
   }

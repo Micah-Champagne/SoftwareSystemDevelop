@@ -4,24 +4,23 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:quest/models/post_model.dart';
 import 'package:quest/utils/colors.dart';
 
-class homePage extends StatefulWidget {
+class HomePage extends StatefulWidget {
   final Function(int) onGoToBuddy;
   final bool afterPosted;
-  const homePage({super.key, required this.onGoToBuddy, required this.afterPosted});
+  const HomePage(
+      {super.key, required this.onGoToBuddy, required this.afterPosted});
 
   @override
-  State<homePage> createState() => _homePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _homePageState extends State<homePage> {
-  
-
+class _HomePageState extends State<HomePage> {
   List<PostModel> posts = [];
 
   @override
   void initState() {
     super.initState();
-    if(widget.afterPosted) {
+    if (widget.afterPosted) {
       posts = PostModel.getAfterCategories();
     } else {
       posts = PostModel.getBeforeCategories();
@@ -30,7 +29,7 @@ class _homePageState extends State<homePage> {
 
   void toggleFavorite(int index) {
     setState(() {
-      if(posts[index].isFavorited) {
+      if (posts[index].isFavorited) {
         posts[index].likedAmount -= 1;
         posts[index].isFavorited = false;
       } else {
@@ -134,7 +133,8 @@ class _homePageState extends State<homePage> {
             height: 0.1,
             width: 325,
             decoration: BoxDecoration(
-                color: OurColors().darkGrey, borderRadius: BorderRadius.circular(5)),
+                color: OurColors().darkGrey,
+                borderRadius: BorderRadius.circular(5)),
           ),
           const SizedBox(height: 10),
           Row(
@@ -146,12 +146,14 @@ class _homePageState extends State<homePage> {
                   scale: posts[index - 1].isFavorited
                       ? 1.0
                       : 1.0, // Scale up when favorited
-                  duration: const Duration(milliseconds: 300), // Smooth transition
-                  curve:
-                      Curves.easeInOut, // Use an easing curve for a smooth effect
+                  duration:
+                      const Duration(milliseconds: 300), // Smooth transition
+                  curve: Curves
+                      .easeInOut, // Use an easing curve for a smooth effect
                   child: AnimatedSwitcher(
                     duration: const Duration(milliseconds: 200),
-                    transitionBuilder: (Widget child, Animation<double> animation) {
+                    transitionBuilder:
+                        (Widget child, Animation<double> animation) {
                       // You can customize the transition animation here
                       return ScaleTransition(scale: animation, child: child);
                     },
@@ -169,8 +171,9 @@ class _homePageState extends State<homePage> {
                 ),
               ),
               Text(
-                  posts[index - 1].likedAmount.toString(), style: GoogleFonts.lato(fontSize: 12, color: Colors.black),
-                )
+                posts[index - 1].likedAmount.toString(),
+                style: GoogleFonts.lato(fontSize: 12, color: Colors.black),
+              )
             ],
           ),
         ],
@@ -317,7 +320,8 @@ class _homePageState extends State<homePage> {
             height: 0.3,
             width: 375,
             decoration: BoxDecoration(
-                color: OurColors().darkGrey, borderRadius: BorderRadius.circular(5)),
+                color: OurColors().darkGrey,
+                borderRadius: BorderRadius.circular(5)),
           )
         ]));
   }
