@@ -264,12 +264,13 @@ class _SignInState extends State<SignInPage> {
                                             signInEnabled = true;
                                           }
                                         },
-                                        child: Text("Login",
+                                        child: const Text("Login",
                                             style: TextStyle(
                                                 fontSize: 18,
                                                 decoration:
                                                     TextDecoration.underline,
-                                                color: OurColors().darkGrey)),
+                                                    decorationColor: Colors.blueAccent,
+                                                color: Colors.blueAccent)),
                                       ),
                                     ),
                                   ],
