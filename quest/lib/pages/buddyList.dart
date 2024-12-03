@@ -6,9 +6,11 @@ import 'package:quest/utils/colors.dart';
 class BuddyList extends StatefulWidget {
   final Function(int) onGoToBuddy;
   final bool afterAddedBuddy;
+  final bool alreadyLoaded;
+  static final GlobalKey<_BuddyListState> _buddyListKey = GlobalKey();
 
   const BuddyList(
-      {super.key, required this.onGoToBuddy, required this.afterAddedBuddy});
+      {super.key, required this.onGoToBuddy, required this.afterAddedBuddy, required this.alreadyLoaded});
 
   @override
   State<BuddyList> createState() => _BuddyListState();
@@ -27,24 +29,35 @@ class _BuddyListState extends State<BuddyList> {
     super.initState();
 
     // Initialize the list only once when the widget is first created
-    if (buddies.isEmpty) {
+    setState(() {
+      if (buddies.isEmpty) {
       if (!widget.afterAddedBuddy) {
         // Load the full list of buddies initially
         buddies = BuddyListModel.getBeforeCategories();
-        // Start by showing all buddies
-        searchBuddies = List.from(buddies);
       } else {
         // Load the full list of buddies after adding a buddy
         buddies = BuddyListModel.getAfterCategories();
-        // Start by showing all buddies
-        searchBuddies = List.from(buddies);
       }
+      // Start by showing all buddies
+      searchBuddies = List.from(buddies);
     }
+    });
+    
+    
+  }
+
+  @override
+  void dispose(){
+    buddies.clear();
+    searchBuddies.clear();
+
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: BuddyList._buddyListKey,
       body: ListView.builder(
         itemCount: searchBuddies.length + 1,
         itemBuilder: (context, index) {

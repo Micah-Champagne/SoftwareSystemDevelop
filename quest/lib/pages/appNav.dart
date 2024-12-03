@@ -32,6 +32,8 @@ class _AppNavState extends State<AppNav> {
   bool afterPosted = false;
   bool friendProfile = false;
   int FriendIndex = 0;
+  bool alreadyLoadedFriends = false;
+  int buddylistcounter = 0;
 
   final PageController _pageController = PageController();
 
@@ -65,6 +67,13 @@ class _AppNavState extends State<AppNav> {
       _navBarIndex = 2; // Highlight the Profile section
       buddylist = true;
       _isSwipeDisabled = true;
+      if(buddylistcounter == 1){
+        alreadyLoadedFriends = true;
+      }else{
+        alreadyLoadedFriends = false;
+        buddylistcounter++;
+      }
+      
     });
     _pageController.jumpToPage(4); // Navigate to the Add Buddy page
     _navBarIndex = 2; 
@@ -146,7 +155,7 @@ class _AppNavState extends State<AppNav> {
                   : friendProfile
                       ? "Profile"
                       : "Top Questers",
-          style: GoogleFonts.lato(fontSize: 35),
+          style: GoogleFonts.lato(fontSize: 28),
         ),
         centerTitle: true,
         leading: addbuddy |
@@ -289,6 +298,7 @@ class _AppNavState extends State<AppNav> {
           BuddyList(
             onGoToBuddy: _navigateToFriendsPage,
             afterAddedBuddy: afterAddedBuddy,
+            alreadyLoaded: alreadyLoadedFriends,
           ),
           CreateQuest(
             BeginQuest: _navigateToBeginQuest,

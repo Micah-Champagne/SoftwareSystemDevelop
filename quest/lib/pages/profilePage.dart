@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart'; // Make sure to import this to us
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quest/models/post_model.dart';
 import 'package:quest/utils/colors.dart';
+import 'package:quest/utils/history_bar_chart.dart';
 import 'package:quest/utils/radial_bar_chart.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -182,8 +183,9 @@ class _ProfilePageState extends State<ProfilePage>
               itemBuilder: (context, index) {
                 if (index == 0) {
                   return Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Image.asset('assets/icons/Barcharts.jpeg'),
+                    padding: const EdgeInsets.all(10.0),
+                    child: HistoryBarChart()
+                    //Image.asset('assets/icons/Barcharts.jpeg'),
                   );
                 } else {
                   return MyHistory(index);
@@ -202,10 +204,10 @@ class _ProfilePageState extends State<ProfilePage>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 30, bottom: 8.0),
+            padding: const EdgeInsets.only(left: 30),
             child: Text("Point Distribution",
                 style: GoogleFonts.lato(
-                    fontSize: 16,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: Colors.black)),
           ),
@@ -285,7 +287,7 @@ class _ProfilePageState extends State<ProfilePage>
             padding: const EdgeInsets.only(left: 30.0, bottom: 8.0, top: 8),
             child: Text("Quest Progress",
                 style: GoogleFonts.lato(
-                    fontSize: 16,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: Colors.black)),
           ),
@@ -347,7 +349,7 @@ class _ProfilePageState extends State<ProfilePage>
                   ),
                   Text(
                     selectedPosts[index - 1].time,
-                    style: TextStyle(color: OurColors().darkGrey, fontSize: 14),
+                    style: TextStyle(color: OurColors().darkGrey, fontSize: 16),
                   )
                 ],
               ),
@@ -378,7 +380,7 @@ class _ProfilePageState extends State<ProfilePage>
               GestureDetector(
                 onTap: () => toggleFavorite(index - 1),
                 child: AnimatedScale(
-                  scale: selectedPosts[index - 1].isFavorited ? 1.2 : 1.0,
+                  scale: 1.0,
                   duration: const Duration(milliseconds: 300),
                   curve: Curves.easeInOut,
                   child: AnimatedSwitcher(
@@ -402,7 +404,7 @@ class _ProfilePageState extends State<ProfilePage>
               ),
               Text(
                 selectedPosts[index - 1].likedAmount.toString(),
-                style: GoogleFonts.lato(fontSize: 12, color: Colors.black),
+                style: GoogleFonts.lato(fontSize: 16, color: Colors.black),
               ),
             ],
           ),

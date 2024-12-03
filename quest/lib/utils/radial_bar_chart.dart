@@ -48,7 +48,7 @@ class RadialBarChart extends StatelessWidget {
                           showTicks: false,
                           annotations: [
                             GaugeAnnotation(
-                              widget: Container(
+                              widget: SizedBox(
                                 
                                 width: 100,
                                 child: Text(
@@ -57,7 +57,7 @@ class RadialBarChart extends StatelessWidget {
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 18,
-                                      color: Colors.grey),
+                                      color: OurColors().darkGrey),
                                 ),
                               ),
                               

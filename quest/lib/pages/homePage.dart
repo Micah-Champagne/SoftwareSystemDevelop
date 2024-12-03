@@ -104,7 +104,7 @@ class _HomePageState extends State<HomePage> {
                     child: Text(
                       '${posts[index - 1].username} Completed',
                       softWrap: true,
-                      style: TextStyle(
+                      style: GoogleFonts.lato(
                           color: OurColors().darkGrey,
                           fontSize: 18,
                           fontWeight: FontWeight.bold),
@@ -112,7 +112,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Text(
                     posts[index - 1].time,
-                    style: TextStyle(color: OurColors().darkGrey, fontSize: 14),
+                    style: GoogleFonts.lato(color: OurColors().darkGrey, fontSize: 16),
                   )
                 ],
               ),
@@ -123,7 +123,7 @@ class _HomePageState extends State<HomePage> {
             children: [
               const SizedBox(width: 10),
               Text(posts[index - 1].quest,
-                  style: TextStyle(color: OurColors().darkGrey, fontSize: 20)),
+                  style: GoogleFonts.lato(color: OurColors().darkGrey, fontSize: 20)),
               const Spacer(),
               SvgPicture.asset("assets/icons/checkcircle.svg")
             ],
@@ -172,7 +172,7 @@ class _HomePageState extends State<HomePage> {
               ),
               Text(
                 posts[index - 1].likedAmount.toString(),
-                style: GoogleFonts.lato(fontSize: 12, color: Colors.black),
+                style: GoogleFonts.lato(fontSize: 16, color: Colors.black),
               )
             ],
           ),
@@ -226,11 +226,11 @@ class _HomePageState extends State<HomePage> {
                               height: 85, width: 85)),
                     ),
                   ),
-                  const Text("@Yoshi",
-                      style: TextStyle(fontSize: 16, color: Colors.black)),
-                  const Text("102",
-                      style: TextStyle(
-                          fontSize: 24,
+                  Text("@Yoshi",
+                      style: GoogleFonts.lato(fontSize: 16, color: Colors.black)),
+                  Text("102",
+                      style: GoogleFonts.lato(
+                          fontSize: 22,
                           fontWeight: FontWeight.bold,
                           color: Colors.black))
                 ],
@@ -264,11 +264,11 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  const Text("@AbEE33",
-                      style: TextStyle(fontSize: 16, color: Colors.black)),
-                  const Text("123",
-                      style: TextStyle(
-                          fontSize: 24,
+                  Text("@AbEE33",
+                      style: GoogleFonts.lato(fontSize: 16, color: Colors.black)),
+                  Text("123",
+                      style: GoogleFonts.lato(
+                          fontSize: 22,
                           fontWeight: FontWeight.bold,
                           color: Colors.black))
                 ],
@@ -304,11 +304,11 @@ class _HomePageState extends State<HomePage> {
                               height: 85, width: 85)),
                     ),
                   ),
-                  const Text("@StayZan234",
-                      style: TextStyle(fontSize: 16, color: Colors.black)),
-                  const Text("82",
-                      style: TextStyle(
-                          fontSize: 24,
+                  Text("@StayZan234",
+                      style: GoogleFonts.lato(fontSize: 16, color: Colors.black)),
+                  Text("82",
+                      style: GoogleFonts.lato(
+                          fontSize: 22,
                           fontWeight: FontWeight.bold,
                           color: Colors.black))
                 ],
