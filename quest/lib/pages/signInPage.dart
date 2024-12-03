@@ -285,6 +285,7 @@ class _SignInState extends State<SignInPage> {
 
   TextField _OurPlainTextField(String hintText) {
     return TextField(
+      style: const TextStyle(color: Colors.black),
       decoration: InputDecoration(
           filled: true,
           fillColor: OurColors().cremeColor,
@@ -298,6 +299,7 @@ class _SignInState extends State<SignInPage> {
 
   TextField _OurSecretTextField(String hintText) {
     return TextField(
+      style: const TextStyle(color: Colors.black),
       decoration: InputDecoration(
         suffixIcon: IconButton(
             onPressed: () {
