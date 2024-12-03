@@ -126,7 +126,9 @@ class _SignInState extends State<SignInPage> {
                                 child: Text("Forgot Password?",
                                     style: TextStyle(
                                         fontSize: 18,
-                                        decoration: TextDecoration.underline,
+                                        decoration: 
+                                          TextDecoration.underline,
+                                          decorationColor: OurColors().darkGrey,
                                         color: OurColors().darkGrey)),
                               )
                             ])));
