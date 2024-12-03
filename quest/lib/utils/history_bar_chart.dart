@@ -89,13 +89,14 @@ class HistoryBarChart extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
-                        const SizedBox(width: 10),
+                        const SizedBox(width: 5),
                         Text('Chores',
                             style: GoogleFonts.lato(color: Colors.black)),
                       ],
                     ),
                     Row(
                       children: [
+                        const SizedBox(width: 2),
                         Container(
                           height: 20,
                           width: 30,
@@ -117,6 +118,7 @@ class HistoryBarChart extends StatelessWidget {
                   children: [
                     Row(
                       children: [
+                        const SizedBox(width: 5),
                         Container(
                           height: 20,
                           width: 30,

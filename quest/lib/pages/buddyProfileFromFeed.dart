@@ -263,12 +263,21 @@ class _BuddyProfileFromFeedState extends State<BuddyProfileFromFeed>
                 style: GoogleFonts.lato(color: Colors.black),
               ),
               const SizedBox(height: 10),
-              Row(
-                children: [
-                  TauntButton(),
-                  const SizedBox(width: 5),
-                  RemoveBuddyButton(),
-                  const SizedBox(width: 5),
+              Stack
+              (
+              alignment: Alignment.center,
+                children: 
+                [
+                  Align
+                  (
+                    alignment: Alignment.centerRight,
+                    child: RemoveBuddyButton(),
+                  ),
+                  Align
+                  (
+                    alignment: Alignment.centerLeft,
+                    child: TauntButton(),
+                  ),
                 ],
               ),
             ],
@@ -277,44 +286,7 @@ class _BuddyProfileFromFeedState extends State<BuddyProfileFromFeed>
       ],
     );
   }
-
-  GestureDetector RemoveBuddyButton() {
-    return GestureDetector(
-      onTap: () {},
-      child: Container(
-        height: 50,
-        width: 100,
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.black, width: 1),
-          boxShadow: [
-            BoxShadow(
-                color: const Color(0xff1D1617).withOpacity(0.4),
-                blurRadius: 1,
-                spreadRadius: 1.0,
-                offset: const Offset(0, 2))
-          ],
-          borderRadius: BorderRadius.circular(20),
-          color: const Color(0xffCCB3DE),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            const Center(child: Icon(Icons.delete)),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(
-                    child: Text("Remove",
-                        style: GoogleFonts.lato(color: Colors.black))),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  GestureDetector TauntButton() {
+GestureDetector TauntButton() {
     return GestureDetector(
       onTap: () {
         // Start the animation when the button is pressed
@@ -354,4 +326,41 @@ class _BuddyProfileFromFeedState extends State<BuddyProfileFromFeed>
       ),
     );
   }
+  GestureDetector RemoveBuddyButton() {
+    return GestureDetector(
+      onTap: () {},
+      child: Container(
+        height: 50,
+        width: 100,
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.black, width: 1),
+          boxShadow: [
+            BoxShadow(
+                color: const Color(0xff1D1617).withOpacity(0.4),
+                blurRadius: 1,
+                spreadRadius: 1.0,
+                offset: const Offset(0, 2))
+          ],
+          borderRadius: BorderRadius.circular(20),
+          color: const Color(0xffCCB3DE),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            const Center(child: Icon(Icons.delete)),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Center(
+                    child: Text("Remove",
+                        style: GoogleFonts.lato(color: Colors.black))),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  
 }

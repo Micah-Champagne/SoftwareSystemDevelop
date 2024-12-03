@@ -27,10 +27,11 @@ class _SignInState extends State<LandingPage> {
     return Scaffold(
         backgroundColor: OurColors().purpleBackground,
         body: ListView(children: [
-          const SizedBox(height: 148),
-          SvgPicture.asset("assets/icons/qbLandingLogo.svg",
-              height: 200, width: 200),
-          
+          const SizedBox(height: 180),
+
+          // SvgPicture.asset("assets/icons/qbLandingLogo.svg",
+          //     height: 200, width: 200),
+          Image.asset('assets/icons/logo.png', height: 220, width: 220),
         ]));
   }
 }

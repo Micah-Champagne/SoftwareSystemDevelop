@@ -268,12 +268,21 @@ class _BuddyProfileFromListState extends State<BuddyProfileFromList>
                 style: GoogleFonts.lato(color: Colors.black),
               ),
               const SizedBox(height: 10),
-              Row(
-                children: [
-                  TauntButton(),
-                  const SizedBox(width: 5),
-                  RemoveBuddyButton(),
-                  const SizedBox(width: 5),
+              Stack
+              (
+              alignment: Alignment.center,
+                children: 
+                [
+                  Align
+                  (
+                    alignment: Alignment.centerRight,
+                    child: RemoveBuddyButton(),
+                  ),
+                  Align
+                  (
+                    alignment: Alignment.centerLeft,
+                    child: TauntButton(),
+                  ),
                 ],
               ),
             ],

@@ -154,8 +154,8 @@ class _AppNavState extends State<AppNav> {
                       : "Quest Log"
                   : friendProfile
                       ? "Profile"
-                      : "Top Questers",
-          style: GoogleFonts.lato(fontSize: 28),
+                      : "Home",
+          style: GoogleFonts.lato(fontSize: 24),
         ),
         centerTitle: true,
         leading: addbuddy |
