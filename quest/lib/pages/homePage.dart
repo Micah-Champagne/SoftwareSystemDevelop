@@ -216,7 +216,7 @@ class _HomePageState extends State<HomePage> {
                               spreadRadius: 2),
                         ],
                         border: Border.all(
-                            width: 4, color: const Color(0xff8EC0DD))),
+                            width: 4, color: const Color(0x99838ef4))),
                     child: GestureDetector(
                       onTap: () {
                         widget.onGoToBuddy(index + 4);
@@ -253,7 +253,7 @@ class _HomePageState extends State<HomePage> {
                         ],
                         shape: BoxShape.circle,
                         border: Border.all(
-                            width: 4, color: const Color(0xffBFEAE7))),
+                            width: 4, color: const Color(0x99838ef4))),
                     child: GestureDetector(
                       onTap: () {
                         widget.onGoToBuddy(index + 2);
@@ -292,7 +292,7 @@ class _HomePageState extends State<HomePage> {
                               spreadRadius: 2),
                         ],
                         border: Border.all(
-                          color: const Color(0xff8EC0DD),
+                          color: const Color(0x99838ef4),
                           width: 4,
                         )),
                     child: GestureDetector(
