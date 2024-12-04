@@ -71,7 +71,7 @@ class PostModel {
       username: NashUser,
       time: "Just now",
       fullName: NashFullName,
-      quest: "Plan weekend getaway",
+      quest: "Go to Orange Theory",
       boxColor: physical,
       likedAmount: 73,
     ));
@@ -341,7 +341,7 @@ class PostModel {
       username: NashUser,
       time: "Just now",
       fullName: NashFullName,
-      quest: "Plan weekend getaway",
+      quest: "Go to Orange Theory",
       boxColor: physical,
       likedAmount: 73,
     ));

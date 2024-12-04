@@ -273,6 +273,7 @@ class _AppNavState extends State<AppNav> {
           ),
         ],
       ),
+      
       body: PageView(
         controller: _pageController,
         physics: _isSwipeDisabled
