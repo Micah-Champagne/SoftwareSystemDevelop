@@ -12,13 +12,14 @@ class ProfilePage extends StatefulWidget {
   final VoidCallback onAddBuddy;
   final VoidCallback onBuddyList;
   final bool afterPosted;
+  final bool afteraddbuddy;
 
-  const ProfilePage({
-    super.key,
-    required this.onAddBuddy,
-    required this.onBuddyList,
-    required this.afterPosted,
-  });
+  const ProfilePage(
+      {super.key,
+      required this.onAddBuddy,
+      required this.onBuddyList,
+      required this.afterPosted,
+      required this.afteraddbuddy});
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -183,10 +184,10 @@ class _ProfilePageState extends State<ProfilePage>
               itemBuilder: (context, index) {
                 if (index == 0) {
                   return Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: HistoryBarChart()
-                    //Image.asset('assets/icons/Barcharts.jpeg'),
-                  );
+                      padding: const EdgeInsets.all(10.0),
+                      child: HistoryBarChart()
+                      //Image.asset('assets/icons/Barcharts.jpeg'),
+                      );
                 } else {
                   return MyHistory(index);
                 }
@@ -456,8 +457,11 @@ class _ProfilePageState extends State<ProfilePage>
           color: OurColors().lightPurple,
         ),
         child: Center(
-            child: Text("62 Buddies",
-                style: GoogleFonts.lato(color: Colors.black))),
+            child: widget.afteraddbuddy
+                ? Text("64 Buddies",
+                    style: GoogleFonts.lato(color: Colors.black))
+                : Text("62 Buddies",
+                    style: GoogleFonts.lato(color: Colors.black))),
       ),
     );
   }

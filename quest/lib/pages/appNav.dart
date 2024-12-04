@@ -67,16 +67,15 @@ class _AppNavState extends State<AppNav> {
       _navBarIndex = 2; // Highlight the Profile section
       buddylist = true;
       _isSwipeDisabled = true;
-      if(buddylistcounter == 1){
+      if (buddylistcounter == 1) {
         alreadyLoadedFriends = true;
-      }else{
+      } else {
         alreadyLoadedFriends = false;
         buddylistcounter++;
       }
-      
     });
     _pageController.jumpToPage(4); // Navigate to the Add Buddy page
-    _navBarIndex = 2; 
+    _navBarIndex = 2;
   }
 
   void _navigateToCreateQuest() {
@@ -117,7 +116,7 @@ class _AppNavState extends State<AppNav> {
       });
       _pageController.jumpToPage(7);
       _navBarIndex = 2;
-    } 
+    }
     // Check if the user is on the Home page
     else {
       setState(() {
@@ -293,6 +292,7 @@ class _AppNavState extends State<AppNav> {
             onAddBuddy: _navigateToAddBuddy,
             onBuddyList: _navigateToBuddyList,
             afterPosted: afterPosted,
+            afteraddbuddy: afterAddedBuddy,
           ),
           const AddBuddy(),
           BuddyList(
