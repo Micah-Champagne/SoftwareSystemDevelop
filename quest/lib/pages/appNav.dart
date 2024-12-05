@@ -106,7 +106,7 @@ class _AppNavState extends State<AppNav> {
     });
   }
 
-  void _navigateToFriendsPage(int index) {
+    void _navigateToFriendsPage(int index) {
     // Check if the user is on the Profile page
     if (_navBarIndex == 2) {
       setState(() {
@@ -304,7 +304,7 @@ class _AppNavState extends State<AppNav> {
           CreateQuest(
             BeginQuest: _navigateToBeginQuest,
           ),
-          BuddyProfileFromFeed(index: FriendIndex),
+          BuddyProfileFromFeed(index: FriendIndex, afterPosted: afterPosted),
           BuddyProfileFromList(index: FriendIndex),
         ],
         onPageChanged: (page) {

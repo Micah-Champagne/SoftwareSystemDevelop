@@ -324,7 +324,7 @@ class PostModel {
     String MicahUser = "ChampagnePapi";
     String NashUser = "Nash1_Bo1";
     String WillUser = "Bi.ll.iam";
-    String LeeUser = "Le0p0old";
+    String LeeUser = "Le0p0ld";
 
     String AbbyFullName = "Abby Debenport";
     String ArushiFullName = "Arushi Ghildiyal";

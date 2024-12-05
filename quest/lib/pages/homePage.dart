@@ -219,7 +219,11 @@ class _HomePageState extends State<HomePage> {
                             width: 4, color: const Color(0x99838ef4))),
                     child: GestureDetector(
                       onTap: () {
-                        widget.onGoToBuddy(index + 4);
+                        if(widget.afterPosted)
+                        {
+                          widget.onGoToBuddy(index + 5);
+                        }
+                        else{widget.onGoToBuddy(index + 4);}
                       },
                       child: ClipOval(
                           child: Image.asset("assets/icons/arushi.jpeg",
@@ -256,7 +260,11 @@ class _HomePageState extends State<HomePage> {
                             width: 4, color: const Color(0x99838ef4))),
                     child: GestureDetector(
                       onTap: () {
-                        widget.onGoToBuddy(index + 2);
+                        if(widget.afterPosted)
+                        {
+                          widget.onGoToBuddy(index + 3);
+                        }
+                        else{widget.onGoToBuddy(index + 2);}
                       },
                       child: ClipOval(
                           child: Image.asset("assets/icons/abby.jpeg",
@@ -297,7 +305,11 @@ class _HomePageState extends State<HomePage> {
                         )),
                     child: GestureDetector(
                       onTap: () {
-                        widget.onGoToBuddy(index + 3);
+                        if(widget.afterPosted)
+                        {
+                          widget.onGoToBuddy(index + 4);
+                        }
+                        else{widget.onGoToBuddy(index + 3);}
                       },
                       child: ClipOval(
                           child: Image.asset("assets/icons/tyler.jpeg",

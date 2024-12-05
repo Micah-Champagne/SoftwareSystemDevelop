@@ -6,8 +6,9 @@ import 'package:quest/utils/colors.dart';
 
 class BuddyProfileFromFeed extends StatefulWidget {
   final int index;
+  final bool afterPosted;
 
-  const BuddyProfileFromFeed({super.key, required this.index});
+  const BuddyProfileFromFeed({super.key, required this.index, required this.afterPosted});
 
   @override
   State<BuddyProfileFromFeed> createState() => _BuddyProfileFromFeedState();
@@ -50,7 +51,11 @@ class _BuddyProfileFromFeedState extends State<BuddyProfileFromFeed>
       }
     });
 
-    posts = PostModel.getBeforeCategories(); // Load all posts once
+    if (widget.afterPosted) {
+      posts = PostModel.getAfterCategories();
+    } else {
+      posts = PostModel.getBeforeCategories();
+    }// Load all posts once
     String selectedUser = posts[widget.index].username;
 
     // Select posts for the selected user
