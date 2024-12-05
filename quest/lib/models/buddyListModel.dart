@@ -20,15 +20,15 @@ class BuddyListModel {
   static String AnindoPhoto = "assets/icons/anindo.jpeg";
   static String PeytonPhoto = "assets/icons/peyton.jpeg";
 
-  static String AbbyUser = "@AbEE33";
-  static String ArushiUser = "@Yoshi";
-  static String TylerUser = "@StayZan234";
-  static String ReinhardUser = "@RineH3art";
-  static String NashUser = "@Nash1_Bo1";
-  static String WillUser = "@Bi.ll.iam";
-  static String LeeUser = "@Le0p0ld";
-  static String AnindoUser = "@N1tind0";
-  static String PeytonUser = "@Paintin'";
+  static String AbbyUser = "AbEE33";
+  static String ArushiUser = "Yoshi";
+  static String TylerUser = "StayZan234";
+  static String ReinhardUser = "RineH3art";
+  static String NashUser = "Nash1_Bo1";
+  static String WillUser = "Bi.ll.iam";
+  static String LeeUser = "Le0p0ld";
+  static String AnindoUser = "N1tind0";
+  static String PeytonUser = "Paintin'";
 
   static List<BuddyListModel> getBeforeCategories() {
     return [
@@ -68,14 +68,14 @@ class BuddyListModel {
     String GoldenPhoto = "assets/icons/golden.jpeg";
     String TamPhoto = "assets/icons/tam.jpeg";
 
-    String AnindoUser = "@N1tind0";
-    String PeytonUser = "@Paintin'";
-    String PhilUser = "@Fil";
-    String EllenUser = "@EllenDeGenrous";
-    String TimmyUser = "@TimmyTurner";
-    String HabeebUser = "@Scooter_Boy123";
-    String GoldenUser = "@KingRichard";
-    String TamUser = "@TAMarind";
+    String AnindoUser = "N1tind0";
+    String PeytonUser = "Paintin'";
+    String PhilUser = "Fil";
+    String EllenUser = "EllenDeGenrous";
+    String TimmyUser = "TimmyTurner";
+    String HabeebUser = "Scooter_Boy123";
+    String GoldenUser = "KingRichard";
+    String TamUser = "TAMarind";
 
     addBuddy.add(BuddyListModel.BuddyListModel(
       image: AnindoPhoto,

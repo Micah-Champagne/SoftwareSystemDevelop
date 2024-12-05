@@ -93,9 +93,20 @@ class _CreateQuestState extends State<CreateQuest> {
                   border: whichSelected[2] ? Border.all() : null,
                   color: OurColors().chores,
                   borderRadius: BorderRadius.circular(10)),
-              child: Center(
-                  child: Text("Household",
-                      style: GoogleFonts.lato(color: Colors.black)))),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const SizedBox(width: 10),
+                  Icon(Icons.house_sharp, color: OurColors().darkGrey, size: 40),
+                  const SizedBox(width: 5),
+                  Text("Household",
+                      style: GoogleFonts.lato(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16)),
+                  
+                ],
+              )),
         ),
         GestureDetector(
           onTap: () {
@@ -115,9 +126,19 @@ class _CreateQuestState extends State<CreateQuest> {
                   border: whichSelected[3] ? Border.all() : null,
                   color: OurColors().physical,
                   borderRadius: BorderRadius.circular(10)),
-              child: Center(
-                  child: Text("Physical",
-                      style: GoogleFonts.lato(color: Colors.black)))),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const SizedBox(width: 10),
+                  Icon(Icons.fitness_center, color: OurColors().darkGrey, size: 35),
+                  const SizedBox(width: 15),
+                  Text("Physical",
+                      style: GoogleFonts.lato(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16)),
+                ],
+              )),
         )
       ],
     );
@@ -145,9 +166,14 @@ class _CreateQuestState extends State<CreateQuest> {
                   border: whichSelected[0] ? Border.all() : null,
                   color: OurColors().professional,
                   borderRadius: BorderRadius.circular(10)),
-              child: Center(
-                child: Text("Professional",
-                    style: GoogleFonts.lato(color: Colors.black)),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const SizedBox(width: 10),
+                  Icon(Icons.workspace_premium, color: OurColors().darkGrey, size: 40),
+                  Text("Professional",
+                      style: GoogleFonts.lato(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold)),
+                ],
               )),
         ),
         GestureDetector(
@@ -168,9 +194,16 @@ class _CreateQuestState extends State<CreateQuest> {
                   border: whichSelected[1] ? Border.all() : null,
                   color: OurColors().education,
                   borderRadius: BorderRadius.circular(10)),
-              child: Center(
-                  child: Text("Educational",
-                      style: GoogleFonts.lato(color: Colors.black)))),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const SizedBox(width: 10),
+                  Icon(Icons.school, color: OurColors().darkGrey, size: 40),
+                  const SizedBox(width: 5),
+                  Text("Educational",
+                      style: GoogleFonts.lato(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold)), 
+                ],
+              )),
         )
       ],
     );

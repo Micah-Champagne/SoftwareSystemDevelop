@@ -38,14 +38,14 @@ class PostModel {
     String WillPhoto = "assets/icons/will.jpeg";
     String LeePhoto = "assets/icons/lee.jpeg";
 
-    String AbbyUser = "@AbEE33";
-    String ArushiUser = "@Yoshi";
-    String TylerUser = "@StayZan234";
-    String ReinhardUser = "@RineH3art";
-    String MicahUser = "@ChampagnePapi";
-    String NashUser = "@Nash1_Bo1";
-    String WillUser = "@Bi.ll.iam";
-    String LeeUser = "@Le0p0old";
+    String AbbyUser = "AbEE33";
+    String ArushiUser = "Yoshi";
+    String TylerUser = "StayZan234";
+    String ReinhardUser = "RineH3art";
+    String MicahUser = "ChampagnePapi";
+    String NashUser = "Nash1_Bo1";
+    String WillUser = "Bi.ll.iam";
+    String LeeUser = "Le0p0old";
 
     String AbbyFullName = "Abby Debenport";
     String ArushiFullName = "Arushi Ghildiyal";
@@ -141,7 +141,7 @@ class PostModel {
       username: MicahUser,
       time: "1 hour ago",
       fullName: MicahFullName,
-      quest: "Cried",
+      quest: "Prepared for a meeting",
       boxColor: professional,
       likedAmount: 28,
     ));
@@ -317,14 +317,14 @@ class PostModel {
     String WillPhoto = "assets/icons/will.jpeg";
     String LeePhoto = "assets/icons/lee.jpeg";
 
-    String AbbyUser = "@AbEE33";
-    String ArushiUser = "@Yoshi";
-    String TylerUser = "@StayZan234";
-    String ReinhardUser = "@RineH3art";
-    String MicahUser = "@ChampagnePapi";
-    String NashUser = "@Nash1_Bo1";
-    String WillUser = "@Bi.ll.iam";
-    String LeeUser = "@Le0p0old";
+    String AbbyUser = "AbEE33";
+    String ArushiUser = "Yoshi";
+    String TylerUser = "StayZan234";
+    String ReinhardUser = "RineH3art";
+    String MicahUser = "ChampagnePapi";
+    String NashUser = "Nash1_Bo1";
+    String WillUser = "Bi.ll.iam";
+    String LeeUser = "Le0p0old";
 
     String AbbyFullName = "Abby Debenport";
     String ArushiFullName = "Arushi Ghildiyal";
@@ -411,7 +411,7 @@ class PostModel {
       username: MicahUser,
       time: "1 hour ago",
       fullName: MicahFullName,
-      quest: "Cried",
+      quest: "Prepared for a meeting",
       boxColor: professional,
       likedAmount: 28,
     ));

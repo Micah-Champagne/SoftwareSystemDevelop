@@ -7,6 +7,7 @@ import 'package:quest/models/post_model.dart';
 import 'package:quest/utils/colors.dart';
 import 'package:quest/utils/history_bar_chart.dart';
 import 'package:quest/utils/radial_bar_chart.dart';
+import 'package:quest/utils/splinechart1.dart';
 
 class ProfilePage extends StatefulWidget {
   final VoidCallback onAddBuddy;
@@ -42,7 +43,7 @@ class _ProfilePageState extends State<ProfilePage>
       posts = PostModel.getBeforeCategories();
     }
 
-    String selectedUser = "@ChampagnePapi";
+    String selectedUser = "ChampagnePapi";
     selectedPosts =
         posts.where((post) => post.username == selectedUser).toList();
   }
@@ -132,11 +133,20 @@ class _ProfilePageState extends State<ProfilePage>
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        ClipOval(
-          child: Image.asset(
-            'assets/icons/Micah.jpeg',
-            height: 100,
-            width: 100,
+        Container(
+          decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 1,
+                  ),
+                ),
+          child: ClipOval(
+            child: Image.asset(
+              'assets/icons/Micah.jpeg',
+              height: 100,
+              width: 100,
+            ),
           ),
         ),
         Container(
@@ -285,16 +295,50 @@ class _ProfilePageState extends State<ProfilePage>
             ],
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 30.0, bottom: 8.0, top: 8),
-            child: Text("Quest Progress",
-                style: GoogleFonts.lato(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black)),
+            padding: const EdgeInsets.only(left: 30.0, top: 8),
+            child: Row(
+              children: [
+                Text("Quest Progress",
+                    style: GoogleFonts.lato(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black)),
+                SizedBox(width: 10),
+                        Row(
+                          children:[
+                            Row(
+                              children: [
+                                Container(
+                                height: 20,
+                                width: 30,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: OurColors().lightPurple),
+                                ),
+                                SizedBox(width: 5,),
+                                Text("December", style: GoogleFonts.lato(color: Colors.black)),
+                              ],
+                            ),
+                            SizedBox(width: 10),
+                            Row(
+                              children: [Container(
+                            height: 20,
+                            width: 30,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color(0xff7C678A),),
+                            ),
+                            SizedBox(width: 5),
+                            Text("November", style: GoogleFonts.lato(color: Colors.black))],
+                            )
+                          ]
+                        )
+              ],
+            ),
           ),
           Center(
-            child: Image.asset('assets/icons/LineChart.jpeg', height: 190),
-          ),
+              //child: Image.asset('assets/icons/LineChart.jpeg', height: 190),
+              child: Container(child: SplineChart1())),
         ],
       ),
     );

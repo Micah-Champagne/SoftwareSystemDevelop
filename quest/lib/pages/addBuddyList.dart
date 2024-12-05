@@ -28,7 +28,9 @@ class _AddBuddyState extends State<AddBuddy> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 232, 219, 240),
       body: ListView.builder(
+        
         itemCount:
             searchBuddies.length + 1, // Use searchBuddies for the item count
         itemBuilder: (context, index) {
@@ -46,62 +48,80 @@ class _AddBuddyState extends State<AddBuddy> {
     return Container(
       height: 70,
       margin: const EdgeInsets.only(left: 24, right: 24),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          ClipOval(
-            child: Image.asset(
-              searchBuddies[index - 1].image,
-              height: 50,
-              width: 50,
-              fit: BoxFit.cover,
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 8.0),
+        child: Container(
+          padding: const EdgeInsets.only(left: 5, right: 5),
+          decoration: BoxDecoration(
+            color: added[index-1] ? OurColors().lightPurple : Colors.transparent,
+            borderRadius: BorderRadius.circular(20), 
+            border: Border.all(
+                color: OurColors().darkGrey,
+                width: 1,
+              
             ),
           ),
-          Container(
-            height: 50,
-            width: 225,
-            decoration: BoxDecoration(
-              color: OurColors().lightPurple,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    searchBuddies[index - 1].username,
-                    textAlign: TextAlign.left,
-                    style: GoogleFonts.lato(color: Colors.black),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 1,
                   ),
-                ],
+                ),
+                child: ClipOval(
+                
+                  child: Image.asset(
+                    searchBuddies[index - 1].image,
+                    height: 50,
+                    width: 50,
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
-            ),
+              SizedBox(
+                height: 50,
+                width: 225,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        searchBuddies[index - 1].username,
+                        textAlign: TextAlign.left,
+                        style: GoogleFonts.lato(color: Colors.black, fontSize: 16),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    added[index - 1] = !added[index - 1];
+                  });
+                },
+                child: Container(
+                  height: 70,
+                  width: 50,
+                  color: Colors.transparent,
+                  child: SizedBox(
+                    height: 70,
+                    width: 50,
+                    child: added[index - 1]
+                        ? const Icon(Icons.check)
+                        : const Icon(Icons.add),
+                  ),
+                ),
+              ),
+            ],
           ),
-          GestureDetector(
-            onTap: () {
-              setState(() {
-                added[index - 1] = !added[index - 1];
-              });
-            },
-            child: Container(
-              height: 50,
-              width: 50,
-              decoration: BoxDecoration(
-                color: OurColors().lightPurple,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: SizedBox(
-                height: 35,
-                width: 35,
-                child: added[index - 1]
-                    ? const Icon(Icons.check)
-                    : const Icon(Icons.add),
-              ),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
@@ -117,7 +137,7 @@ class _AddBuddyState extends State<AddBuddy> {
         style: GoogleFonts.lato(color: Colors.black),
         decoration: InputDecoration(
           filled: true,
-          fillColor: const Color.fromARGB(255, 232, 219, 240),
+          fillColor: OurColors().cremeColor,
           contentPadding: const EdgeInsets.all(15),
           hintText: 'Search by Username',
           hintStyle:

@@ -235,10 +235,19 @@ class _BuddyProfileFromListState extends State<BuddyProfileFromList>
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        ClipOval(
-          child: Image.asset(
-            buddies[widget.index].image,
-            width: 100,
+        Container(
+          decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 1,
+                  ),
+                ),
+          child: ClipOval(
+            child: Image.asset(
+              buddies[widget.index].image,
+              width: 100,
+            ),
           ),
         ),
         Container(
